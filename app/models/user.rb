@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :campsites
   has_many :campsite_reservations, through: :campsites
 
+  has_one_attached :photo
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end
