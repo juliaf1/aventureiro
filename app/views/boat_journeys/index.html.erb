@@ -3,7 +3,7 @@
   <div>
     <%= boat_journey.boat.name %>
     <%= boat_journey.boat.user.first_name %>
-    <%= boat_journey.departure_time %>
+    <%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
     <%= boat_journey.travel_duration %>
     <%= boat_journey.price_person %>
   </div>
