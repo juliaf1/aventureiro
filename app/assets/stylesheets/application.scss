@@ -11,3 +11,61 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Josefin Sans', 'sans-serif';
+}
+
+h1 {
+  font-size: 104px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 64px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 48px;
+  font-weight: 400;
+}
+
+h4 {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+h5 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+p {
+  font-family: 'Work Sans', 'sans-serif';
+  font-size: 16px;
+  font-weight: 300;
+}
+
+a {
+  font-family: 'Work Sans', 'sans-serif';
+  font-size: 16px;
+  font-weight: 300;
+  color: $primary-blue;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.7;
+    text-decoration: none;
+  }
+}
+
+.av-link {
+  font-size: 24px;
+  text-transform: uppercase;
+  text-decoration: underline;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

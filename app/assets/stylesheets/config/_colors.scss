@@ -1,10 +1,42 @@
-// Define variables for your color scheme
+// Aventureiro Color Pallete
 
-// For example:
-$red: #FD1015;
-$blue: #167FFB;
-$yellow: #FFC65A;
-$orange: #E67E22;
-$green: #1EDD88;
-$gray: #0E0000;
-$light-gray: #F4F4F4;
+// Greys
+$black: #1B1B1B;
+$dark-gray: #5C5C5C;
+$medium-gray: #C0C0C0;
+$light-gray: #F3F3F3;
+$white: white;
+
+// Neutrals
+$neutral-dark-blue: #152A43;
+$neutral-light-blue: #E4ECF6;
+
+$neutral-dark-brown: #85552D;
+$neutral-light-brown: #F6ECE3;
+
+// Color Accents
+$primary-blue: #5192E3;
+
+$dark-blue: #1C5F8F;
+$light-blue: #A9BFCE;
+
+$dark-pink: #E99FA7;
+$light-pink: #F5D5D4;
+
+$dark-green: #4C765D;
+$light-green: #92B4A0;
+
+$dark-yellow: #C08865;
+$light-yellow: #EED9B4;
+
+
+// DO NOT USE THE COLORS BELOW
+// THIS IS JUST SO BOOTSTRAP WONT BREAK
+
+$red: #E99FA7;
+$blue: #5192E3;
+$yellow: #C08865;
+$orange: #85552D;
+$green: #4C765D;
+$gray: #1B1B1B;
+$light-gray: white;
