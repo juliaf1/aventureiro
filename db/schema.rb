@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_164851) do
+ActiveRecord::Schema.define(version: 2020_11_30_165651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boat_journeys", force: :cascade do |t|
+    t.bigint "boat_id", null: false
+    t.datetime "departure_time"
+    t.string "travel_duration"
+    t.integer "price_person"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["boat_id"], name: "index_boat_journeys_on_boat_id"
+  end
 
   create_table "boats", force: :cascade do |t|
     t.string "name"
@@ -23,6 +33,21 @@ ActiveRecord::Schema.define(version: 2020_11_30_164851) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_boats_on_user_id"
+  end
+
+  create_table "campsite_reservations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "campsite_id", null: false
+    t.date "check_in"
+    t.date "check_out"
+    t.text "description"
+    t.integer "number_guests"
+    t.integer "total_price"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["campsite_id"], name: "index_campsite_reservations_on_campsite_id"
+    t.index ["user_id"], name: "index_campsite_reservations_on_user_id"
   end
 
   create_table "campsites", force: :cascade do |t|
@@ -55,6 +80,9 @@ ActiveRecord::Schema.define(version: 2020_11_30_164851) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "boat_journeys", "boats"
   add_foreign_key "boats", "users"
+  add_foreign_key "campsite_reservations", "campsites"
+  add_foreign_key "campsite_reservations", "users"
   add_foreign_key "campsites", "users"
 end
