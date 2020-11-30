@@ -1,0 +1,11 @@
+<h1>All Boat Journeys</h1>
+<% @boat_journeys.each do |boat_journey| %>
+  <div>
+    <%= boat_journey.boat.name %>
+    <%= boat_journey.boat.user.first_name %>
+    <%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
+    <%= boat_journey.travel_duration %>
+    <%= boat_journey.price_person %>
+  </div>
+<% end %>
+
