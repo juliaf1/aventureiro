@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_165651) do
+ActiveRecord::Schema.define(version: 2020_11_30_170105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boat_journey_reservations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "boat_journey_id", null: false
+    t.integer "number_passengers"
+    t.integer "total_price"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["boat_journey_id"], name: "index_boat_journey_reservations_on_boat_journey_id"
+    t.index ["user_id"], name: "index_boat_journey_reservations_on_user_id"
+  end
 
   create_table "boat_journeys", force: :cascade do |t|
     t.bigint "boat_id", null: false
@@ -80,6 +92,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_165651) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "boat_journey_reservations", "boat_journeys"
+  add_foreign_key "boat_journey_reservations", "users"
   add_foreign_key "boat_journeys", "boats"
   add_foreign_key "boats", "users"
   add_foreign_key "campsite_reservations", "campsites"
