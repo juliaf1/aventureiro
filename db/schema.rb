@@ -10,10 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_155203) do
+ActiveRecord::Schema.define(version: 2020_11_30_170105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boat_journey_reservations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "boat_journey_id", null: false
+    t.integer "number_passengers"
+    t.integer "total_price"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["boat_journey_id"], name: "index_boat_journey_reservations_on_boat_journey_id"
+    t.index ["user_id"], name: "index_boat_journey_reservations_on_user_id"
+  end
+
+  create_table "boat_journeys", force: :cascade do |t|
+    t.bigint "boat_id", null: false
+    t.datetime "departure_time"
+    t.string "travel_duration"
+    t.integer "price_person"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["boat_id"], name: "index_boat_journeys_on_boat_id"
+  end
+
+  create_table "boats", force: :cascade do |t|
+    t.string "name"
+    t.integer "min_occupation"
+    t.integer "max_occupation"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_boats_on_user_id"
+  end
+
+  create_table "campsite_reservations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "campsite_id", null: false
+    t.date "check_in"
+    t.date "check_out"
+    t.text "description"
+    t.integer "number_guests"
+    t.integer "total_price"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["campsite_id"], name: "index_campsite_reservations_on_campsite_id"
+    t.index ["user_id"], name: "index_campsite_reservations_on_user_id"
+  end
+
+  create_table "campsites", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "daily_price"
+    t.string "availability"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_campsites_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,4 +92,11 @@ ActiveRecord::Schema.define(version: 2020_11_30_155203) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "boat_journey_reservations", "boat_journeys"
+  add_foreign_key "boat_journey_reservations", "users"
+  add_foreign_key "boat_journeys", "boats"
+  add_foreign_key "boats", "users"
+  add_foreign_key "campsite_reservations", "campsites"
+  add_foreign_key "campsite_reservations", "users"
+  add_foreign_key "campsites", "users"
 end
