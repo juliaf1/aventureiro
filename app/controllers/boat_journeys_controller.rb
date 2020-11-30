@@ -1,7 +1,7 @@
 class BoatJourneysController < ApplicationController
 
   def index
-    @boat_journeys = BoatJourneys.all
+    @boat_journeys = BoatJourney.all
   end
   
 end
