@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   resources :users, only: [ :show, :edit, :update ]
 
   resources :campsites, only: [ :index, :show ]
-  
-  resources :boat_journeys, only: [ :index ]
+
+  resources :boat_journeys, only: [ :index ] do
+    resources :boat_journey_reservations, only: [ :new, :create ]
+  end
+
+  resources :boat_journey_reservations, only: [ :index, :destroy ]
 
   # routes for local users
   namespace :local do
@@ -14,5 +18,6 @@ Rails.application.routes.draw do
       resources :boat_journeys, only: [ :new, :create ]
     end
     resources :boat_journeys, only: [ :index, :edit, :update, :destroy ]
+    resources :boat_journey_reservations, only: [ :index, :edit, :update ]
   end
 end

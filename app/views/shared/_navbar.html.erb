@@ -12,7 +12,6 @@
         </li>
         <li class="nav-item">
           <%= link_to "Browse Campsites", campsites_path, class: "nav-link" %>
-          <%= link_to "Boats Schedule", boat_journeys_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
@@ -22,7 +21,12 @@
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
-
+            <%= link_to "Boats Schedule", boat_journeys_path, class: "dropdown-item" %>
+            <% if current_user.local %>
+              <%= link_to "Boats Reservations", local_boat_journey_reservations_path, class: "dropdown-item" %>
+            <% else %>
+              <%= link_to "Boats Reservations", boat_journey_reservations_path, class: "dropdown-item" %>
+            <% end %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>

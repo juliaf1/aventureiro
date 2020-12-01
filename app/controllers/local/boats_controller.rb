@@ -2,7 +2,7 @@ class Local::BoatsController < ApplicationController
   before_action :find_boat, only: [ :edit, :update, :destroy ]
 
   def index
-    @boats = Boat.all
+    @boats = current_user.boats
     authorize_boat
   end
 
