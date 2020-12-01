@@ -38,6 +38,9 @@ gem 'devise'
 # Cloudinary
 gem 'cloudinary', '~> 1.16.0'
 
+# Pundit
+gem 'pundit'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'

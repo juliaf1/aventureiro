@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_190432) do
+ActiveRecord::Schema.define(version: 2020_12_01_014315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_190432) do
     t.bigint "boat_journey_id", null: false
     t.integer "number_passengers"
     t.integer "total_price"
-    t.string "status"
+    t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["boat_journey_id"], name: "index_boat_journey_reservations_on_boat_journey_id"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_190432) do
     t.text "description"
     t.integer "number_guests"
     t.integer "total_price"
-    t.string "status"
+    t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["campsite_id"], name: "index_campsite_reservations_on_campsite_id"

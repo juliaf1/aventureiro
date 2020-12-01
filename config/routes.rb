@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :boat_journeys, only: [ :index ]
 
-  resources :users, only: [ :edit, :update ]
+  resources :users, only: [ :show, :edit, :update ]
 
   resources :campsites, only: [ :index, :show ] do
     resources :campsite_reservations, only: [:new, :create]

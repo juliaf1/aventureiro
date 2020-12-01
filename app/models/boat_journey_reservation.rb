@@ -1,6 +1,6 @@
 class BoatJourneyReservation < ApplicationRecord
   belongs_to :user
   belongs_to :boat_journey
-
-  validates :number_passengers, :total_price, :status, presence: true
+  enum status: { pending: 0, confirmed: 1, rejected: 2 }
+  validates :number_passengers, :total_price, presence: true
 end
