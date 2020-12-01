@@ -1,0 +1,10 @@
+<div class="container">
+  <% @boats.each do |boat| %>
+    <div class="card">
+      <% if LocalBoatPolicy.new(current_user, boat).owner? %>
+        <h3><%= boat.name %></h3>
+        <p><%= boat.max_occupation %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
