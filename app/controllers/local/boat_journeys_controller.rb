@@ -1,6 +1,12 @@
 class Local::BoatJourneysController < ApplicationController
 
   before_action :find_boat_journey, only: [ :edit, :update, :destroy ]
+
+  def index
+    @boat_journeys = BoatJourney.joins(:boat).where(boats: { user_id: current_user.id })
+    authorize @boat_journeys, policy_class: LocalBoatJourneyPolicy
+  end
+
   def new
     @boat_journey = BoatJourney.new
     authorize @boat_journey, policy_class: LocalBoatJourneyPolicy
@@ -11,7 +17,7 @@ class Local::BoatJourneysController < ApplicationController
     @boat_journey.boat = Boat.find(params[:boat_id])
     authorize @boat_journey, policy_class: LocalBoatJourneyPolicy
     if @boat_journey.save
-      redirect_to local_boats_path
+      redirect_to local_boat_journeys_path
     else
       render :new
     end
@@ -24,7 +30,7 @@ class Local::BoatJourneysController < ApplicationController
   def update
     authorize @boat_journey, policy_class: LocalBoatJourneyPolicy
     if @boat_journey.update(boat_journey_params)
-      redirect_to local_boats_path, notice: "Your boat has been updated!"
+      redirect_to local_boat_journeys_path, notice: "Your boat has been updated!"
     else
       render :edit
     end
@@ -32,8 +38,8 @@ class Local::BoatJourneysController < ApplicationController
 
   def destroy
     authorize @boat_journey, policy_class: LocalBoatJourneyPolicy
-    @boat_journey.delete
-    redirect_to boat_journeys_path
+    @boat_journey.destroy
+    redirect_to local_boat_journeys_path
   end
 
   private

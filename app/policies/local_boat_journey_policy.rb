@@ -1,11 +1,15 @@
 class LocalBoatJourneyPolicy < ApplicationPolicy
 
+  def index?
+    local?
+  end
+
   def destroy?
-    true
+    owner?
   end
 
   def update?
-    true
+    owner?
   end
 
   def create?
@@ -13,7 +17,7 @@ class LocalBoatJourneyPolicy < ApplicationPolicy
   end
 
   def owner?
-    Boat.where(user: current_user).include?(record.boat)
+    record.boat.user == user
   end
 
   def local?

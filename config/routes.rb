@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     resources :boats, only: [ :new, :create, :edit, :update, :index, :destroy ] do
       resources :boat_journeys, only: [ :new, :create ]
     end
-    resources :boat_journeys, only: [ :edit, :update, :destroy ]
+    resources :boat_journeys, only: [ :index, :edit, :update, :destroy ]
   end
 end
