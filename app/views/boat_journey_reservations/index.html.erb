@@ -1,7 +1,7 @@
 <h2>All Your Boat Journeys Reservations</h2>
 
 <% if current_user.boat_journey_reservations.present? %>
-  <% @bj_reservations.each do |boat_reservation| %>
+  <% @journey_reservations.each do |boat_reservation| %>
     <div>
       <% if policy(boat_reservation).owner? %>
         <%= boat_reservation.boat_journey.boat.name %>

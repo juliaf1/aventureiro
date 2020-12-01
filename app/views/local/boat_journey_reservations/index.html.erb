@@ -1,9 +1,9 @@
 <div class="container">
   <h2>Suas reservas de barco</h2>
-  <% if @bj_reservations.empty? %>
+  <% if @journey_reservations.empty? %>
     <p>Nenhuma reserva.</p>
   <% else %>
-    <% @bj_reservations.each do |boat_reservation| %>
+    <% @journey_reservations.each do |boat_reservation| %>
       <div class="card">
         <h5><%= "#{boat_reservation.user.first_name} #{boat_reservation.user.last_name}" %></h5>
         <p><%= boat_reservation.boat_journey.boat.name %></p>
