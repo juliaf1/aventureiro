@@ -12,7 +12,7 @@ class CampsiteReservationsController < ApplicationController
       redirect_to boat_journeys_path
     else
       render :new, notice: @campsite_reservation.errors.messages.to_s
-    e
+    end
   end
 
   private
