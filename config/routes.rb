@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   resources :campsites, only: [ :index, :show ]
   
   resources :boat_journeys, only: [ :index ]
-  
+
   # routes for local users
   namespace :local do
-    resources :boats, only: [ :new, :create, :edit, :update, :index ]
+    resources :boats, only: [ :new, :create, :edit, :update, :index, :destroy ]
   end  
 end

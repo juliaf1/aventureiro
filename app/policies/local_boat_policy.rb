@@ -1,7 +1,15 @@
 class LocalBoatPolicy < ApplicationPolicy
 
+  def destroy?
+    owner?
+  end
+
   def create?
     local?
+  end
+
+  def update?
+    owner?
   end
 
   def index?
