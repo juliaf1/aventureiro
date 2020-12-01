@@ -1,10 +1,15 @@
 class LocalBoatJourneyReservationPolicy < ApplicationPolicy
+
   def index?
-    true
+    local?
   end
 
   def update?
     owner?
+  end
+
+  def local?
+    user.local
   end
 
   def owner?

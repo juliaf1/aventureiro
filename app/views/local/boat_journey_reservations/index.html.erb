@@ -1,16 +1,25 @@
-<h2>Suas reservas de barco</h2>
 <div class="container">
-  <% @bj_reservations.each do |boat_reservation| %>
-    <div class="card">
-      <% if LocalBoatJourneyReservationPolicy.new(current_user, boat_reservation).owner? %>
+  <h2>Suas reservas de barco</h2>
+  <% if @bj_reservations.empty? %>
+    <p>Nenhuma reserva.</p>
+  <% else %>
+    <% @bj_reservations.each do |boat_reservation| %>
+      <div class="card">
         <h3><%= "#{boat_reservation.user.first_name} #{boat_reservation.user.last_name}" %></h3>
         <p><%= boat_reservation.boat_journey.boat.name %></p>
         <%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
         <%= boat_reservation.boat_journey.travel_duration %>
-        <%= "#{boat_reservation.number_passengers} passengers" %>
-        <%= "Total price: #{boat_reservation.total_price}" %>
+        <%= "#{boat_reservation.number_passengers} passageiros" %>
+        <%= "Preço total: #{boat_reservation.total_price}" %>
         <%= "Status: #{boat_reservation.status}" %>
-      <% end %>
-    </div>
+
+        <% if boat_reservation.pending? %>
+          <%= link_to "Confirmar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch %>
+          <%= link_to "Rejeitar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch %>
+        <% elsif boat_reservation.confirmed? %>
+          <%= link_to "Cancelar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>
