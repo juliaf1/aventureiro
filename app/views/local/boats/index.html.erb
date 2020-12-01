@@ -1,0 +1,11 @@
+<div class="container">
+  <% @boats.each do |boat| %>
+    <div class="card">
+      <% if LocalBoatPolicy.new(current_user, boat).owner? %>
+        <h3><%= boat.name %></h3>
+        <p><%= boat.max_occupation %></p>
+        <%= link_to "Delete", local_boat_path(boat), method: :delete %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
