@@ -1,5 +1,13 @@
 class UserPolicy < ApplicationPolicy
 
+  def new?
+    create?
+  end
+  
+  def create?
+    owner?
+  end
+
   def show?
     owner?
   end
