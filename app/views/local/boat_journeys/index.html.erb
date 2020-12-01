@@ -8,9 +8,6 @@
     <%= boat_journey.price_person %>
     <%= link_to "Edit journey", edit_local_boat_journey_path(boat_journey) %>
     <%= link_to "Delete", local_boat_journey_path(boat_journey), method: :delete %>
-    <%= link_to "Add a journey", new_local_boat_boat_journey_path(boat_journey.boat) %>
   </div>
 <% end %>
-
-
-
+<%= link_to "Add a journey", local_boats_path(current_user) %>
