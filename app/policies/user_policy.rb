@@ -1,5 +1,9 @@
 class UserPolicy < ApplicationPolicy
 
+  def show?
+    owner?
+  end
+
   def update?
     owner?
   end
