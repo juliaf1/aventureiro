@@ -1,14 +1,22 @@
 class CampsiteReservationPolicy < ApplicationPolicy
+  def index?
+    owner?
+  end
+
   def new?
     create?
   end
 
   def create?
-    record.user != user
+    if user.local
+      false
+    else
+      user
+    end
   end
 
   def owner?
-    record.user == user
+    record == user
   end
 
   class Scope < Scope
