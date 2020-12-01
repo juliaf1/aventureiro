@@ -1,0 +1,21 @@
+<h2>All Your Boat Journeys Reservations</h2>
+
+<% if current_user.boat_journey_reservations.present? %>
+  <% @journey_reservations.each do |boat_reservation| %>
+    <div>
+      <% if policy(boat_reservation).owner? %>
+        <%= boat_reservation.boat_journey.boat.name %>
+        <%= boat_reservation.boat_journey.boat.user.first_name %>
+        <%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
+        <%= boat_reservation.boat_journey.travel_duration %>
+        <%= "#{boat_reservation.number_passengers} passengers" %>
+        <%= "Total price: #{boat_reservation.total_price}" %>
+        <%= "Status: #{boat_reservation.status}" %>
+        <%= link_to "Cancel", boat_journey_reservation_path(boat_reservation), method: :delete %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p>Looks like you haven't made any requests yet!
+    Let's change that: <%= link_to 'Take a look at boats schedule', boat_journeys_path %></p>
+<% end %>

@@ -1,6 +1,14 @@
-class LocalBoatPolicy < ApplicationPolicy
+class LocalBoatJourneyPolicy < ApplicationPolicy
+
+  def index?
+    local?
+  end
 
   def destroy?
+    owner?
+  end
+
+  def update?
     owner?
   end
 
@@ -8,24 +16,12 @@ class LocalBoatPolicy < ApplicationPolicy
     local?
   end
 
-  def update?
-    owner?
-  end
-
-  def index?
-    local?
-  end
-
-  def show?
-    owner?
+  def owner?
+    record.boat.user == user
   end
 
   def local?
     user.local
-  end
-
-  def owner?
-    record.user == user
   end
 
   class Scope < Scope

@@ -1,11 +1,16 @@
-<div class="container">
-  <% @boats.each do |boat| %>
-    <div class="card">
-      <% if LocalBoatPolicy.new(current_user, boat).owner? %>
+<% if @boats.empty? %>
+  <p>Você ainda não tem barcos.
+    <%= link_to "Adicione um barco", new_local_boat_path %></p>
+<% else %>
+  <div class="container">
+    <% @boats.each do |boat| %>
+      <div class="card">
         <h3><%= boat.name %></h3>
         <p><%= boat.max_occupation %></p>
+        <%= link_to "Add a journey", new_local_boat_boat_journey_path(boat) %>
         <%= link_to "Delete", local_boat_path(boat), method: :delete %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+      </div>
+    <% end %>
+    <%= link_to "Add a boat", new_local_boat_path %>
+  </div>
+<% end %>

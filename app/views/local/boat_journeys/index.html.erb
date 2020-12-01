@@ -1,5 +1,4 @@
-<h2>All Boat Journeys</h2>
-
+<h1>My Boat Journeys</h1>
 <% @boat_journeys.each do |boat_journey| %>
   <div>
     <%= boat_journey.boat.name %>
@@ -7,6 +6,8 @@
     <%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
     <%= boat_journey.travel_duration %>
     <%= boat_journey.price_person %>
-    <%= link_to "make a reservation", new_boat_journey_boat_journey_reservation_path(boat_journey) %>
+    <%= link_to "Edit journey", edit_local_boat_journey_path(boat_journey) %>
+    <%= link_to "Delete", local_boat_journey_path(boat_journey), method: :delete %>
   </div>
 <% end %>
+<%= link_to "Add a journey", local_boats_path(current_user) %>
