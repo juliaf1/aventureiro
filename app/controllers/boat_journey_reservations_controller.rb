@@ -33,7 +33,7 @@ class BoatJourneyReservationsController < ApplicationController
       @journey_reservation.destroy
       redirect_to boat_journey_reservations_path, notice: "Your reservation was cancelled."
     else
-      redirect_to boat_journey_reservations_path, alert: "You can't cancel without 2 days of notice. Contact #{@bj_reservation.boat_journey.boat.user.first_name} directly."
+      redirect_to boat_journey_reservations_path, alert: "You can't cancel without 2 days of notice. Contact #{@journey_reservation.boat_journey.boat.user.first_name} directly."
     end
   end
 
