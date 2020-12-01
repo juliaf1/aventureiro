@@ -1,5 +1,8 @@
 
 <div class="container">
+  <h3>Make a reservation for: <%= @campsite.name %></h3>
+  <p><em>owned by: <%= @campsite.user.first_name %></em> </p>
+
   <%= simple_form_for(@campsite_reservation, url: campsite_campsite_reservations_path, method: 'post') do |f| %>
     <%= f.error_notification %>
 
