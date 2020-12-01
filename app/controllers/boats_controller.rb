@@ -1,5 +1,5 @@
 class BoatsController < ApplicationController
-  
+  before_action :find_boat, only: [ :edit, :update ]
   def new
     @boat = Boat.new
     authorize current_user
@@ -17,7 +17,7 @@ class BoatsController < ApplicationController
   end
 
   def edit
-    @boat = current_user.boat
+    
   end
 
   def update
@@ -28,6 +28,10 @@ class BoatsController < ApplicationController
 
   def boat_params
     params.require(:boat).permit(:name, :max_occupation)
+  end
+
+  def find_boat
+    @boat = Boat.find(params[:id])
   end
 
 end
