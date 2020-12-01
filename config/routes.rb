@@ -14,7 +14,10 @@ Rails.application.routes.draw do
 
   # routes for local users
   namespace :local do
-    resources :boats, only: [ :new, :create, :edit, :update, :index, :destroy ]
+    resources :boats, only: [ :new, :create, :edit, :update, :index, :destroy ] do
+      resources :boat_journeys, only: [ :new, :create ]
+    end
+    resources :boat_journeys, only: [ :index, :edit, :update, :destroy ]
     resources :boat_journey_reservations, only: [ :index, :edit, :update ]
   end
 end
