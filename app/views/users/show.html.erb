@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="card">
+    <%= link_to 'Edit profile', edit_user_path %>
+    <%= link_to 'Edit setting', edit_user_registration_path %>
+    <h3><% if @user.first_name && @user.last_name %><%= "#{@user.first_name} #{@user.last_name}" %><% end %></h3>
+    <p><% if @user.bio %><%= @user.bio %><% end %></p>
+    <p><% if @user.email %><%= @user.email %><% end %></p>
+    <p><% if @user.phone_number %><%= @user.phone_number %><% end %></p>
+    <p><% if @user.address %><%= @user.address %><% end %></p>
+  </div>
+</div>
