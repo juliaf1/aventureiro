@@ -1,7 +1,7 @@
 <h1>Request a reservation on this Boat Journey</h1>
 
 <div>
-  <%= simple_form_for(@bj_reservation, url: boat_journey_boat_journey_reservations_path(@boat_journey), method: 'post') do |f| %>
+  <%= simple_form_for(@journey_reservation, url: boat_journey_boat_journey_reservations_path(@boat_journey), method: 'post') do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
