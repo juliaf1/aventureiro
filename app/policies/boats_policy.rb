@@ -1,5 +1,10 @@
 class BoatPolicy < ApplicationPolicy
 
+
+  def create?
+    user
+  end
+
   def owner?
     record.user == user
   end
