@@ -6,6 +6,8 @@
     <%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
     <%= boat_journey.travel_duration %>
     <%= boat_journey.price_person %>
+    <%= link_to "Delete", local_boat_journey_path(boat_journey), method: :delete %>
   </div>
 <% end %>
+
 
