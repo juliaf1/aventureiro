@@ -1,10 +1,10 @@
 class CampsitePolicy < ApplicationPolicy
 
-  def index
+  def index?
     true
   end
 
-  def show
+  def show?
     true
   end
 

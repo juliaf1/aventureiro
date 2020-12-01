@@ -8,10 +8,11 @@ class CampsiteReservationsController < ApplicationController
     @campsite_reservation.user = current_user
     @campsite_reservation.campsite_id = params[:campsite_id]
     if @campsite_reservation.save
-      redirect_to campsite_path(@campsite)
+      # Maybe should redirect to My Reservations?
+      redirect_to boat_journeys_path
     else
-      render :new
-    end
+      render :new, notice: @campsite_reservation.errors.messages.to_s
+    e
   end
 
   private

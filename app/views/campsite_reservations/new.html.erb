@@ -1,10 +1,19 @@
 
 <div class="container">
-  <%= simple_form_for @campsite_reservation, method: 'post' do |f| %>
-    <%= f.input :description %>
-    <%= f.input :check_in, as: :date %>
-    <%= f.input :check_out, as: :date %>
-    <%= f.input :number_guests %>
-    <%= f.submit %>
+  <%= simple_form_for(@campsite_reservation, url: campsite_campsite_reservations_path, method: 'post') do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :description,
+                   required: true,
+                   autofocus: true %>
+      <%= f.input :check_in, required: true %>
+      <%= f.input :check_out, required: true %>
+      <%= f.input :number_guests, required: true %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit %>
+    </div>
   <% end %>
 </div>
