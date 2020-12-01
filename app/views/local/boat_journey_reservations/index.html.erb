@@ -1,0 +1,16 @@
+<h2>Suas reservas de barco</h2>
+<div class="container">
+  <% @bj_reservations.each do |boat_reservation| %>
+    <div class="card">
+      <% if LocalBoatJourneyReservationPolicy.new(current_user, boat_reservation).owner? %>
+        <h3><%= "#{boat_reservation.user.first_name} #{boat_reservation.user.last_name}" %></h3>
+        <p><%= boat_reservation.boat_journey.boat.name %></p>
+        <%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
+        <%= boat_reservation.boat_journey.travel_duration %>
+        <%= "#{boat_reservation.number_passengers} passengers" %>
+        <%= "Total price: #{boat_reservation.total_price}" %>
+        <%= "Status: #{boat_reservation.status}" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
