@@ -1,6 +1,6 @@
 
 <div class="container">
-  <%= simple_form_for @campsite_reservation, url: campsite_campsite_reservations_path(@campsite), method: 'post' do |f| %>
+  <%= simple_form_for @campsite_reservation, method: 'post' do |f| %>
     <%= f.input :description %>
     <%= f.input :check_in, as: :date %>
     <%= f.input :check_out, as: :date %>
