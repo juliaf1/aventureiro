@@ -5,7 +5,7 @@
   <% else %>
     <% @bj_reservations.each do |boat_reservation| %>
       <div class="card">
-        <h3><%= "#{boat_reservation.user.first_name} #{boat_reservation.user.last_name}" %></h3>
+        <h5><%= "#{boat_reservation.user.first_name} #{boat_reservation.user.last_name}" %></h5>
         <p><%= boat_reservation.boat_journey.boat.name %></p>
         <%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
         <%= boat_reservation.boat_journey.travel_duration %>

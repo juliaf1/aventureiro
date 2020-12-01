@@ -13,7 +13,7 @@ class LocalBoatPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    local?
   end
 
   def show?
