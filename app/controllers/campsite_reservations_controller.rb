@@ -16,11 +16,16 @@ class CampsiteReservationsController < ApplicationController
     set_user_campsite_and_status
     set_total_price
     authorize @campsite_reservation
-    if @campsite_reservation.save
-      redirect_to user_campsite_reservations_path(current_user), notice: "Your campsite reservation request is pending confirmation
-      from #{@campsite_reservation.campsite.user.first_name}"
-    else
-      render :new
+    respond_to do |format|
+      if @campsite_reservation.save
+        message = "In: #{@campsite_reservation.check_in} / Out: #{@campsite_reservation.check_out} for #{@campsite_reservation.number_guests}, Total: #{@campsite_reservation.total_price}. Respond Yes/No to accept or decline. "
+        TwilioWhatsappMessenger.new(message).call
+        format.html { redirect_to user_campsite_reservations_path(current_user), notice: "Your campsite reservation request is pending confirmation
+        from #{@campsite_reservation.campsite.user.first_name}"}
+        format.json { render :index, status: :created, location: @campsite_reservation }
+      else
+        render :new
+      end
     end
   end
 
