@@ -8,7 +8,8 @@
       <div class="form-inputs">
         <%= f.input :departure_time,
                     required: true,
-                    autofocus: true %>
+                    as: :string,
+                    input_html: {class: 'journeypicker'} %>
         <%= f.input :travel_duration,
                     required: true,
                     autofocus: true %>
