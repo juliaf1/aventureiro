@@ -1,11 +1,10 @@
 class Local::BoatJourneysController < ApplicationController
 
   before_action :find_boat_journey, only: [ :edit, :update, :destroy ]
-  before_action :authorize_boat_journey, only: [ :index, :new, :create, :edit, :update, :destroy ]
 
   def index
     @boat_journeys = BoatJourney.joins(:boat).where(boats: { user_id: current_user.id })
-    authorize_boat_journey
+    authorize @boat_journeys, policy_class: LocalBoatJourneyPolicy
   end
 
   def new
