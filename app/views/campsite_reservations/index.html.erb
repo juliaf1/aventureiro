@@ -7,16 +7,35 @@
     <% @campsite_reservations.each do |campsite_reservation| %>
       <div class="card">
         <% if policy(campsite_reservation.user).owner? %>
-          <%= campsite_reservation.campsite.name %>
-          <%= campsite_reservation.description%>
-          <%= campsite_reservation.check_in %>
-          <%= campsite_reservation.check_out %>
-          <%= "#{campsite_reservation.number_guests} guests" %>
-          <%= "Total price: #{campsite_reservation.total_price}" %>
-          <%= "Status: #{campsite_reservation.status}" %>
-          <%= link_to "Cancel", campsite_reservation_path(campsite_reservation), method: :delete %>
+          <% if Date.today < campsite_reservation.check_in %>
+            <%= campsite_reservation.campsite.name %>
+            <%= campsite_reservation.description%>
+            <%= "Check-in: #{campsite_reservation.check_in}" %>
+            <%= "Check-out: #{campsite_reservation.check_out}" %>
+            <%= "#{campsite_reservation.number_guests} guests" %>
+            <%= "Total price: #{campsite_reservation.total_price}" %>
+            <%= "Status: #{campsite_reservation.status}" %>
+            <%= link_to "Cancel", campsite_reservation_path(campsite_reservation), method: :delete %>
+          <% end %>
         <% end %>
       </div>
+    <% end %>
+
+    <h3>Past Campsite Reservations</h3>
+    <% @campsite_reservations.each do |campsite_reservation| %>
+      <div class="card">
+        <% if policy(campsite_reservation.user).owner? %>
+          <% if Date.today > campsite_reservation.check_in %>
+            <%= campsite_reservation.campsite.name %>
+            <%= campsite_reservation.description%>
+            <%= "Check-in: #{campsite_reservation.check_in}" %>
+            <%= "Check-out: #{campsite_reservation.check_out}" %>
+            <%= "#{campsite_reservation.number_guests} guests" %>
+            <%= "Total price: #{campsite_reservation.total_price}" %>
+            <%= "Status: #{campsite_reservation.status}" %>
+            <%= link_to "Request this campsite again", new_campsite_campsite_reservation_path(campsite_reservation.campsite) %>
+          <% end %>
+        <% end %>
     <% end %>
   <% end %>
 </div>
