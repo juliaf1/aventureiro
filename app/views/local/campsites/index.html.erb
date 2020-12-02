@@ -1,13 +1,13 @@
-<% if @campsites.empty? %>
-  <p>Você não tem acampamentos.
-<% else %>
-  <h1>Suas acampamentos</h1>
-  <div class="container">
+<div class="container">
+  <h3>Seus campings</h3>
+  <% if @campsites.empty? %>
+    <p>Você não tem acampamentos.</p>
+  <% else %>
     <% @campsites.each do |campsite| %>
       <div class="card">
-        <h3><%= campsite.name %></h3>
+        <h4><%= campsite.name %></h4>
         <%= link_to "Edit Campsite", edit_local_campsite_path(campsite) %>
       </div>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>
