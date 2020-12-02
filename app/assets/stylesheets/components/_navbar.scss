@@ -1,6 +1,12 @@
 .navbar-lewagon {
   justify-content: flex-end;
   background: transparent;
+  transition: 0.5s background-color ease;
+  z-index: 1000;
+}
+
+.navbar-lewagon-blue {
+  background-color: $light-blue;
 }
 
 .navbar-lewagon .navbar-collapse {
