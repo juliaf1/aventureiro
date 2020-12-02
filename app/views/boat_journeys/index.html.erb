@@ -1,6 +1,20 @@
 <div class="container">
   <h3>All Boat Journeys</h3>
 
+  <div class="container">
+    <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+      
+      <h2>Select a date</h2>
+
+      <%= simple_form_for :search, method: "get" do |f| %>
+        <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker", name: "date"} %>
+        <%= f.button :submit, "Go", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+  <h3>Boat journeys for <%= @date.to_date.strftime("%d %B %Y") %></h3>
+
   <% @boat_journeys.each do |boat_journey| %>
     <div class="card">
       <%= boat_journey.boat.name %>
@@ -15,3 +29,4 @@
   <p>Couldn't find a schedule that fits you?
     <%= link_to "Contact a boatdriver directly to make a special journey request", boats_path %></p>
 </div>
+
