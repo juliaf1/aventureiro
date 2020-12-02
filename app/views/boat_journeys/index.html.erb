@@ -1,7 +1,7 @@
 <div class="container">
   <h3>All Boat Journeys</h3>
 
-  <% @boat_journeys.first(10)each do |boat_journey| %>
+  <% @boat_journeys.first(10).each do |boat_journey| %>
     <div class="card">
       <% if Time.now < boat_journey.departure_time %>
         <%= boat_journey.boat.name %>
