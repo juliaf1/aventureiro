@@ -1,8 +1,9 @@
-<% if @boats.empty? %>
-  <p>Você ainda não tem barcos.
-    <%= link_to "Adicione um barco", new_local_boat_path %></p>
-<% else %>
-  <div class="container">
+<div class="container">
+  <h3>Barcos</h3>
+  <% if @boats.empty? %>
+    <p>Você ainda não tem barcos.
+      <%= link_to "Adicione um barco", new_local_boat_path %></p>
+  <% else %>
     <% @boats.each do |boat| %>
       <div class="card">
         <h3><%= boat.name %></h3>
@@ -12,5 +13,5 @@
       </div>
     <% end %>
     <%= link_to "Add a boat", new_local_boat_path %>
-  </div>
-<% end %>
+  <% end %>
+</div>

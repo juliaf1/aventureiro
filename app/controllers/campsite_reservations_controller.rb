@@ -2,7 +2,7 @@ class CampsiteReservationsController < ApplicationController
   before_action :find_campsite, only: :new
 
   def index
-    @campsite_reservations = CampsiteReservation.all
+    @campsite_reservations = CampsiteReservation.where(user_id: current_user.id)
     authorize current_user, policy_class: CampsiteReservationPolicy
   end
 
@@ -49,7 +49,7 @@ class CampsiteReservationsController < ApplicationController
 
   def set_total_price
     daily_price = @campsite_reservation.number_guests * @campsite_reservation.campsite.daily_price
-    @campsite_reservation.total_price = daily_price * (@campsite_reservation.check_out - @campsite_reservation.check_in).to_i
+    @campsite_reservation.total_price = daily_price * (@campsite_reservation.check_out - @campsite_reservation.check_in + 1).to_i
   end
 
   def reservation_params

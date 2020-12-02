@@ -1,16 +1,22 @@
-<h2>All Your Campsite Reservations</h2>
-
-<% @campsite_reservations.each do |campsite_reservation| %>
-  <div>
-    <% if policy(campsite_reservation.user).owner? %>
-      <%= campsite_reservation.campsite.name %>
-      <%= campsite_reservation.description%>
-      <%= campsite_reservation.check_in %>
-      <%= campsite_reservation.check_out %>
-      <%= "#{campsite_reservation.number_guests} guests" %>
-      <%= "Total price: #{campsite_reservation.total_price}" %>
-      <%= "Status: #{campsite_reservation.status}" %>
-      <%= link_to "Cancel", campsite_reservation_path(campsite_reservation), method: :delete %>
+<div class="container">
+  <h3>All Your Campsite Reservations</h3>
+  <% if @campsite_reservations.empty? %>
+    <p>You don't have any campsite reservations yet.
+      <%= link_to 'Start browsing some amazing campsites', campsites_path %></p>
+  <% else %>
+    <% @campsite_reservations.each do |campsite_reservation| %>
+      <div class="card">
+        <% if policy(campsite_reservation.user).owner? %>
+          <%= campsite_reservation.campsite.name %>
+          <%= campsite_reservation.description%>
+          <%= campsite_reservation.check_in %>
+          <%= campsite_reservation.check_out %>
+          <%= "#{campsite_reservation.number_guests} guests" %>
+          <%= "Total price: #{campsite_reservation.total_price}" %>
+          <%= "Status: #{campsite_reservation.status}" %>
+          <%= link_to "Cancel", campsite_reservation_path(campsite_reservation), method: :delete %>
+        <% end %>
+      </div>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>

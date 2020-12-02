@@ -1,6 +1,7 @@
 class CampsiteReservationPolicy < ApplicationPolicy
+
   def index?
-    owner?
+    true
   end
 
   def new?
@@ -13,10 +14,6 @@ class CampsiteReservationPolicy < ApplicationPolicy
     else
       user
     end
-  end
-
-  def owner?
-    record == user
   end
 
   class Scope < Scope
