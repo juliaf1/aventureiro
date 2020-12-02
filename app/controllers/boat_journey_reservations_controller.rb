@@ -2,13 +2,13 @@ class BoatJourneyReservationsController < ApplicationController
   before_action :find_boat_journey, only: [ :new, :create ]
 
   def index
-    @journey_reservations = BoatJourneyReservation.all
-    authorize @journey_reservations
+    @journey_reservations = BoatJourneyReservation.all.sort_by { |reservation| reservation.boat_journey.departure_time }
+    authorize @journey_reservations, policy_class: BoatJourneyReservationPolicy
   end
 
   def new
     @journey_reservation = BoatJourneyReservation.new
-    authorize @journey_reservation
+    authorize @journey_reservation, policy_class: BoatJourneyReservationPolicy
   end
 
   def create
@@ -19,7 +19,7 @@ class BoatJourneyReservationsController < ApplicationController
     @journey_reservation.total_price = @journey_reservation.number_passengers * @journey_reservation.boat_journey.price_person
     @journey_reservation.status = 0
 
-    authorize @journey_reservation
+    authorize @journey_reservation, policy_class: BoatJourneyReservationPolicy
     if @journey_reservation.save
       redirect_to boat_journey_reservations_path, notice: "Your request was sent, wait for #{@journey_reservation.boat_journey.boat.user.first_name} confirmation."
     else
@@ -29,6 +29,7 @@ class BoatJourneyReservationsController < ApplicationController
 
   def destroy
     @journey_reservation = BoatJourneyReservation.find(params[:id])
+    authorize @journey_reservation, policy_class: BoatJourneyReservationPolicy
     if @journey_reservation.boat_journey.departure_time - Time.now > 172_800
       @journey_reservation.destroy
       redirect_to boat_journey_reservations_path, notice: "Your reservation was cancelled."
