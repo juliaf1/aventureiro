@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :campsite_reservations, only: [ :edit, :update, :destroy ]
-  
+
   resources :boat_journeys, only: [ :index ] do
     resources :boat_journey_reservations, only: [ :new, :create ]
   end
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       resources :boat_journeys, only: [ :new, :create ]
     end
     resources :boat_journeys, only: [ :index, :edit, :update, :destroy ]
-    resources :boat_journey_reservations, only: [ :index, :edit, :update ]
+    resources :boat_journey_reservations, only: [ :index, :update ]
+    resources :campsite_reservations, only: [ :index, :update ]
   end
 end

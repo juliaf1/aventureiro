@@ -1,13 +1,19 @@
-<h1>My Boat Journeys</h1>
-<% @boat_journeys.each do |boat_journey| %>
-  <div>
-    <%= boat_journey.boat.name %>
-    <%= boat_journey.boat.user.first_name %>
-    <%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
-    <%= boat_journey.travel_duration %>
-    <%= boat_journey.price_person %>
-    <%= link_to "Edit journey", edit_local_boat_journey_path(boat_journey) %>
-    <%= link_to "Delete", local_boat_journey_path(boat_journey), method: :delete %>
-  </div>
-<% end %>
-<%= link_to "Add a journey", local_boats_path(current_user) %>
+<div class="container">
+  <h3>My Boat Journeys</h3>
+  <% if @boat_journeys.empty? %>
+    <p>Você não tem viagens de barco programadas.</p>
+  <% else %>
+    <% @boat_journeys.each do |boat_journey| %>
+      <div>
+        <%= boat_journey.boat.name %>
+        <%= boat_journey.boat.user.first_name %>
+        <%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
+        <%= boat_journey.travel_duration %>
+        <%= boat_journey.price_person %>
+        <%= link_to "Edit journey", edit_local_boat_journey_path(boat_journey) %>
+        <%= link_to "Delete", local_boat_journey_path(boat_journey), method: :delete %>
+      </div>
+    <% end %>
+  <% end %>
+  <%= link_to "Add a journey", local_boats_path(current_user) %>
+</div>
