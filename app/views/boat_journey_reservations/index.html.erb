@@ -18,6 +18,22 @@
         <% end %>
       </div>
     <% end %>
+    <h3>Past Boat Journeys</h3>
+    <% @journey_reservations.each do |boat_reservation| %>
+      <div class="card">
+        <% if policy(boat_reservation).owner? %>
+          <% if Time.now > boat_reservation.boat_journey.departure_time %>
+            <%= boat_reservation.boat_journey.boat.name %>
+            <%= boat_reservation.boat_journey.boat.user.first_name %>
+            <%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
+            <%= boat_reservation.boat_journey.travel_duration %>
+            <%= "#{boat_reservation.number_passengers} passengers" %>
+            <%= "Total price: #{boat_reservation.total_price}" %>
+            <%= link_to "Request this boat again", boat_journeys_path, anchor: boat_reservation.boat_journey.boat %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   <% else %>
     <p>Looks like you haven't made any requests yet!
       Let's change that: <%= link_to 'Take a look at boats schedule', boat_journeys_path %></p>
