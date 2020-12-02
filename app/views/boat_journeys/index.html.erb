@@ -7,7 +7,7 @@
       <h2>Select a date</h2>
 
       <%= simple_form_for :search, method: "get" do |f| %>
-        <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker", name: "date"} %>
+        <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker", name: "date", autocomplete: 'off'} %>
         <%= f.button :submit, "Go", class: "btn btn-primary" %>
       <% end %>
     </div>
@@ -20,7 +20,7 @@
     <% end %>
   </h3>
   
-  <% @boat_journeys.first(10).each do |boat_journey| %>
+  <% @boat_journeys.first(6).each do |boat_journey| %>
     <div class="card">
       <%= boat_journey.boat.name %>
       <%= boat_journey.boat.user.first_name %>
@@ -31,7 +31,7 @@
     </div>
   <% end %>
 
-  <% other_journeys = @boat_journeys - @boat_journeys.first(10) %>
+  <% other_journeys = @boat_journeys - @boat_journeys.first(6) %>
   <div class="container hidden">
     <h3>to be hidden with JS</h3>
     <% other_journeys.each do |boat_journey| %>
@@ -45,8 +45,13 @@
       </div>
     <% end %>
   </div>
-  
+
+  <% unless @date %>
+    <a href="#" class="btn btn-primary" id="display-all">See all</a>
+  <% else %>
+    <%= link_to 'Back', boat_journeys_path, class: 'btn btn-primary' %>
+  <% end %>
+
   <p>Couldn't find a schedule that fits you?
     <%= link_to "Contact a boatdriver directly to make a special journey request", boats_path %></p>
 </div>
-
