@@ -1,0 +1,26 @@
+<div class="container">
+  <h3>Edit your boat</h3>
+
+  <div>
+    <%= simple_form_for(@boat, url: local_boat_path(@boat), method: 'patch') do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :name,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "name" }%>
+        <%= f.input :max_occupation,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "last name" }%>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Save", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    <%= link_to 'Back', user_path(current_user), class: 'btn btn-primary' %>
+
+  </div>
+</div>

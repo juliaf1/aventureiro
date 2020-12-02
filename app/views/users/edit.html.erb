@@ -1,0 +1,46 @@
+<div class="container">
+  <h3>Edit Profile Page</h3>
+
+  <div>
+    <%= simple_form_for(current_user, url: user_path(current_user), method: 'patch') do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :first_name,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "first name" }%>
+        <%= f.input :last_name,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "last name" }%>
+        <%= f.input :phone_number,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "phone number" }%>
+        <%= f.input :birth_date,
+                    required: true,
+                    autofocus: true,
+                    as: :date,
+                    start_year: Date.today.year - 90,
+                    end_year: Date.today.year - 16,
+                    order: [:day, :month, :year] %>
+        <%= f.input :address,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "address", maxlength: 80 }%>
+        <%= f.input :bio,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "bio", maxlength: 300 }%>
+        <%= f.input :photo, as: :file %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Save", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    <%= link_to 'Back', user_path(current_user), class: 'btn btn-primary' %>
+
+  </div>
+</div>

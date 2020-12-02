@@ -10,10 +10,88 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_041451) do
+ActiveRecord::Schema.define(version: 2020_12_01_014315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "boat_journey_reservations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "boat_journey_id", null: false
+    t.integer "number_passengers"
+    t.integer "total_price"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["boat_journey_id"], name: "index_boat_journey_reservations_on_boat_journey_id"
+    t.index ["user_id"], name: "index_boat_journey_reservations_on_user_id"
+  end
+
+  create_table "boat_journeys", force: :cascade do |t|
+    t.bigint "boat_id", null: false
+    t.datetime "departure_time"
+    t.string "travel_duration"
+    t.integer "price_person"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["boat_id"], name: "index_boat_journeys_on_boat_id"
+  end
+
+  create_table "boats", force: :cascade do |t|
+    t.string "name"
+    t.integer "max_occupation"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_boats_on_user_id"
+  end
+
+  create_table "campsite_reservations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "campsite_id", null: false
+    t.date "check_in"
+    t.date "check_out"
+    t.text "description"
+    t.integer "number_guests"
+    t.integer "total_price"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["campsite_id"], name: "index_campsite_reservations_on_campsite_id"
+    t.index ["user_id"], name: "index_campsite_reservations_on_user_id"
+  end
+
+  create_table "campsites", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "daily_price"
+    t.string "availability"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_campsites_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +101,23 @@ ActiveRecord::Schema.define(version: 2020_11_29_041451) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "local", default: false, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.date "birth_date"
+    t.string "address"
+    t.text "bio"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "boat_journey_reservations", "boat_journeys"
+  add_foreign_key "boat_journey_reservations", "users"
+  add_foreign_key "boat_journeys", "boats"
+  add_foreign_key "boats", "users"
+  add_foreign_key "campsite_reservations", "campsites"
+  add_foreign_key "campsite_reservations", "users"
+  add_foreign_key "campsites", "users"
 end

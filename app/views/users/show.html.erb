@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="card">
+    <h1>Profile Page</h1>
+    <%= link_to 'Edit profile', edit_user_path %>
+    <%= link_to 'Edit setting', edit_user_registration_path %>
+
+    <% if current_user.local %>
+      <%= link_to "See my journeys", local_boat_journeys_path %>
+      <%= link_to "See my boats", local_boats_path %>
+      <%= link_to "See my campsites", local_campsites_path %>
+      <%= link_to "See my boat journeys reservations", local_boat_journey_reservations_path %>
+      <%= link_to "See my campsites reservations", local_campsite_reservations_path %>
+    <% end %>
+
+    <h3>
+      <% if @user.last_name %>
+        <%= "#{@user.first_name} #{@user.last_name}" %>
+      <% else %>
+        <%= @user.first_name %>
+      <% end %>
+    </h3>
+    <p><% if @user.bio %><%= @user.bio %><% end %></p>
+    <p><% if @user.email %><%= @user.email %><% end %></p>
+    <p><% if @user.phone_number %><%= @user.phone_number %><% end %></p>
+    <p><% if @user.address %><%= @user.address %><% end %></p>
+  </div>
+</div>

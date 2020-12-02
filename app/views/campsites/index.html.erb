@@ -1,0 +1,13 @@
+<div class="container">
+  <% @campsites.each do |campsite| %>
+    <div class="card">
+      <h3><%= campsite.name %></h3>
+      <p><%= campsite.description %></p>
+      <p><%= campsite.daily_price %></p>
+      <p><%= campsite.availability %></p>
+      <p>Owner: <%= "#{campsite.user.first_name} #{campsite.user.last_name}" %></p>
+      <%= link_to 'Discover more about this campsite', campsite_path(campsite) %>
+      <%= link_to 'Request a Reservation', new_campsite_campsite_reservation_path(campsite) %>
+    </div>
+  <% end %>
+</div>
