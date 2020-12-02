@@ -9,4 +9,4 @@ const toggleHidden = () => {
   });
 };
 
-export { toggleHidden } ;
+export { toggleHidden };
