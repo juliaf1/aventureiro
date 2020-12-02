@@ -21,10 +21,8 @@
         <%= f.input :birth_date,
                     required: true,
                     autofocus: true,
-                    as: :date,
-                    start_year: Date.today.year - 90,
-                    end_year: Date.today.year - 16,
-                    order: [:day, :month, :year] %>
+                    as: :string,
+                    input_html: {class: 'birthdaypicker'} %>
         <%= f.input :address,
                     required: true,
                     autofocus: true,
