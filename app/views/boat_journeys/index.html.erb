@@ -7,11 +7,15 @@
       <h2>Select a date</h2>
 
       <%= simple_form_for :search, method: "get" do |f| %>
-        <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker", name: "date", autocomplete: 'off'} %>
+        <%= f.input :date, as: :string, required: false, label: false, input_html: {class: "datepicker", name: "date", autocomplete: 'off'} %>
         <%= f.button :submit, "Go", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
+
+  <% unless @date %>
+    <a href="#" class="btn btn-primary" id="display-all">See all boat journeys</a>
+  <% end %>
 
   <h3>
     <% if @date %>
@@ -32,8 +36,7 @@
   <% end %>
 
   <% other_journeys = @boat_journeys - @boat_journeys.first(6) %>
-  <div class="container hidden">
-    <h3>to be hidden with JS</h3>
+  <div class=" hidden">
     <% other_journeys.each do |boat_journey| %>
       <div class="card">
         <%= boat_journey.boat.name %>
@@ -46,9 +49,7 @@
     <% end %>
   </div>
 
-  <% unless @date %>
-    <a href="#" class="btn btn-primary" id="display-all">See all</a>
-  <% else %>
+  <% if @date %>
     <%= link_to 'Back', boat_journeys_path, class: 'btn btn-primary' %>
   <% end %>
 
