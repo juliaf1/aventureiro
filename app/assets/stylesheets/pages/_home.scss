@@ -1,1 +1,88 @@
-// Specific CSS for your home-page
+// First section
+
+.banner-photo {
+  background-size: cover;
+  background-position: top right;
+  height: 800px;
+}
+
+.banner-info {
+  color: $white;
+  width: 64%;
+  padding: 150px 0 0 80px;
+
+  h1 {
+    margin-top: 24px;
+  }
+
+  i {
+    margin-right: 8px;
+  }
+}
+
+.banner-btns {
+  margin-top: 48px;
+
+  a {
+    display: inline-block;
+    margin-top: 16px;
+    margin-right: 11px;
+  }
+}
+
+// Second section
+
+.shape-ocean {
+  background-size: cover;
+  background-position: center;
+  height: 700px;
+  z-index: 10000;
+  position: relative;
+  top: -64px;
+}
+
+.shape-info {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 200px;
+  padding: 24px;
+
+  .shape-info-card {
+    padding: 56px;
+  }
+
+  h5 {
+    color: $dark-blue;
+    font-weight: 400;
+    margin-bottom: 24px;
+  }
+
+  h4 {
+    color: $light-yellow;
+    font-size: 48px;
+    font-weight: 400;
+  }
+
+  p {
+    color: $white;
+  }
+}
+
+// Third section
+
+.locals-section {
+  height: 1000px;
+  background-color: $light-pink;
+  position: relative;
+  top: -64px;
+
+  .locals-container {
+    padding-top: 112px;
+  }
+
+  h3 {
+    color: $dark-blue;
+    text-align: center;
+  }
+}
