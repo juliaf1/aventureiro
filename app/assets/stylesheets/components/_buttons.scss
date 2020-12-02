@@ -1,0 +1,18 @@
+.devise-btn {
+  background-color: $neutral-dark-blue;
+  color: $white;
+  border-radius: 10px;
+  font-family: 'Work Sans', 'sans-serif';
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 60px;
+  transition: .2s ease;
+  width: 100%;
+
+  &:hover {
+    color: $white;
+    background-color: $dark-blue;
+  }
+}
