@@ -49,7 +49,7 @@ class CampsiteReservationsController < ApplicationController
 
   def set_total_price
     daily_price = @campsite_reservation.number_guests * @campsite_reservation.campsite.daily_price
-    @campsite_reservation.total_price = daily_price * (@campsite_reservation.check_out - @campsite_reservation.check_in).to_i
+    @campsite_reservation.total_price = daily_price * (@campsite_reservation.check_out - @campsite_reservation.check_in + 1).to_i
   end
 
   def reservation_params
