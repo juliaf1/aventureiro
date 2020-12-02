@@ -1,13 +1,21 @@
-<div class="container">
+<div class="campsites-container">
   <% @campsites.each do |campsite| %>
-    <div class="card">
-      <h3><%= campsite.name %></h3>
+
+    <div class="campsite-card">
+      <div class="campsite-image">
+        <%= cl_image_tag campsite.photo.key, height: 300, width: 420, crop: :fill %>
+      </div>
+      <h4><%= campsite.name %></h4>
       <p><%= campsite.description %></p>
       <p><%= campsite.daily_price %></p>
       <p><%= campsite.availability %></p>
       <p>Owner: <%= "#{campsite.user.first_name} #{campsite.user.last_name}" %></p>
-      <%= link_to 'Discover more about this campsite', campsite_path(campsite) %>
-      <%= link_to 'Request a Reservation', new_campsite_campsite_reservation_path(campsite) %>
+
+      <div class="campsites-btns">
+        <%= link_to 'See more', campsite_path(campsite), class: 'primary-btn primary-btn-sm primary-btn-pink' %>
+        <%= link_to 'Request a Reservation', new_campsite_campsite_reservation_path(campsite), class: 'secondary-btn secondary-btn-sm secondary-btn-yellow' %>
+      </div>
     </div>
+
   <% end %>
 </div>

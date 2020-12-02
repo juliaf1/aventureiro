@@ -1,0 +1,22 @@
+.campsites-container {
+  width: 500px;
+  margin: 48px auto;
+}
+
+.campsite-card {
+  box-shadow: 1px 1px 6px rgba(50, 50, 50, 0.1);
+  padding: 40px 32px;
+  margin-bottom: 24px;
+}
+
+.campsites-btns {
+  margin-top: 8px;
+  a {
+    display: inline-block;
+    margin-top: 8px;
+  }
+}
+
+.campsite-image {
+  text-align: center;
+}

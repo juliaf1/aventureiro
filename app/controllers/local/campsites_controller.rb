@@ -1,6 +1,6 @@
 class Local::CampsitesController < ApplicationController
   before_action :find_campsite, only: [ :edit, :update ]
-  
+
   def index
     authorize_campsite
     @campsites = current_user.campsites
@@ -26,7 +26,7 @@ class Local::CampsitesController < ApplicationController
   end
 
   def campsite_params
-    params.require(:campsite).permit(:name, :description, :daily_price, :availability)
+    params.require(:campsite).permit(:name, :description, :daily_price, :availability, :photo)
   end
 
   def find_campsite

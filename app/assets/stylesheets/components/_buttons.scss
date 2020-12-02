@@ -1,3 +1,4 @@
+// Devise Button
 .devise-btn {
   background-color: $neutral-dark-blue;
   color: $white;
@@ -14,5 +15,151 @@
   &:hover {
     color: $white;
     background-color: $dark-blue;
+  }
+}
+
+
+// Primary Buttons - base + size + color
+.primary-btn {
+  background-color: transparent;
+  border-radius: 50px;
+  font-family: 'Work Sans', 'sans-serif';
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: .2s ease;
+  // width: 200px;
+  // text-align: center;
+
+  &:hover {
+    opacity: .7;
+  }
+}
+
+// Primary Sizes
+.primary-btn-sm {
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 12px 25px;
+}
+
+.primary-btn-md {
+  font-size: 16px;
+  letter-spacing: 2px;
+  padding: 15px 30px;
+}
+
+.primary-btn-lg {
+  font-size: 24px;
+  letter-spacing: 2px;
+  padding: 20px 40px;
+  font-weight: 300;
+}
+
+// Colors
+.primary-btn-pink {
+  color: $dark-pink;
+  border: 1px solid $dark-pink;
+
+  &:hover {
+    color: $dark-pink;
+  }
+}
+
+.primary-btn-light-yellow {
+  color: $neutral-light-brown;
+  border: 1px solid $neutral-light-brown;
+
+  &:hover {
+    color: $neutral-light-brown;
+  }
+}
+
+.primary-btn-blue {
+  color: $dark-blue;
+  border: 1px solid $dark-blue;
+
+  &:hover {
+    color: $dark-blue;
+  }
+}
+
+.primary-btn-green {
+  color: $dark-green;
+  border: 1px solid $dark-green;
+
+  &:hover {
+    color: $dark-green;
+  }
+}
+
+
+// Secondary Buttons - base + size + color
+.secondary-btn {
+  border-radius: 50px;
+  font-family: 'Work Sans', 'sans-serif';
+  font-weight: 400;
+  text-transform: uppercase;
+  transition: .2s ease;
+
+  &:hover {
+    opacity: .7;
+  }
+}
+
+// Sizes
+.secondary-btn-sm {
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 12px 25px;
+}
+
+.secondary-btn-md {
+  font-size: 16px;
+  letter-spacing: 2px;
+  padding: 15px 30px;
+}
+
+.secondary-btn-lg {
+  font-size: 24px;
+  letter-spacing: 2px;
+  padding: 20px 40px;
+  font-weight: 300;
+}
+
+// Colors
+.secondary-btn-blue {
+  background-color: $light-blue;
+  color: $neutral-dark-blue;
+
+  &:hover {
+    color: $neutral-dark-blue;
+  }
+}
+
+.secondary-btn-yellow {
+  background-color: $light-yellow;
+  color: $neutral-dark-brown;
+
+  &:hover {
+    color: $neutral-dark-brown;
+  }
+}
+
+.secondary-btn-green {
+  background-color: $light-green;
+  color: $white;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.secondary-btn-pink {
+  background-color: $light-pink;
+  color: $neutral-dark-blue;
+
+  &:hover {
+    color: $neutral-dark-blue;
   }
 }
