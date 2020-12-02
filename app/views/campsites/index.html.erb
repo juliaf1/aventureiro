@@ -6,7 +6,8 @@
       <p><%= campsite.daily_price %></p>
       <p><%= campsite.availability %></p>
       <p>Owner: <%= "#{campsite.user.first_name} #{campsite.user.last_name}" %></p>
-      <%= link_to 'Make a Reservation', campsite_path(campsite) %>
+      <%= link_to 'Discover more about this campsite', campsite_path(campsite) %>
+      <%= link_to 'Request a Reservation', new_campsite_campsite_reservation_path(campsite) %>
     </div>
   <% end %>
 </div>

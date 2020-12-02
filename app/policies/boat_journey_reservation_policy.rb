@@ -5,7 +5,11 @@ class BoatJourneyReservationPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    if user.local
+      false
+    else
+      user
+    end
   end
 
   def destroy?

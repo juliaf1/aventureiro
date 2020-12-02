@@ -1,0 +1,28 @@
+<div class="container">
+  <h3>Suas reservas de camping</h3>
+
+  <% if @campsite_reservations.empty? %>
+    <p>Nenhuma reserva.</p>
+  <% else %>
+    <% @campsite_reservations.each do |campsite_reservation| %>
+      <div class="card">
+        <%= campsite_reservation.campsite.name %>
+        <%= campsite_reservation.description%>
+        <%= campsite_reservation.check_in %>
+        <%= campsite_reservation.check_out %>
+        <%= "#{campsite_reservation.number_guests} guests" %>
+        <%= "Total price: #{campsite_reservation.total_price}" %>
+        <%= "Status: #{campsite_reservation.status}" %>
+
+        <% if campsite_reservation.pending? %>
+          <%= link_to "Confirmar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch %>
+          <%= link_to "Rejeitar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch %>
+        <% elsif campsite_reservation.confirmed? %>
+          <%= link_to "Cancelar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch %>
+        <% elsif campsite_reservation.rejected? %>
+          <%= link_to "Confirmar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

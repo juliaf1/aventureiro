@@ -2,7 +2,7 @@ class CampsiteReservationsController < ApplicationController
   before_action :find_campsite, only: :new
 
   def index
-    @campsite_reservations = CampsiteReservation.all
+    @campsite_reservations = CampsiteReservation.where(user_id: current_user.id)
     authorize current_user, policy_class: CampsiteReservationPolicy
   end
 
