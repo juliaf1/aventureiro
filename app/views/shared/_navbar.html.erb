@@ -30,7 +30,7 @@
             <% if current_user.local %>
               <%= link_to "Campsites Reservations", local_campsite_reservations_path, class: "dropdown-item" %>
             <% else %>
-              <%= link_to "Campsites Reservations", campsite_reservations_path, class: "dropdown-item" %>
+              <%= link_to "Campsites Reservations", user_campsite_reservations_path(current_user), class: "dropdown-item" %>
             <% end %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
