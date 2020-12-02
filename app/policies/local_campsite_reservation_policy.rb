@@ -1,7 +1,7 @@
 class LocalCampsiteReservationPolicy < ApplicationPolicy
 
   def index?
-    true
+    local?
   end
 
   def update?
@@ -9,7 +9,7 @@ class LocalCampsiteReservationPolicy < ApplicationPolicy
   end
 
   def local?
-    record.campsite.user.local
+    user.local
   end
 
   def owner?
