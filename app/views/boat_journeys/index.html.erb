@@ -23,22 +23,9 @@
       <%= @date.to_date.strftime("%d %B %Y") %>
     <% end %>
   </h3>
-  
-  <% @boat_journeys.first(6).each do |boat_journey| %>
-    <div class="card">
-      <%= boat_journey.boat.name %>
-      <%= boat_journey.boat.user.first_name %>
-      <%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
-      <%= boat_journey.travel_duration %>
-      <%= boat_journey.price_person %>
-      <%= link_to "make a reservation", new_boat_journey_boat_journey_reservation_path(boat_journey) %>
-    </div>
-  <% end %>
-
-  <% other_journeys = @boat_journeys - @boat_journeys.first(6) %>
-  <div class=" hidden">
-    <% other_journeys.each do |boat_journey| %>
-      <div class="card">
+  <div class="journey-container">
+    <% @boat_journeys.first(6).each do |boat_journey| %>
+      <div class="journey-card">
         <%= boat_journey.boat.name %>
         <%= boat_journey.boat.user.first_name %>
         <%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
@@ -47,6 +34,24 @@
         <%= link_to "make a reservation", new_boat_journey_boat_journey_reservation_path(boat_journey) %>
       </div>
     <% end %>
+
+    <% other_journeys = @boat_journeys - @boat_journeys.first(6) %>
+    <div class=" hidden">
+      <% other_journeys.each do |boat_journey| %>
+        <div class="journey-card">
+          <div class="journey-main-info">
+            <%= boat_journey.boat.name %>
+            <%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
+          </div>
+          <div class="journey-extra-info">
+            <%= boat_journey.boat.user.first_name %>
+            <%= boat_journey.price_person %>
+            <%= boat_journey.travel_duration %>
+          </div>
+          <%= link_to "make a reservation", new_boat_journey_boat_journey_reservation_path(boat_journey) %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <% if @date %>
