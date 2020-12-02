@@ -10,8 +10,8 @@
       <%= f.input :description,
                    required: true,
                    autofocus: true %>
-      <%= f.input :check_in, required: true %>
-      <%= f.input :check_out, required: true %>
+      <%= f.input :check_in, required: true, as: :string, input_html: {id: "check_in"} %>
+      <%= f.input :check_out, required: true, as: :string, input_html: {id: "check_out"} %>
       <%= f.input :number_guests, required: true %>
     </div>
 
