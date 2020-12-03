@@ -1,11 +1,11 @@
 const initUpdateNavbarOnScroll = () => {
-  const navbar = document.querySelector('.navbar-lewagon');
+  const navbar = document.querySelector('.home-navbar');
   if (navbar) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY >= 400) {
-        navbar.classList.add('navbar-lewagon-blue');
+      if (window.scrollY >= 100) {
+        navbar.classList.add('home-navbar-blue');
       } else {
-        navbar.classList.remove('navbar-lewagon-blue');
+        navbar.classList.remove('home-navbar-blue');
       }
     });
   }
