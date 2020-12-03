@@ -1,41 +1,37 @@
 <div class="container">
   <h3>All Your Campsite Reservations</h3>
-  <% if @campsite_reservations.empty? %>
-    <p>You don't have any campsite reservations yet.
-      <%= link_to 'Start browsing some amazing campsites', campsites_path %></p>
-  <% else %>
+
+  <% if @campsite_reservations.present? %>
     <% @campsite_reservations.each do |campsite_reservation| %>
       <div class="card">
-        <% if policy(campsite_reservation.user).owner? %>
-          <% if Date.today < campsite_reservation.check_in %>
-            <%= campsite_reservation.campsite.name %>
-            <%= campsite_reservation.description%>
-            <%= "Check-in: #{campsite_reservation.check_in}" %>
-            <%= "Check-out: #{campsite_reservation.check_out}" %>
-            <%= "#{campsite_reservation.number_guests} guests" %>
-            <%= "Total price: #{campsite_reservation.total_price}" %>
-            <%= "Status: #{campsite_reservation.status}" %>
-            <%= link_to "Cancel", campsite_reservation_path(campsite_reservation), method: :delete %>
-          <% end %>
-        <% end %>
+        <%= campsite_reservation.campsite.name %>
+        <%= campsite_reservation.description%>
+        <%= "Check-in: #{campsite_reservation.check_in}" %>
+        <%= "Check-out: #{campsite_reservation.check_out}" %>
+        <%= "#{campsite_reservation.number_guests} guests" %>
+        <%= "Total price: #{campsite_reservation.total_price}" %>
+        <%= "Status: #{campsite_reservation.status}" %>
+        <%= link_to "Cancel", campsite_reservation_path(campsite_reservation), method: :delete %>
       </div>
     <% end %>
 
+  <% elsif @past_campsite_reservations.present? %>
     <h3>Past Campsite Reservations</h3>
-    <% @campsite_reservations.each do |campsite_reservation| %>
+    <% @past_campsite_reservations.each do |campsite_reservation| %>
       <div class="card">
-        <% if policy(campsite_reservation.user).owner? %>
-          <% if Date.today > campsite_reservation.check_in %>
-            <%= campsite_reservation.campsite.name %>
-            <%= campsite_reservation.description%>
-            <%= "Check-in: #{campsite_reservation.check_in}" %>
-            <%= "Check-out: #{campsite_reservation.check_out}" %>
-            <%= "#{campsite_reservation.number_guests} guests" %>
-            <%= "Total price: #{campsite_reservation.total_price}" %>
-            <%= "Status: #{campsite_reservation.status}" %>
-            <%= link_to "Request this campsite again", new_campsite_campsite_reservation_path(campsite_reservation.campsite) %>
-          <% end %>
-        <% end %>
+        <%= campsite_reservation.campsite.name %>
+        <%= campsite_reservation.description%>
+        <%= "Check-in: #{campsite_reservation.check_in}" %>
+        <%= "Check-out: #{campsite_reservation.check_out}" %>
+        <%= "#{campsite_reservation.number_guests} guests" %>
+        <%= "Total price: #{campsite_reservation.total_price}" %>
+        <%= "Status: #{campsite_reservation.status}" %>
+        <%= link_to "Request this campsite again", new_campsite_campsite_reservation_path(campsite_reservation.campsite) %>
+      </div>
     <% end %>
+
+  <% else %>
+    <p>You don't have any campsite reservations yet.
+    <%= link_to 'Start browsing some amazing campsites', campsites_path %></p>
   <% end %>
 </div>

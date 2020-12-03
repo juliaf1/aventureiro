@@ -2,7 +2,8 @@ class BoatJourneyReservationsController < ApplicationController
   before_action :find_boat_journey, only: [ :new, :create ]
 
   def index
-    @journey_reservations = BoatJourneyReservation.all.sort_by { |reservation| reservation.boat_journey.departure_time }
+    @journey_reservations = BoatJourneyReservation.where(user_id: current_user.id).includes(:boat_journey).sort_by { |reservation| reservation.boat_journey.departure_time }
+    @past_journey_reservations = @journey_reservations.select { |reservation| reservation.boat_journey.departure_time < Date.today }
     authorize @journey_reservations, policy_class: BoatJourneyReservationPolicy
   end
 

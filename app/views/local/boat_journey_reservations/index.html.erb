@@ -3,10 +3,10 @@
   <% if @journey_reservations.empty? %>
     <p>Nenhuma reserva.</p>
   <% end %>
-  
-  <% if @upcoming_jounrey_reservations %>
+
+  <% if @upcoming_journey_reservations.present? %>
     <h4>Upcoming reservations </h4>
-    <% @upcoming_jounrey_reservations.each do |boat_reservation| %>
+    <% @upcoming_journey_reservations.each do |boat_reservation| %>
       <div class="card">
         <h5><%= "#{boat_reservation.user.first_name} #{boat_reservation.user.last_name}" %></h5>
         <p><%= boat_reservation.boat_journey.boat.name %></p>
@@ -28,7 +28,7 @@
     <% end %>
   <% end %>
 
-  
+
   <% if @past_journey_reservations.present? %>
     <h4>Past reservations </h4>
     <% @past_journey_reservations.each do |boat_reservation| %>
