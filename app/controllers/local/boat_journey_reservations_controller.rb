@@ -2,6 +2,9 @@ class Local::BoatJourneyReservationsController < ApplicationController
 
   def index
     @journey_reservations = BoatJourneyReservation.joins(boat_journey: :boat).where(boats: { user_id: current_user.id })
+    @past_journey_reservations = @journey_reservations.select { |reservation| reservation.boat_journey.departure_time < Date.today }
+    @upcoming_jounrey_reservations = @journey_reservations.select { |reservation| reservation.boat_journey.departure_time > Date.today }
+    
     authorize @journey_reservations, policy_class: LocalBoatJourneyReservationPolicy
   end
 
