@@ -10,7 +10,7 @@ class Local::CampsiteReservationsController < ApplicationController
     @past_campsite_reservations = @campsite_reservations.select do |reservation|
       reservation.check_in < Date.today
     end
-       
+
     authorize @campsite_reservations, policy_class: LocalCampsiteReservationPolicy
   end
 
