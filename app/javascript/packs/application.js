@@ -19,14 +19,18 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initFlatpickr } from '../plugins/flatpickr.js';
-import { toggleHidden } from '../plugins/journey_index_toggle.js';
+import { toggleAllHidden } from '../plugins/journeys_display_all.js';
+import { toggleHiddenInfo } from '../plugins/journey_index_toggle.js';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  toggleHiddenInfo();
   initFlatpickr();
-  toggleHidden();
+  toggleAllHidden();
+  
 });
+
 
 
 

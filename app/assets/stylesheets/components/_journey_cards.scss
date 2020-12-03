@@ -1,5 +1,5 @@
 .journeys-container {
-  width: 500px;
+  width: 700px;
   margin: 48px auto;
 }
 
@@ -7,17 +7,21 @@
   background-color: $neutral-light-blue;
   overflow: hidden;
   height: 150px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
   margin-top: 12px;
   position: relative;
-  border-radius: 6px;
+  border-radius: 4px 4px 0px 0px;
+  .av-link {
+    font-size: 16px;
+    color: $neutral-dark-blue;
+  }
 }
 
 .journey-image {
   height: 150px;
-  border-radius: 6px;
+  border-radius: 4px 4px 0px 0px;
 }
 
 .journey-main-info {
@@ -29,20 +33,36 @@
 }
 
 .journey-extra-info {
-  background-color: white;
+  background-color: $light-gray;
   overflow: hidden;
-  height: 150px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  min-height: 150px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
-  margin-top: 12px;
+  margin-top: 0px;
+  text-align: left;
+  z-index: 900;
+  ul {
+    margin-left: 186px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+  li {
+    list-style-type: none;
+    padding-top: 8px;
+  }
 }
 
-#see-extra-info {
+.see-extra-info {
   position: absolute;
-  right: 20px;
+  right: 32px;
 }
 
-.btn-center {
+.btn-go-wide {
+  width: 100%;
+}
+
+#display-all {
   text-align: center;
 }
+
