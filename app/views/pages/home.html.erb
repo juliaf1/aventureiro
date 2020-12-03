@@ -1,2 +1,36 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% content_for :home_navbar do %>
+  <%= render 'shared/home_navbar' %>
+<% end %>
+
+<div class="banner-photo" style="background-image: url('<%= image_path "ocean.png"%>')">
+  <div class="banner-info">
+    <h5><%= icon('fa', 'map-marker-alt')%> Ilha Grande, Rio de Janeiro</h5>
+    <h1>Aventureiro</h1>
+    <h4>Be adventurous, immerse yourself in the wilderness and live the caiçara culture</h4>
+    <div class="banner-btns">
+      <%= link_to 'Learn more', root_path, class: 'secondary-btn secondary-btn-md secondary-btn-yellow' %>
+      <%= link_to 'Browse housings', campsites_path, class: 'primary-btn primary-btn-md primary-btn-light-yellow' %>
+    </div>
+  </div>
+</div>
+
+<div class="shape-ocean" style="background-image: url('<%= image_path "onda.svg"%>')">
+  <div class="shape-info">
+    <div class="shape-info-card">
+      <h5>community based tourism</h5>
+      <h4>Caiçara community</h4>
+      <p>Connect with local families and strenghten the caiçara community who live in Aventureiro. Experience an unique place on earth, with magical views, trails, exuberant nature and culture.</p>
+    </div>
+    <div class="shape-info-card">
+      <h5>sustanaible ecotourism</h5>
+      <h4>Experience nature</h4>
+      <p>Connect with local families and strenghten the caiçara community who live in Aventureiro. Experience an unique place on earth, with magical views, trails, exuberant nature and culture.</p>
+    </div>
+  </div>
+</div>
+
+<div class="locals-section">
+  <div class="locals-container">
+    <h3>The biggest caiçaras on the Island</h3>
+  </div>
+</div>
