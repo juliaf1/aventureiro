@@ -6,8 +6,8 @@ class TwilioWhatsappMessenger
     client = Twilio::REST::Client.new(account_sid, auth_token)
     client.messages.create(
       {
-        from: 'whatsapp:+14155238886',
-        to: 'whatsapp:+5521986041140',
+        from: "whatsapp:#{ENV['TWILIO_PHONE_NUMBER']}",
+        to: "whatsapp:#{ENV['TEST_LOCAL_NUMBER']}",
         body: message
       }
     )
