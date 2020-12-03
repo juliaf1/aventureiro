@@ -3,7 +3,9 @@
 
     <div class="campsite-card">
       <div class="campsite-image">
-        <%= cl_image_tag campsite.photo.key, height: 300, width: 420, crop: :fill %>
+        <% if campsite.photo.attached? %>
+          <%= cl_image_tag campsite.photo.key, height: 300, width: 420, crop: :fill %>
+        <% end %>
       </div>
       <h4><%= campsite.name %></h4>
       <p><%= campsite.description %></p>
