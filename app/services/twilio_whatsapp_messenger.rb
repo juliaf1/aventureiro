@@ -5,14 +5,14 @@ class TwilioWhatsappMessenger
     @message = message
   end
 
-  def call
-    account_sid = ENV['TwILIO_ACCOUNT_SID']
+  def send_whatsapp
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     client = Twilio::REST::Client.new(account_sid, auth_token)
     client.messages.create(
       {
-        from: ENV['TWILIO_PHONE_NUMBER'],
-        to: '+5521986041140',
+        from: 'whatsapp:+14155238886',
+        to: 'whatsapp:+5521986041140',
         body: message
       }
     )

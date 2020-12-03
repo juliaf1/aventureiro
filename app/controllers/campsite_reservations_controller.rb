@@ -16,16 +16,12 @@ class CampsiteReservationsController < ApplicationController
     set_user_campsite_and_status
     set_total_price
     authorize @campsite_reservation
-    respond_to do |format|
-      if @campsite_reservation.save
-        message = "In: #{@campsite_reservation.check_in} / Out: #{@campsite_reservation.check_out} for #{@campsite_reservation.number_guests}, Total: #{@campsite_reservation.total_price}. Respond Yes/No to accept or decline. "
-        TwilioWhatsappMessenger.new(message).call
-        format.html { redirect_to user_campsite_reservations_path(current_user), notice: "Your campsite reservation request is pending confirmation
-        from #{@campsite_reservation.campsite.user.first_name}"}
-        format.json { render :index, status: :created, location: @campsite_reservation }
-      else
-        render :new
-      end
+    if @campsite_reservation.save
+      request_reservation_message
+      redirect_to user_campsite_reservations_path(current_user), notice: "Your campsite reservation request is pending confirmation
+      from #{@campsite_reservation.campsite.user.first_name}"
+    else
+      render :new
     end
   end
 
@@ -41,6 +37,14 @@ class CampsiteReservationsController < ApplicationController
   end
 
   private
+
+  def request_reservation_message
+    message = "New Reservation by: #{@campsite_reservation.user.first_name}
+    In: #{@campsite_reservation.check_in} / Out: #{@campsite_reservation.check_out}
+    for #{@campsite_reservation.number_guests}, Total: #{@campsite_reservation.total_price}.
+      Description: #{@campsite_reservation.description} Respond Yes/No to accept or decline. "
+    TwilioWhatsappMessenger.new(message).send_whatsapp
+  end
 
   def find_campsite
     @campsite = Campsite.find(params[:campsite_id])
