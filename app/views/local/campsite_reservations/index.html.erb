@@ -5,8 +5,8 @@
     <p>Nenhuma reserva.</p>
   <% end %>
 
-  
-  <% if @upcoming_campsite_reservations %>
+
+  <% if @upcoming_campsite_reservations.present? %>
     <h4>Upcoming reservations</h4>
     <% @upcoming_campsite_reservations.each do |campsite_reservation| %>
       <div class="card">
@@ -31,7 +31,7 @@
       </div>
     <% end %>
   <% end %>
-  
+
   <% if @past_campsite_reservations.present? %>
     <h4>Past reservations</h4>
     <% @past_campsite_reservations.each do |campsite_reservation| %>
