@@ -17,6 +17,7 @@ class CampsiteReservationsController < ApplicationController
     set_total_price
     authorize @campsite_reservation
     if @campsite_reservation.save
+      # when making this feature live, remember to send user argument with to: tel number
       request_reservation_message
       redirect_to user_campsite_reservations_path(current_user), notice: "Your campsite reservation request is pending confirmation
       from #{@campsite_reservation.campsite.user.first_name}"
@@ -30,6 +31,8 @@ class CampsiteReservationsController < ApplicationController
 
     if @campsite_reservation.check_in - Date.today > 1
       @campsite_reservation.destroy
+      # when making this feature live, remember to send user argument with to: tel number
+      cancel_reservation_message
       redirect_to user_campsite_reservations_path(current_user), notice: "Your reservation was cancelled"
     else
       redirect_to user_campsite_reservations_path(current_user), notice: "You can't cancel your reservation 24h before arrival"
@@ -37,6 +40,14 @@ class CampsiteReservationsController < ApplicationController
   end
 
   private
+
+  def cancel_reservation_message
+    message = " #{@campsite_reservation.user.first_name} has cancelled their reservation
+    In: #{@campsite_reservation.check_in} / Out: #{@campsite_reservation.check_out}
+    for #{@campsite_reservation.number_guests}, Total: #{@campsite_reservation.total_price}.
+      Description: #{@campsite_reservation.description}"
+    TwilioWhatsappMessenger.new(message).send_whatsapp
+  end
 
   def request_reservation_message
     message = "New Reservation by: #{@campsite_reservation.user.first_name}

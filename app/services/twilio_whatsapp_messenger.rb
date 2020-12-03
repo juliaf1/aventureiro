@@ -5,6 +5,7 @@ class TwilioWhatsappMessenger
     @message = message
   end
 
+  # when making this feature live, remember to send user argument with to: tel number
   def send_whatsapp
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     auth_token = ENV['TWILIO_AUTH_TOKEN']
