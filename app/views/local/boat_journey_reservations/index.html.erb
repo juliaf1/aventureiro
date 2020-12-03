@@ -2,16 +2,46 @@
   <h3>Suas reservas de barco</h3>
   <% if @journey_reservations.empty? %>
     <p>Nenhuma reserva.</p>
-  <% else %>
-    <% @journey_reservations.each do |boat_reservation| %>
+  <% end %>
+  
+  <% if @upcoming_jounrey_reservations %>
+    <h4>Upcoming reservations </h4>
+    <% @upcoming_jounrey_reservations.each do |boat_reservation| %>
       <div class="card">
         <h5><%= "#{boat_reservation.user.first_name} #{boat_reservation.user.last_name}" %></h5>
         <p><%= boat_reservation.boat_journey.boat.name %></p>
-        <%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
-        <%= boat_reservation.boat_journey.travel_duration %>
-        <%= "#{boat_reservation.number_passengers} passageiros" %>
-        <%= "Preço total: #{boat_reservation.total_price}" %>
-        <%= "Status: #{boat_reservation.status}" %>
+        <ul>
+          <li><%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></li>
+          <li><%= boat_reservation.boat_journey.travel_duration %></li>
+          <li><%= "#{boat_reservation.number_passengers} passageiros" %></li>
+          <li><%= "Preço total: #{boat_reservation.total_price}" %></li>
+          <li><%= "Status: #{boat_reservation.status}" %></li>
+        </ul>
+
+        <% if boat_reservation.pending? %>
+          <%= link_to "Confirmar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch %>
+          <%= link_to "Rejeitar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch %>
+        <% elsif boat_reservation.confirmed? %>
+          <%= link_to "Cancelar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+  
+  <% if @past_journey_reservations.present? %>
+    <h4>Past reservations </h4>
+    <% @past_journey_reservations.each do |boat_reservation| %>
+      <div class="card">
+        <h5><%= "#{boat_reservation.user.first_name} #{boat_reservation.user.last_name}" %></h5>
+        <p><%= boat_reservation.boat_journey.boat.name %></p>
+        <ul>
+          <li><%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></li>
+          <li><%= boat_reservation.boat_journey.travel_duration %></li>
+          <li><%= "#{boat_reservation.number_passengers} passageiros" %></li>
+          <li><%= "Preço total: #{boat_reservation.total_price}" %></li>
+          <li><%= "Status: #{boat_reservation.status}" %></li>
+        </ul>
 
         <% if boat_reservation.pending? %>
           <%= link_to "Confirmar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch %>

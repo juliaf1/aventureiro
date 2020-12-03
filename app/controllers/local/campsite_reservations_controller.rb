@@ -1,7 +1,7 @@
 class Local::CampsiteReservationsController < ApplicationController
 
   def index
-    @campsite_reservations = CampsiteReservation.joins(:campsite).where(campsites: { user_id: current_user.id })
+    @campsite_reservations = CampsiteReservation.joins(:campsite).where(campsites: { user_id: current_user.id }).sort_by &:check_in
     authorize @campsite_reservations, policy_class: LocalCampsiteReservationPolicy
   end
 

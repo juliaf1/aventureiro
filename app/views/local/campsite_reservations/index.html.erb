@@ -6,13 +6,15 @@
   <% else %>
     <% @campsite_reservations.each do |campsite_reservation| %>
       <div class="card">
-        <%= campsite_reservation.campsite.name %>
-        <%= campsite_reservation.description%>
-        <%= campsite_reservation.check_in %>
-        <%= campsite_reservation.check_out %>
-        <%= "#{campsite_reservation.number_guests} guests" %>
-        <%= "Total price: #{campsite_reservation.total_price}" %>
-        <%= "Status: #{campsite_reservation.status}" %>
+        <ul>
+        <li><h4><%= campsite_reservation.campsite.name %></h4></li>
+        <li>Message: <%= campsite_reservation.description%></li>
+        <li>Check in: <%= campsite_reservation.check_in %></li>
+        <li>Check out: <%= campsite_reservation.check_out %></li>
+        <li><%= campsite_reservation.number_guests %> guests</li>
+        <li>Total price: <%= campsite_reservation.total_price %></li>
+        <li>Status: <%= campsite_reservation.status %></li>
+        </ul>
 
         <% if campsite_reservation.pending? %>
           <%= link_to "Confirmar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch %>
