@@ -1,6 +1,5 @@
 const toggleHiddenInfo = () => {
 
-  
   const infoHiddenDivs = document.querySelectorAll(".info-hidden");
   const seeExtraInfoButtons = document.querySelectorAll('.see-extra-info');
   seeExtraInfoButtons.forEach((button) => {
