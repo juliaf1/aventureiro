@@ -1,11 +1,14 @@
 // Import your components CSS files here.
 @import "alert";
 @import "avatar";
-@import "navbar";
+@import "home_navbar";
+@import "normal_navbar";
 @import "buttons";
 @import "campsite_cards";
 @import "journey_cards";
 @import "status_tags";
+@import "home_footer";
+@import "local_card";
 
 // Created to customize flatpickr theme
 @import "material_pink";

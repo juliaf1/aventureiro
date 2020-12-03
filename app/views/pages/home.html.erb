@@ -1,2 +1,83 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% content_for :home_navbar do %>
+  <%= render 'shared/home_navbar' %>
+<% end %>
+
+<div class="body-color">
+  <div class="banner-photo" style="background-image: url('<%= image_path "ocean.png"%>')">
+    <div class="banner-info">
+      <div class="banner-info-text">
+        <h5><%= icon('fa', 'map-marker-alt')%> Ilha Grande, Rio de Janeiro</h5>
+        <h1>Aventureiro</h1>
+        <h4>Be adventurous, immerse yourself in the wilderness and live the caiçara culture</h4>
+      </div>
+      <div class="banner-btns">
+        <%= link_to 'Learn more', root_path, class: 'secondary-btn secondary-btn-md secondary-btn-yellow' %>
+        <%= link_to 'Browse housings', campsites_path, class: 'primary-btn primary-btn-md primary-btn-light-yellow' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="shape-ocean" style="background-image: url('<%= image_path "onda.svg"%>')">
+    <div class="shape-info">
+      <div class="shape-info-card">
+        <h5>community based tourism</h5>
+        <h4>Caiçara community</h4>
+        <p>Connect with local families and strenghten the caiçara community who live in Aventureiro. Experience an unique place on earth, with magical views, trails, exuberant nature and culture.</p>
+      </div>
+      <div class="shape-info-card">
+        <h5>sustanaible ecotourism</h5>
+        <h4>Experience nature</h4>
+        <p>Support the Aventureiro's families on their mission to protect the beach and live sustainably off of the ecotourism activity. Be inspired by the breathtaking Green Coast nature.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="locals-section">
+    <div class="locals-container">
+      <h3>The biggest caiçaras on the Island</h3>
+      <div class="local-cards-container">
+
+        <div class="local-card">
+          <div class="local-card-img">
+            <%= image_tag 'home-card-woman.png' %>
+            <div class="overlay">
+              <div class="text">Neneca</div>
+            </div>
+          </div>
+
+          <div class="local-card-info">
+            <p>Friendly and hard working, Neneca is an amazing cook, famously known for her
+            delicious meals and special beans. She is an entrepeneur that has been investing
+            in the family bussiness for decades. And she loves to chat over coffee!</p>
+            <%= link_to 'See her campsite', campsite_path(2), class: 'av-link' %>
+          </div>
+        </div>
+
+        <div class="local-card">
+          <div class="local-card-img">
+            <%= image_tag 'home-card-man.png' %>
+            <div class="overlay">
+              <div class="text">Nezinho</div>
+            </div>
+          </div>
+
+          <div class="local-card-info">
+            <p>The official storyteller of the beach, Nezinho is a celebrity on the
+            island, a minstrel of the local Culture that loves sharing tales and stories.
+            If you want to know the best stories on the island, he will tell you all about the sea and the history of Aventureiro.</p>
+            <%= link_to 'See his campsite', campsite_path(1), class: 'av-link' %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="check-out">
+    <div class="check-out-info">
+      <h1>Are you ready?</h1>
+      <h2>Let's start planning your journey.</h2>
+      <%= link_to "Browse housings", campsites_path, class: 'secondary-btn secondary-btn-lg secondary-btn-blue' %>
+    </div>
+  </div>
+</div>

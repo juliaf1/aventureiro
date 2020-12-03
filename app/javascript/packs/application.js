@@ -21,16 +21,13 @@ import "bootstrap";
 import { initFlatpickr } from '../plugins/flatpickr.js';
 import { toggleAllHidden } from '../plugins/journeys_display_all.js';
 import { toggleHiddenInfo } from '../plugins/journey_index_toggle.js';
+import { initUpdateNavbarOnScroll } from '../components/navbar.js';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   toggleHiddenInfo();
+  initUpdateNavbarOnScroll();
   initFlatpickr();
   toggleAllHidden();
-  
 });
-
-
-
-

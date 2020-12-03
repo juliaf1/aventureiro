@@ -13,9 +13,16 @@
 
   <body>
     <%= render 'shared/flashes' %>
-    <%= render 'shared/navbar' %>
-    <div class="content-container">
+    <% if content_for?(:home_navbar) %>
+      <%= yield(:home_navbar) %>
       <%= yield %>
-    </div>
+      <%= render 'shared/home_footer' %>
+    <% else %>
+      <%= render 'shared/navbar' %>
+      <div class="content-container">
+        <%= yield %>
+      </div>
+      <%= render 'shared/home_footer' %>
+    <% end %>
   </body>
 </html>
