@@ -7,7 +7,7 @@ class Local::CampsiteReservationsController < ApplicationController
 
   def update
     @campsite_reservation = CampsiteReservation.find(params[:id])
-    #authorize @campsite_reservation, policy_class: LocalCampsiteReservationPolicy
+    authorize @campsite_reservation, policy_class: LocalCampsiteReservationPolicy
     @campsite_reservation.update(campsite_reservation_params)
     redirect_to local_campsite_reservations_path
   end
