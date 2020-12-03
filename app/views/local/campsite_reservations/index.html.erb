@@ -3,17 +3,47 @@
 
   <% if @campsite_reservations.empty? %>
     <p>Nenhuma reserva.</p>
-  <% else %>
-    <% @campsite_reservations.each do |campsite_reservation| %>
+  <% end %>
+
+  
+  <% if @upcoming_campsite_reservations %>
+    <h4>Upcoming reservations</h4>
+    <% @upcoming_campsite_reservations.each do |campsite_reservation| %>
       <div class="card">
         <ul>
-        <li><h4><%= campsite_reservation.campsite.name %></h4></li>
-        <li>Message: <%= campsite_reservation.description%></li>
-        <li>Check in: <%= campsite_reservation.check_in %></li>
-        <li>Check out: <%= campsite_reservation.check_out %></li>
-        <li><%= campsite_reservation.number_guests %> guests</li>
-        <li>Total price: <%= campsite_reservation.total_price %></li>
-        <li>Status: <%= campsite_reservation.status %></li>
+          <li><h5><%= campsite_reservation.campsite.name %></h5></li>
+          <li>Message: <%= campsite_reservation.description%></li>
+          <li>Check in: <%= campsite_reservation.check_in %></li>
+          <li>Check out: <%= campsite_reservation.check_out %></li>
+          <li><%= campsite_reservation.number_guests %> guests</li>
+          <li>Total price: <%= campsite_reservation.total_price %></li>
+          <li>Status: <%= campsite_reservation.status %></li>
+        </ul>
+
+        <% if campsite_reservation.pending? %>
+          <%= link_to "Confirmar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch %>
+          <%= link_to "Rejeitar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch %>
+        <% elsif campsite_reservation.confirmed? %>
+          <%= link_to "Cancelar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch %>
+        <% elsif campsite_reservation.rejected? %>
+          <%= link_to "Confirmar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+  
+  <% if @past_campsite_reservations.present? %>
+    <h4>Past reservations</h4>
+    <% @past_campsite_reservations.each do |campsite_reservation| %>
+      <div class="card">
+        <ul>
+          <li><h5><%= campsite_reservation.campsite.name %></h5></li>
+          <li>Message: <%= campsite_reservation.description%></li>
+          <li>Check in: <%= campsite_reservation.check_in %></li>
+          <li>Check out: <%= campsite_reservation.check_out %></li>
+          <li><%= campsite_reservation.number_guests %> guests</li>
+          <li>Total price: <%= campsite_reservation.total_price %></li>
+          <li>Status: <%= campsite_reservation.status %></li>
         </ul>
 
         <% if campsite_reservation.pending? %>
