@@ -14,7 +14,7 @@
   </div>
 
   <% unless @date %>
-    <a href="#" class="btn btn-primary" id="display-all">See all boat journeys</a>
+    <a href="#" class="secondary-btn secondary-btn-md secondary-btn-green" id="display-all">See all boat journeys</a>
   <% end %>
 
   <h3>
@@ -24,26 +24,34 @@
     <% end %>
   </h3>
   <div class="journey-container">
-    <% @boat_journeys.first(6).each do |boat_journey| %>
+    <% @boat_journeys.first(10).each do |boat_journey| %>
       <div class="journey-card">
-        <%= boat_journey.boat.name %>
+        <img class="journey-image" src="https://imgc.allpostersimages.com/img/print/posters/small-fishing-boats-in-the-turquoise-sea-mauritius-indian-ocean-africa_a-G-8747570-4990619.jpg" alt="boat photo">
+        <div class="journey-main-info">
+          <%= boat_journey.boat.name %>
+          <%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
+        </div>
+        <a href="#" class="secondary-btn secondary-btn-sm secondary-btn-yellow" id="see-extra-info">See more info</a>
+      </div>
+      <div class="journey-extra-info info-hidden">
         <%= boat_journey.boat.user.first_name %>
-        <%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
-        <%= boat_journey.travel_duration %>
         <%= boat_journey.price_person %>
+        <%= boat_journey.travel_duration %>
         <%= link_to "make a reservation", new_boat_journey_boat_journey_reservation_path(boat_journey) %>
       </div>
     <% end %>
 
-    <% other_journeys = @boat_journeys - @boat_journeys.first(6) %>
+    <% other_journeys = @boat_journeys - @boat_journeys.first(10) %>
     <div class=" hidden">
       <% other_journeys.each do |boat_journey| %>
         <div class="journey-card">
-          <div class="journey-main-info">
-            <%= boat_journey.boat.name %>
-            <%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
-          </div>
-          <div class="journey-extra-info">
+          <img class="journey-image" src="https://imgc.allpostersimages.com/img/print/posters/small-fishing-boats-in-the-turquoise-sea-mauritius-indian-ocean-africa_a-G-8747570-4990619.jpg" alt="boat photo">
+            <div class="journey-main-info">
+              <h3><%= boat_journey.boat.name %></h3>
+              <p><%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></p>
+            </div>
+          <a href="#" class="secondary-btn secondary-btn-sm secondary-btn-yellow" id="see-extra-info">See more info</a>
+          <div class="journey-extra-info hidden">
             <%= boat_journey.boat.user.first_name %>
             <%= boat_journey.price_person %>
             <%= boat_journey.travel_duration %>

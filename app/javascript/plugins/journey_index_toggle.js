@@ -7,6 +7,14 @@ const toggleHidden = () => {
     event.preventDefault();
     hidden.classList.toggle("hidden");
   });
+
+  const seeExtraInfo = document.getElementById('see-extra-info')
+
+  seeExtraInfo.addEventListener('click', (event) => {
+    event.preventDefault();
+    hidden.classList.toggle("info-hidden");
+  });
+
 };
 
 export { toggleHidden };

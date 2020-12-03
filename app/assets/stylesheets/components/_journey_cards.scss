@@ -4,20 +4,38 @@
 }
 
 .journey-card {
-  box-shadow: 1px 1px 6px rgba(161, 108, 108, 0.5);
-  padding: 40px 32px;
-  margin-bottom: 24px;
-  border: solid 1px;
+  background-color: $light-blue;
+  overflow: hidden;
+  height: 150px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  position: relative;
 }
 
 .journey-image {
-  text-align: center;
+  height: 150px;
+  border-radius: 5px;
 }
 
 .journey-main-info {
-  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 230px;
 }
 
 .journey-extra-info {
-  text-align: center;
+  background-color: white;
+  overflow: hidden;
+  height: 150px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+
+#see-extra-info {
+  position: absolute;
+  right: 20px;
 }
