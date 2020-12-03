@@ -8,7 +8,7 @@
 
       <%= simple_form_for :search, method: "get" do |f| %>
         <%= f.input :date, as: :string, required: false, label: false, input_html: {class: "datepicker", name: "date", autocomplete: 'off'} %>
-        <%= f.button :submit, "Go", class: "btn btn-primary" %>
+        <%= f.button :submit, "Go", class: "primary-btn primary-btn-lg primary-btn-blue" %>
       <% end %>
     </div>
   </div>
@@ -28,8 +28,8 @@
       <div class="journey-card">
         <img class="journey-image" src="https://imgc.allpostersimages.com/img/print/posters/small-fishing-boats-in-the-turquoise-sea-mauritius-indian-ocean-africa_a-G-8747570-4990619.jpg" alt="boat photo">
         <div class="journey-main-info">
-          <%= boat_journey.boat.name %>
-          <%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
+          <h4><%= boat_journey.boat.name %></h4>
+          <p><%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></p>
         </div>
         <a href="#" class="secondary-btn secondary-btn-sm secondary-btn-yellow" id="see-extra-info">See more info</a>
       </div>

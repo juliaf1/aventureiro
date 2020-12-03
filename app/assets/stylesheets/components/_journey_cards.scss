@@ -4,7 +4,7 @@
 }
 
 .journey-card {
-  background-color: $light-blue;
+  background-color: $neutral-light-blue;
   overflow: hidden;
   height: 150px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -12,17 +12,20 @@
   align-items: center;
   margin-top: 12px;
   position: relative;
+  border-radius: 6px;
 }
 
 .journey-image {
   height: 150px;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 .journey-main-info {
-  position: absolute;
-  top: 50%;
-  left: 230px;
+  margin-top: 30px;
+  margin-left: 35px;
+  p {
+    font-weight: bold;
+  }
 }
 
 .journey-extra-info {
@@ -38,4 +41,8 @@
 #see-extra-info {
   position: absolute;
   right: 20px;
+}
+
+.btn-center {
+  text-align: center;
 }

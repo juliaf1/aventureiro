@@ -8,11 +8,13 @@ const toggleHidden = () => {
     hidden.classList.toggle("hidden");
   });
 
+  const infoHidden = document.querySelector(".info-hidden");
+
   const seeExtraInfo = document.getElementById('see-extra-info')
 
   seeExtraInfo.addEventListener('click', (event) => {
     event.preventDefault();
-    hidden.classList.toggle("info-hidden");
+    infoHidden.classList.toggle("info-hidden");
   });
 
 };
