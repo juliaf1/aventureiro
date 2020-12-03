@@ -1,7 +1,16 @@
 class Local::CampsiteReservationsController < ApplicationController
 
   def index
-    @campsite_reservations = CampsiteReservation.joins(:campsite).where(campsites: { user_id: current_user.id })
+    @campsite_reservations = CampsiteReservation.joins(:campsite).where(campsites: { user_id: current_user.id }).sort_by &:check_in
+    
+    @upcoming_campsite_reservations = @campsite_reservations.select do |reservation|
+      reservation.check_in >= Date.today
+    end
+
+    @past_campsite_reservations = @campsite_reservations.select do |reservation|
+      reservation.check_in < Date.today
+    end
+       
     authorize @campsite_reservations, policy_class: LocalCampsiteReservationPolicy
   end
 
