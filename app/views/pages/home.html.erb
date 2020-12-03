@@ -3,7 +3,6 @@
 <% end %>
 
 <div class="body-color">
-
   <div class="banner-photo" style="background-image: url('<%= image_path "ocean.png"%>')">
     <div class="banner-info">
       <h5><%= icon('fa', 'map-marker-alt')%> Ilha Grande, Rio de Janeiro</h5>
@@ -34,6 +33,41 @@
   <div class="locals-section">
     <div class="locals-container">
       <h3>The biggest caiçaras on the Island</h3>
+      <div class="local-cards-container">
+
+        <div class="local-card">
+          <div class="local-card-img">
+            <%= image_tag 'home-card-woman.jpeg' %>
+            <div class="overlay">
+              <div class="text">Neneca</div>
+            </div>
+          </div>
+
+          <div class="local-card-info">
+            <p>Friendly and hard working, Neneca is an amazing cook, famously known for her
+            delicious meals and special beans. She is an entrepeneur that has been investing
+            in the family bussiness for decades. And she loves to chat over coffee!</p>
+            <%= link_to 'See her campsite', campsite_path(2), class: 'av-link' %>
+          </div>
+        </div>
+
+        <div class="local-card">
+          <div class="local-card-img">
+            <%= image_tag 'home-card-man.jpeg' %>
+            <div class="overlay">
+              <div class="text">Nezinho</div>
+            </div>
+          </div>
+
+          <div class="local-card-info">
+            <p>The official storyteller of the beach, Nezinho is a celebrity on the
+            island, a minstrel of the local Culture that loves sharing tales and stories.
+            If you want to know the best stories on the island, he will tell you all about the sea and the history of Aventureiro.</p>
+            <%= link_to 'See his campsite', campsite_path(1), class: 'av-link' %>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
