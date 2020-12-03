@@ -3,7 +3,7 @@ class Local::BoatJourneysController < ApplicationController
   before_action :find_boat_journey, only: [ :edit, :update, :destroy ]
 
   def index
-    @boat_journeys = BoatJourney.joins(:boat).where(boats: { user_id: current_user.id })
+    @boat_journeys = BoatJourney.joins(:boat).where(boats: { user_id: current_user.id }).sort_by &:departure_time
     authorize @boat_journeys, policy_class: LocalBoatJourneyPolicy
   end
 
