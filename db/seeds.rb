@@ -353,4 +353,28 @@ travellers.each do |traveller|
   puts "Created #{traveller[:first_name]}"
 end
 
-first_name: Faker::Name.first_name
+puts "Creating some fake travellers"
+
+10.times do
+  User.create(
+  local: false,
+  first_name: Faker::Movies::HowToTrainYourDragon.unique.character,
+  email: Faker::Internet.email,
+  password: '123456',
+  phone_number: Faker::PhoneNumber.cell_phone_in_e164,
+  address: Faker::Address.city,
+  bio: Faker::Movies::StarWars.quote
+  )
+end
+
+puts "Seeding complete!"
+
+puts "Making some boat journey reservations"
+
+BoatJourneyReservations
+
+t.bigint "user_id", null: false
+t.bigint "boat_journey_id", null: false
+t.integer "number_passengers"
+t.integer "total_price"
+t.integer "status"
