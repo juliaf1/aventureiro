@@ -1,0 +1,25 @@
+.boats-container {
+  width: 500px;
+  margin: 48px auto;
+}
+
+.boat-card {
+  box-shadow: 1px 1px 6px rgba(50, 50, 50, 0.1), 2px 3px 6px rgba(50, 50, 50, 0.4);
+  padding: 20px 20px;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  .boat-card-top {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    margin-bottom: 5px;
+    .boat-image {
+      text-align: center;
+      height: 150px;
+      border-radius: 4px 4px 0px 0px;
+    }
+
+  }
+}
+
+
