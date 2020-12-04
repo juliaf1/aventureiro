@@ -388,19 +388,23 @@ puts "Seeding complete!"
 
 puts "Making some boat journey reservations"
 
-
-bt_journey = BoatJourney.all.sample
-num_passengers = rand(1..4)
-BoatJourneyReservation.create(
-  user_id: User.last.id,
-  boat_journey_id: bt_journey.id,
-  number_passengers: num_passengers,
-  total_price: bt_journey.price_person * num_passengers,
-  status: 0
-)
+travellers = User.last(12)
+travellers.each do |traveller|
+  5.times do
+    bt_journey = BoatJourney.where('departure_time > ?', DateTime.now).sample
+    num_passengers = rand(1..4)
+    BoatJourneyReservation.create(
+      user_id: traveller.id,
+      boat_journey_id: bt_journey.id,
+      number_passengers: num_passengers,
+      total_price: bt_journey.price_person * num_passengers,
+      status: 0
+    )
+  end
+end
 
 if BoatJourneyReservation.present?
-  puts "Boat journeys created"
+  puts "Boat journey reservations created"
 else
   puts "DID NOT WORK"
 end
