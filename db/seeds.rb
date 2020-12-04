@@ -201,7 +201,7 @@ end
 
 60.times do  
   BoatJourney.create(
-    boat_id: Boat.all[2].id,
+    boat_id: Boat.all[3].id,
     departure_time: Time.new(2020,11,20,15,00) + n.day ,
     travel_duration: '40min',
     price_person: '90'
@@ -322,3 +322,7 @@ camping_sites.each do |camping|
     puts "#{campsite.name} photo attached! 📷"
   end
 end
+
+puts "Creating travellers"
+
+User.
