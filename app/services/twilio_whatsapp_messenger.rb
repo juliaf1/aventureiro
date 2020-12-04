@@ -15,10 +15,13 @@ class TwilioWhatsappMessenger
   # OUTBOUND CAMPSITE MESSAGES:
 
   def campsite_request_reservation_message(campsite_reservation)
-    message = "New Reservation by: #{campsite_reservation.user.first_name.capitalize}
-    In: #{campsite_reservation.check_in} / Out: #{campsite_reservation.check_out}
-    for #{campsite_reservation.number_guests}, Total: R$#{campsite_reservation.total_price}.
-    Description: #{campsite_reservation.description} Respond Yes/No to accept or decline. "
+    message = "Nova Reserva por: #{campsite_reservation.user.first_name.capitalize}\n
+    Check-in: #{campsite_reservation.check_in.strftime('%d/%m/%y')}\n
+    Check-out: #{campsite_reservation.check_out.strftime('%d/%m/%y')}\n
+    Número de hóspedes: #{campsite_reservation.number_guests}\n
+    Total: R$#{campsite_reservation.total_price}\n
+    Mensagem: #{campsite_reservation.description}\n
+    Para aceitar ou recusar a reserva: aventureiroilhagrande.herokuapp.com/local/campsite_reservations"
     TwilioWhatsappMessenger.new.send_whatsapp(message)
   end
 
