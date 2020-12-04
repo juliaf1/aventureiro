@@ -22,6 +22,8 @@ class BoatJourneyReservationsController < ApplicationController
 
     authorize @journey_reservation, policy_class: BoatJourneyReservationPolicy
     if @journey_reservation.save
+      # when making this feature live, remember to send user argument with to: tel number
+      TwilioWhatsappMessenger.new.boat_request_reservation_message(@journey_reservation)
       redirect_to boat_journey_reservations_path, notice: "Your request was sent, wait for #{@journey_reservation.boat_journey.boat.user.first_name} confirmation."
     else
       redirect_to boat_journeys_path, alert: "Couldn't finish your request."
@@ -34,6 +36,8 @@ class BoatJourneyReservationsController < ApplicationController
 
     if @journey_reservation.boat_journey.departure_time > Date.today + 2.days
       @journey_reservation.destroy
+      # when making this feature live, remember to send user argument with to: tel number
+      TwilioWhatsappMessenger.new.boat_cancel_reservation_message(@journey_reservation)
       redirect_to boat_journey_reservations_path, notice: "Your reservation was cancelled."
     else
       redirect_to boat_journey_reservations_path, alert: "You can't cancel without 2 days of notice. Contact #{@journey_reservation.boat_journey.boat.user.first_name} directly."

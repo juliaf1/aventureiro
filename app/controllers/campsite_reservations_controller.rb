@@ -18,6 +18,8 @@ class CampsiteReservationsController < ApplicationController
     set_total_price
     authorize @campsite_reservation
     if @campsite_reservation.save
+      # when making this feature live, remember to send user argument with to: tel number
+      TwilioWhatsappMessenger.new.campsite_request_reservation_message(@campsite_reservation)
       redirect_to user_campsite_reservations_path(current_user), notice: "Your campsite reservation request is pending confirmation
       from #{@campsite_reservation.campsite.user.first_name}"
     else
@@ -27,9 +29,11 @@ class CampsiteReservationsController < ApplicationController
 
   def destroy
     @campsite_reservation = CampsiteReservation.find(params[:id])
-
+    # WHERE IS THE POLICY TO DESTROY??
     if @campsite_reservation.check_in - Date.today > 1
       @campsite_reservation.destroy
+      # when making this feature live, remember to send user argument with to: tel number
+      TwilioWhatsappMessenger.new.campsite_cancel_reservation_message(@campsite_reservation)
       redirect_to user_campsite_reservations_path(current_user), notice: "Your reservation was cancelled"
     else
       redirect_to user_campsite_reservations_path(current_user), notice: "You can't cancel your reservation 24h before arrival"

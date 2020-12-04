@@ -31,4 +31,12 @@ Rails.application.routes.draw do
     resources :boat_journey_reservations, only: [ :index, :update ]
     resources :campsite_reservations, only: [ :index, :update ]
   end
+
+  # API routes for whatsapp integration
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :campsite_reservations, only: [ :index ]
+      resources :boat_journey_reservations, only: [ :index ]
+    end
+  end
 end
