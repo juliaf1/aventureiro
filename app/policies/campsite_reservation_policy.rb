@@ -16,6 +16,10 @@ class CampsiteReservationPolicy < ApplicationPolicy
     end
   end
 
+  def destroy?
+    record.user == user || record.campsite.user == user
+  end
+
   class Scope < Scope
     def resolve
       scope.all
