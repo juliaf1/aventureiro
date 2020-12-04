@@ -1,10 +1,10 @@
-<div class="container">
-  <h3>Boat Journeys</h3>
+<%= render 'shared/index_navbar' %>
 
-  <div class="container">
+<div class="container">
+  <div class="container text-center">
     <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-      
-      <h2>Select a date</h2>
+
+      <h3>Select a date for your journey!</h3>
 
       <%= simple_form_for :search, method: "get" do |f| %>
         <%= f.input :date, as: :string, required: false, label: false, input_html: {class: "datepicker", name: "date", autocomplete: 'off'} %>
@@ -12,11 +12,11 @@
       <% end %>
     </div>
   </div>
-  
+
   <% unless @date %>
     <a href="#" class="secondary-btn secondary-btn-md secondary-btn-green" id="display-all">See all boat journeys</a>
   <% end %>
-  
+
   <h3>
     <% if @date %>
       Boat journeys for
