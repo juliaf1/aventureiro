@@ -29,7 +29,7 @@ class CampsiteReservationsController < ApplicationController
 
   def destroy
     @campsite_reservation = CampsiteReservation.find(params[:id])
-    # WHERE IS THE POLICY TO DESTROY??
+    authorize @campsite_reservation
     if @campsite_reservation.check_in - Date.today > 1
       @campsite_reservation.destroy
       # when making this feature live, remember to send user argument with to: tel number
