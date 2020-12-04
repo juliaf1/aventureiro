@@ -50,7 +50,11 @@
     <div class=" hidden">
       <% other_journeys.each do |boat_journey| %>
         <div class="journey-card">
-          <img class="journey-image" src="https://imgc.allpostersimages.com/img/print/posters/small-fishing-boats-in-the-turquoise-sea-mauritius-indian-ocean-africa_a-G-8747570-4990619.jpg" alt="boat photo">
+          <% if boat_journey.boat.photo.attached? %>
+            <%= cl_image_tag boat_journey.boat.photo.key, crop: :fill, class: 'journey-image' %>
+          <% else %>
+            <img class="journey-image" src="https://imgc.allpostersimages.com/img/print/posters/small-fishing-boats-in-the-turquoise-sea-mauritius-indian-ocean-africa_a-G-8747570-4990619.jpg" alt="boat photo">
+          <% end %>
           <div class="journey-main-info">
             <h5><%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></h5>
             <p>Boat: <%= boat_journey.boat.name %></p>

@@ -1,3 +1,6 @@
+require "open-uri"
+require 'faker'
+
 puts "Creating some caiçaras 🌊"
 
 nezinho = {
@@ -97,9 +100,26 @@ roseno = {
 
 caicaras = [nezinho, neneca, verte, ferreira, larissa, ita, luis, roseno]
 
+profile_photos = {
+  nezinho: "https://images.unsplash.com/photo-1605639649750-584b3d9a5522?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80",
+  neneca: "https://images.unsplash.com/photo-1593804863197-0a95c8ebef64?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80",
+  verte: "https://images.unsplash.com/photo-1601057959038-7bf0516c54c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+  ferreira: "https://images.unsplash.com/photo-1578232443464-16a2880948fe?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=352&q=80",
+  larissa: "https://images.unsplash.com/photo-1599571280904-64453968268b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+  ita: "https://images.unsplash.com/photo-1496672254107-b07a26403885?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+  luis: "https://images.unsplash.com/flagged/photo-1598629403012-bc0e90e12f21?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=376&q=80", 
+  roseno: "https://images.unsplash.com/photo-1606542353593-d1f26eb13088?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=401&q=80"
+}
+
 caicaras.each do |caicara|
   User.create(caicara)
   puts "Created #{caicara[:first_name]}"
+  local = User.last
+  file = URI.open(profile_photos[local.first_name.downcase.to_sym])
+  local.photo.attach(io: file, filename: "#{local.first_name.downcase}.jpg", content_type: 'image/jpg')
+  if local.photo
+    puts "#{local.first_name}'s profile photo attached! 📷"
+  end
 end
 
 puts "Creating some boats ⛵"
@@ -145,78 +165,69 @@ boats.each do |boat|
   puts "Created #{boat[:name]}"
 end
 
+puts "Adding photos to boats 📷"
+file = URI.open("https://images.unsplash.com/photo-1593188999272-b65631194b7f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OXx8c21hbGwlMjBwYXNzZW5nZXIlMjBib2F0fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
+barco = Boat.all[0]
+barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+
+file = URI.open("https://images.unsplash.com/photo-1599011887608-d125aeefab9e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTJ8fHNtYWxsJTIwcGFzc2VuZ2VyJTIwYm9hdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
+barco = Boat.all[1]
+barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+
+file = URI.open("https://images.unsplash.com/photo-1589627972662-12b2da3f14d2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjE5fHxzbWFsbCUyMHBhc3NlbmdlciUyMGJvYXR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
+barco = Boat.all[2]
+barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+
+file = URI.open("https://images.unsplash.com/photo-1543078668-06f7626d60c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTZ8fGJvYXQlMjBicmF6aWwlMjBmaXNoaW5nfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
+barco = Boat.all[3]
+barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+
 puts "Creating some boat journeys ⛵"
 
-time1 = Time.new(2020,12,26,8,30)
-time2 = Time.new(2020,12,26,11,00)
-time3 = Time.new(2020,12,27,9,0)
-time4 = Time.new(2020,12,27,11,0)
-time5 = Time.new(2020,12,27,15,0)
-time6 = Time.new(2020,12,28,10,0)
-time7 = Time.new(2020,12,28,14,30)
-time8 = Time.new(2021,01,02,9,0)
-time9 = Time.new(2021,01,03,14,0)
-time10 = Time.new(2021,01,04,9,0)
+n = 0
+60.times do  
+  BoatJourney.create(
+    boat_id: Boat.all[0].id,
+    departure_time: Time.new(2020,11,20,8,30) + n.day ,
+    travel_duration: '2 hours',
+    price_person: '70'
+  )
+  n += 1
+end
 
-BoatJourney.create(
-  boat_id: 1,
-  departure_time: time1,
-  travel_duration: '2 hours',
-  price_person: '70')
+n = 0
+60.times do  
+  BoatJourney.create(
+    boat_id: Boat.all[1].id,
+    departure_time: Time.new(2020,11,20,5,30) + n.day ,
+    travel_duration: '2 hours',
+    price_person: '70'
+  )
+  n += 1
+end
 
-BoatJourney.create(
-  boat_id: 2,
-  departure_time: time2,
-  travel_duration: '2 hours',
-  price_person: '70')
+n = 0
+60.times do  
+  BoatJourney.create(
+    boat_id: Boat.all[2].id,
+    departure_time: Time.new(2020,11,20,12,00) + n.day ,
+    travel_duration: '1h 40min',
+    price_person: '70'
+  )
+  n += 1
+end
 
-BoatJourney.create(
-  boat_id: 3,
-  departure_time: time3,
-  travel_duration: '1h 40min',
-  price_person: '70')
+60.times do  
+  BoatJourney.create(
+    boat_id: Boat.all[3].id,
+    departure_time: Time.new(2020,11,20,15,00) + n.day ,
+    travel_duration: '40min',
+    price_person: '90'
+  )
+  n += 1
+end
 
-BoatJourney.create(
-  boat_id: 4,
-  departure_time: time4,
-  travel_duration: '40 min',
-  price_person: '90')
-
-BoatJourney.create(
-  boat_id: 1,
-  departure_time: time5,
-  travel_duration: '2 hours',
-  price_person: '60')
-
-BoatJourney.create(
-  boat_id: 2,
-  departure_time: time6,
-  travel_duration: '2 hours',
-  price_person: '60')
-
-BoatJourney.create(
-  boat_id: 3,
-  departure_time: time7,
-  travel_duration: '1h 40min',
-  price_person: '60')
-
-BoatJourney.create(
-  boat_id: 4,
-  departure_time: time8,
-  travel_duration: '40 min',
-  price_person: '90')
-
-BoatJourney.create(
-  boat_id: 4,
-  departure_time: time9,
-  travel_duration: '40 min',
-  price_person: '90')
-
-BoatJourney.create(
-  boat_id: 3,
-  departure_time: time10,
-  travel_duration: '1h 40min',
-  price_person: '60')
+puts "#{BoatJourney.count} boat journeys created"
 
 puts "Creating some campsites ⛺"
 
@@ -308,7 +319,88 @@ camping_luis = {
 
 camping_sites = [camping_nezinho, camping_neneca, camping_verte, camping_ferreira, camping_larissa, camping_ita, camping_roseno, camping_luis]
 
+campsite_photos = {
+  camping_nezinho: "https://res.cloudinary.com/juliaf1/image/upload/v1606932034/ycxx87zzjbr6m92pozx2quvu9lm2.jpg",
+  camping_neneca: "https://res.cloudinary.com/juliaf1/image/upload/v1606932375/kbsk9hjcnldmrdy14652xi91bbbd.jpg",
+  camping_verte: "https://res.cloudinary.com/juliaf1/image/upload/v1606932401/rqjdlf4r5t94zq7z7hqy2tl027ny.jpg",
+  camping_ferreira: "https://res.cloudinary.com/juliaf1/image/upload/v1606932131/53tdpvu66pxyc8cvzmzj6l8c8v3y.jpg",
+  camping_larissa: "https://res.cloudinary.com/juliaf1/image/upload/v1606932100/knj9g2p1yhi7pldjak08zm0n66fe.jpg",
+  camping_ita: "https://res.cloudinary.com/juliaf1/image/upload/v1606932653/5raifuilbyhp9lmjr87cguqz7ipm.jpg",
+  camping_roseno: "https://res.cloudinary.com/juliaf1/image/upload/v1606932599/e8efs5ag9drpcq7ro4s0y43ykbf2.jpg",
+  camping_luis: "https://res.cloudinary.com/juliaf1/image/upload/v1606932345/b6bnh6wwqsklshhh44sd81ivgvad.jpg"
+}
+
 camping_sites.each do |camping|
   Campsite.create(camping)
   puts "Created #{camping[:name]}"
+  campsite = Campsite.last
+  file = URI.open(campsite_photos["camping_#{campsite.user.first_name.downcase}".to_sym])
+  campsite.photo.attach(io: file, filename: "#{campsite.user.first_name.downcase}.jpg", content_type: 'image/jpg')
+  if campsite.photo
+    puts "#{campsite.name} photo attached! 📷"
+  end
+end
+
+puts "Creating travellers"
+
+rowan = {
+  local: false,
+  first_name: 'Rowan',
+  email: 'rowan@lewagon.com',
+  password: '123456',
+  phone_number: '44 788474798',
+  address: 'London',
+  bio: "Life long explorer!"
+}
+
+julia = {
+  local: false,
+  first_name: 'Julia',
+  email: 'julia@lewagon.com',
+  password: '123456',
+  phone_number: '55 999999999',
+  address: 'Niteroi',
+  bio: "I'm small girl with big dreams!"
+}
+
+travellers = [rowan, julia]
+
+travellers.each do |traveller|
+  User.create(traveller)
+  puts "Created #{traveller[:first_name]}"
+end
+
+puts "Creating some fake travellers"
+
+10.times do
+  User.create(
+  local: false,
+  first_name: Faker::Movies::HowToTrainYourDragon.unique.character,
+  email: Faker::Internet.email,
+  password: '123456',
+  phone_number: Faker::PhoneNumber.cell_phone_in_e164,
+  address: Faker::Address.city,
+  bio: Faker::Movies::StarWars.quote
+  )
+end
+
+puts "Seeding complete!"
+
+puts "Making some boat journey reservations"
+
+
+bt_journey = BoatJourney.all.sample
+num_passengers = rand(1..4)
+BoatJourneyReservation.create(
+  user_id: User.last.id,
+  boat_journey_id: bt_journey.id,
+  number_passengers: num_passengers,
+  total_price: bt_journey.price_person * num_passengers,
+  status: 0
+)
+
+if BoatJourneyReservation.present?
+  puts "Boat journeys created"
+else
+  puts "DID NOT WORK"
 end
