@@ -1,10 +1,10 @@
-
 <div class="boats-container">
   <% if @boats.empty? %>
     <p>Você ainda não tem barcos.
-      <%= link_to "Adicione um barco", new_local_boat_path, class: "add-new-boat-btn" %></p>
+      <%= link_to "Adicione um barco", new_local_boat_path, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %></p>
   <% else %>
-    <%= link_to "Adicione um barco", new_local_boat_path, class: "add-new-boat-btn" %>
+    <%= link_to "Adicione um barco", new_local_boat_path, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+
     <% @boats.each do |boat| %>
       <div class="boat-card">
         <div class="boat-card-top">
@@ -14,11 +14,13 @@
           </div>
           <div class="boat-card-image">
             <img class="boat-image" src="https://imgc.allpostersimages.com/img/print/posters/small-fishing-boats-in-the-turquoise-sea-mauritius-indian-ocean-africa_a-G-8747570-4990619.jpg" alt="boat photo">
+          </div>
         </div>
-      </div>
 
-        <%= link_to "Adicione uma viagem", new_local_boat_boat_journey_path(boat), class: "boat-action-btns" %>
-        <%= link_to "Remover", local_boat_path(boat), method: :delete, class: "boat-action-btns" %>
+        <div class="boat-card-btns">
+          <%= link_to "Adicione uma viagem", new_local_boat_boat_journey_path(boat), class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+          <%= link_to "Remover", local_boat_path(boat), method: :delete, class: "primary-btn primary-btn-sm primary-btn-blue" %>
+        </div>
       </div>
     <% end %>
   <% end %>
