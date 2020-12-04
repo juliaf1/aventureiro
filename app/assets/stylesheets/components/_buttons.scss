@@ -172,3 +172,12 @@
     color: $neutral-dark-blue;
   }
 }
+
+.secondary-btn-dark-blue {
+  background-color: $neutral-dark-blue;
+  color: $white;
+
+  &:hover {
+    color: $white;
+  }
+}
