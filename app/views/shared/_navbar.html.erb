@@ -13,7 +13,7 @@
         <% if user_signed_in? %>
           <div class="btn-group">
             <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar dropdown-toggle", 'data-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", 'data-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
             <% else %>
               <%= image_tag "https://ui-avatars.com/api/?name=#{current_user.first_name}+#{current_user.last_name}", class: "avatar dropdown-toggle", 'data-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
