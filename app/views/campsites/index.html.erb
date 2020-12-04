@@ -1,23 +1,38 @@
+
+<%= render 'shared/index_navbar' %>
 <div class="campsites-container">
+
+
   <% @campsites.each do |campsite| %>
-
     <div class="campsite-card">
-      <div class="campsite-image">
-        <% if campsite.photo.attached? %>
-          <%= cl_image_tag campsite.photo.key, height: 300, width: 420, crop: :fill %>
-        <% end %>
-      </div>
-      <h4><%= campsite.name %></h4>
-      <p><%= campsite.description %></p>
-      <p><%= campsite.daily_price %></p>
-      <p><%= campsite.availability %></p>
-      <p>Owner: <%= "#{campsite.user.first_name} #{campsite.user.last_name}" %></p>
 
-      <div class="campsites-btns">
-        <%= link_to 'See more', campsite_path(campsite), class: 'primary-btn primary-btn-sm primary-btn-pink' %>
-        <%= link_to 'Request a Reservation', new_campsite_campsite_reservation_path(campsite), class: 'secondary-btn secondary-btn-sm secondary-btn-green' %>
+      <% if campsite.photo.attached? %>
+        <%= cl_image_tag campsite.photo.key, class: 'campsite-image' %>
+      <% end %>
+
+      <div class="campsite-card-content">
+
+        <div class="campsite-card-info">
+          <div class="campsite-card-header">
+            <h4><%= campsite.name %></h4>
+            <% if campsite.user.photo.attached? %>
+              <%= cl_image_tag campsite.user.photo.key, class: 'avatar' %>
+            <% end %>
+          </div>
+          <p><%= campsite.description %></p>
+        </div>
+
+        <div class="campsite-card-tags">
+          <p class="availability"><%= campsite.availability %></p>
+          <p class="price">R$<%= campsite.daily_price %></p>
+        </div>
+
+        <div class="campsites-btns">
+          <%= link_to 'See more', campsite_path(campsite), class: 'primary-btn primary-btn-sm primary-btn-pink' %>
+          <%= link_to 'Request a Reservation', new_campsite_campsite_reservation_path(campsite), class: 'secondary-btn secondary-btn-sm secondary-btn-green' %>
+        </div>
       </div>
+
     </div>
-
   <% end %>
 </div>

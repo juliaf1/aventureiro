@@ -1,0 +1,118 @@
+.go-back {
+  margin-left: 80px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  i {
+    font-size: 24px;
+    margin-right: 16px;
+    color: $neutral-dark-blue;
+    padding-top: 4px;
+  }
+
+  a {
+    margin: 0;
+    color: $neutral-dark-blue;
+  }
+}
+
+// Campsite
+
+.campsite-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.campsite-full-card {
+  min-height: 1000px;
+  width: 1000px;
+  margin: 0 80px 80px 80px;
+  box-shadow: 1px 1px 6px rgba(80, 80, 80, 0.1);
+}
+
+.campsite-photo {
+  height: 600px;
+  width: 100%;
+  box-shadow: 0px 2px 8px rgba(80, 80, 80, 0.6);
+}
+
+.campsite-full-content {
+  padding: 80px;
+  color: $neutral-dark-blue;
+
+  .campsite-info {
+    margin-bottom: 56px;
+
+    p {
+      margin: 0;
+    }
+
+    h2 {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.campsite-tags {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 64px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.request {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+// Local part
+
+.campsite-local-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.campsite-local-card {
+  padding: 80px;
+  width: 1000px;
+  min-height: 400px;
+  box-shadow: 1px 1px 6px rgba(80, 80, 80, 0.1);
+  color: $neutral-dark-blue;
+  margin-bottom: 64px;
+}
+
+.campsite-local-card-image {
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 48px;
+
+  img {
+    margin-right: 40px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.campsite-local-card-info {
+
+  i {
+    margin-right: 8px;
+  }
+
+  p {
+    margin: 32px 0 0 0;
+  }
+}
