@@ -14,8 +14,8 @@ class CampsiteReservationsController < ApplicationController
 
   def create
     @campsite_reservation = CampsiteReservation.new(reservation_params)
-    set_user_campsite_and_status(@campsite_reservation)
-    set_total_price(@campsite_reservation)
+    set_user_campsite_and_status(@campsite_reservation, @campsite)
+    set_total_price(@campsite_reservation, @campsite)
     authorize @campsite_reservation
     if @campsite_reservation.save
       # when making this feature live, remember to send user argument with to: tel number
@@ -46,12 +46,13 @@ class CampsiteReservationsController < ApplicationController
     @campsite = Campsite.find(params[:campsite_id])
   end
 
-  def set_user_campsite_and_status(campsite_reservation)
+  def set_user_campsite_and_status(campsite_reservation, campsite)
     campsite_reservation.user = current_user
+    campsite_reservation.campsite = campsite
     campsite_reservation.status = 0
   end
 
-  def set_total_price(campsite_reservation)
+  def set_total_price(campsite_reservation, campsite)
     daily_price = campsite_reservation.number_guests * campsite_reservation.campsite.daily_price
     campsite_reservation.total_price = daily_price * (campsite_reservation.check_out - campsite_reservation.check_in + 1).to_i
   end
