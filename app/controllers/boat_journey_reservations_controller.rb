@@ -31,7 +31,8 @@ class BoatJourneyReservationsController < ApplicationController
   def destroy
     @journey_reservation = BoatJourneyReservation.find(params[:id])
     authorize @journey_reservation, policy_class: BoatJourneyReservationPolicy
-    if @journey_reservation.boat_journey.departure_time - Time.now > 172_800
+
+    if @journey_reservation.boat_journey.departure_time > Date.today + 2.days
       @journey_reservation.destroy
       redirect_to boat_journey_reservations_path, notice: "Your reservation was cancelled."
     else
