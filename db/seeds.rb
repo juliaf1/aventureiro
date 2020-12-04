@@ -1,4 +1,5 @@
 require "open-uri"
+require 'faker'
 
 puts "Creating some caiçaras 🌊"
 
@@ -351,3 +352,5 @@ travellers.each do |traveller|
   User.create(traveller)
   puts "Created #{traveller[:first_name]}"
 end
+
+first_name: Faker::Name.first_name
