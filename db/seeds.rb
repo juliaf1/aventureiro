@@ -166,76 +166,50 @@ end
 
 puts "Creating some boat journeys ⛵"
 
-time1 = Time.new(2020,12,26,8,30)
-time2 = Time.new(2020,12,26,11,00)
-time3 = Time.new(2020,12,27,9,0)
-time4 = Time.new(2020,12,27,11,0)
-time5 = Time.new(2020,12,27,15,0)
-time6 = Time.new(2020,12,28,10,0)
-time7 = Time.new(2020,12,28,14,30)
-time8 = Time.new(2021,01,02,9,0)
-time9 = Time.new(2021,01,03,14,0)
-time10 = Time.new(2021,01,04,9,0)
+n = 0
+60.times do  
+  BoatJourney.create(
+    boat_id: Boat.all[0].id,
+    departure_time: Time.new(2020,11,20,8,30) + n.day ,
+    travel_duration: '2 hours',
+    price_person: '70'
+  )
+  n += 1
+end
 
-BoatJourney.create(
-  boat_id: 1,
-  departure_time: time1,
-  travel_duration: '2 hours',
-  price_person: '70')
+n = 0
+60.times do  
+  BoatJourney.create(
+    boat_id: Boat.all[1].id,
+    departure_time: Time.new(2020,11,20,5,30) + n.day ,
+    travel_duration: '2 hours',
+    price_person: '70'
+  )
+  n += 1
+end
 
-BoatJourney.create(
-  boat_id: 2,
-  departure_time: time2,
-  travel_duration: '2 hours',
-  price_person: '70')
+n = 0
+60.times do  
+  BoatJourney.create(
+    boat_id: Boat.all[2].id,
+    departure_time: Time.new(2020,11,20,12,00) + n.day ,
+    travel_duration: '1h 40min',
+    price_person: '70'
+  )
+  n += 1
+end
 
-BoatJourney.create(
-  boat_id: 3,
-  departure_time: time3,
-  travel_duration: '1h 40min',
-  price_person: '70')
+60.times do  
+  BoatJourney.create(
+    boat_id: Boat.all[2].id,
+    departure_time: Time.new(2020,11,20,15,00) + n.day ,
+    travel_duration: '40min',
+    price_person: '90'
+  )
+  n += 1
+end
 
-BoatJourney.create(
-  boat_id: 4,
-  departure_time: time4,
-  travel_duration: '40 min',
-  price_person: '90')
-
-BoatJourney.create(
-  boat_id: 1,
-  departure_time: time5,
-  travel_duration: '2 hours',
-  price_person: '60')
-
-BoatJourney.create(
-  boat_id: 2,
-  departure_time: time6,
-  travel_duration: '2 hours',
-  price_person: '60')
-
-BoatJourney.create(
-  boat_id: 3,
-  departure_time: time7,
-  travel_duration: '1h 40min',
-  price_person: '60')
-
-BoatJourney.create(
-  boat_id: 4,
-  departure_time: time8,
-  travel_duration: '40 min',
-  price_person: '90')
-
-BoatJourney.create(
-  boat_id: 4,
-  departure_time: time9,
-  travel_duration: '40 min',
-  price_person: '90')
-
-BoatJourney.create(
-  boat_id: 3,
-  departure_time: time10,
-  travel_duration: '1h 40min',
-  price_person: '60')
+puts "#{BoatJourney.count} boat journeys created"
 
 puts "Creating some campsites ⛺"
 
