@@ -325,4 +325,29 @@ end
 
 puts "Creating travellers"
 
-User.
+rowan = {
+  local: false,
+  first_name: 'Rowan',
+  email: 'rowan@lewagon.com',
+  password: '123456',
+  phone_number: '44 788474798',
+  address: 'London',
+  bio: "Life long explorer!"
+}
+
+julia = {
+  local: false,
+  first_name: 'Julia',
+  email: 'julia@lewagon.com',
+  password: '123456',
+  phone_number: '55 999999999',
+  address: 'Niteroi',
+  bio: "I'm small girl with big dreams!"
+}
+
+travellers = [rowan, julia]
+
+travellers.each do |traveller|
+  User.create(traveller)
+  puts "Created #{traveller[:first_name]}"
+end
