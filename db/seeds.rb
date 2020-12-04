@@ -335,7 +335,7 @@ campsite_photos = {
   camping_larissa: "https://res.cloudinary.com/juliaf1/image/upload/v1606932100/knj9g2p1yhi7pldjak08zm0n66fe.jpg",
   camping_ita: "https://res.cloudinary.com/juliaf1/image/upload/v1606932653/5raifuilbyhp9lmjr87cguqz7ipm.jpg",
   camping_roseno: "https://res.cloudinary.com/juliaf1/image/upload/v1606932599/e8efs5ag9drpcq7ro4s0y43ykbf2.jpg",
-  camping_luis: "https://cloudinary.com/console/c-26b3932e87b15f27520d9bce96a957/media_library/folders/home/asset/8e931fbbe0b0f3f257de15b62d1f6e95/manage"
+  camping_luis: "https://res.cloudinary.com/juliaf1/image/upload/v1606932345/b6bnh6wwqsklshhh44sd81ivgvad.jpg"
 }
 
 camping_sites.each do |camping|
