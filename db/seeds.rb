@@ -1,3 +1,5 @@
+require "open-uri"
+
 puts "Creating some caiçaras 🌊"
 
 nezinho = {
@@ -97,9 +99,26 @@ roseno = {
 
 caicaras = [nezinho, neneca, verte, ferreira, larissa, ita, luis, roseno]
 
+profile_photos = {
+  nezinho: "https://images.unsplash.com/photo-1605639649750-584b3d9a5522?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80",
+  neneca: "https://images.unsplash.com/photo-1593804863197-0a95c8ebef64?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80",
+  verte: "https://images.unsplash.com/photo-1601057959038-7bf0516c54c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+  ferreira: "https://images.unsplash.com/photo-1578232443464-16a2880948fe?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=352&q=80",
+  larissa: "https://images.unsplash.com/photo-1599571280904-64453968268b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+  ita: "https://images.unsplash.com/photo-1496672254107-b07a26403885?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+  luis: "https://images.unsplash.com/flagged/photo-1598629403012-bc0e90e12f21?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=376&q=80", 
+  roseno: "https://images.unsplash.com/photo-1606542353593-d1f26eb13088?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=401&q=80"
+}
+
 caicaras.each do |caicara|
   User.create(caicara)
   puts "Created #{caicara[:first_name]}"
+  local = User.last
+  file = URI.open(profile_photos[local.first_name.downcase.to_sym])
+  local.photo.attach(io: file, filename: "#{local.first_name.downcase}.jpg", content_type: 'image/jpg')
+  if local.photo
+    puts "#{local.first_name}'s profile photo attached! 📷"
+  end
 end
 
 puts "Creating some boats ⛵"
@@ -308,7 +327,24 @@ camping_luis = {
 
 camping_sites = [camping_nezinho, camping_neneca, camping_verte, camping_ferreira, camping_larissa, camping_ita, camping_roseno, camping_luis]
 
+campsite_photos = {
+  camping_nezinho: "https://res.cloudinary.com/juliaf1/image/upload/v1606932034/ycxx87zzjbr6m92pozx2quvu9lm2.jpg",
+  camping_neneca: "https://res.cloudinary.com/juliaf1/image/upload/v1606932375/kbsk9hjcnldmrdy14652xi91bbbd.jpg",
+  camping_verte: "https://res.cloudinary.com/juliaf1/image/upload/v1606932401/rqjdlf4r5t94zq7z7hqy2tl027ny.jpg",
+  camping_ferreira: "https://res.cloudinary.com/juliaf1/image/upload/v1606932131/53tdpvu66pxyc8cvzmzj6l8c8v3y.jpg",
+  camping_larissa: "https://res.cloudinary.com/juliaf1/image/upload/v1606932100/knj9g2p1yhi7pldjak08zm0n66fe.jpg",
+  camping_ita: "https://res.cloudinary.com/juliaf1/image/upload/v1606932653/5raifuilbyhp9lmjr87cguqz7ipm.jpg",
+  camping_roseno: "https://res.cloudinary.com/juliaf1/image/upload/v1606932599/e8efs5ag9drpcq7ro4s0y43ykbf2.jpg",
+  camping_luis: "https://cloudinary.com/console/c-26b3932e87b15f27520d9bce96a957/media_library/folders/home/asset/8e931fbbe0b0f3f257de15b62d1f6e95/manage"
+}
+
 camping_sites.each do |camping|
   Campsite.create(camping)
   puts "Created #{camping[:name]}"
+  campsite = Campsite.last
+  file = URI.open(campsite_photos["camping_#{campsite.user.first_name.downcase}".to_sym])
+  campsite.photo.attach(io: file, filename: "#{campsite.user.first_name.downcase}.jpg", content_type: 'image/jpg')
+  if campsite.photo
+    puts "#{campsite.name} photo attached! 📷"
+  end
 end
