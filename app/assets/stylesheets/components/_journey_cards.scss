@@ -1,0 +1,68 @@
+.journeys-container {
+  width: 700px;
+  margin: 48px auto;
+}
+
+.journey-card {
+  background-color: $neutral-light-blue;
+  overflow: hidden;
+  height: 150px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  position: relative;
+  border-radius: 4px 4px 0px 0px;
+  .av-link {
+    font-size: 16px;
+    color: $neutral-dark-blue;
+  }
+}
+
+.journey-image {
+  height: 150px;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.journey-main-info {
+  margin-top: 30px;
+  margin-left: 35px;
+  p {
+    font-weight: bold;
+  }
+}
+
+.journey-extra-info {
+  background-color: $light-gray;
+  overflow: hidden;
+  min-height: 150px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  margin-top: 0px;
+  text-align: left;
+  z-index: 900;
+  ul {
+    margin-left: 186px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+  li {
+    list-style-type: none;
+    padding-top: 8px;
+  }
+}
+
+.see-extra-info {
+  position: absolute;
+  right: 32px;
+}
+
+.btn-go-wide {
+  width: 100%;
+}
+
+#display-all {
+  text-align: center;
+}
+

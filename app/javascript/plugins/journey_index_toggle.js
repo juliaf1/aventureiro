@@ -1,12 +1,13 @@
-const toggleHidden = () => {
-  const hidden = document.querySelector(".hidden");
+const toggleHiddenInfo = () => {
 
-  const displayAll = document.getElementById('display-all')
-
-  displayAll.addEventListener('click', (event) => {
-    event.preventDefault();
-    hidden.classList.toggle("hidden");
+  const infoHiddenDivs = document.querySelectorAll(".info-hidden");
+  const seeExtraInfoButtons = document.querySelectorAll('.see-extra-info');
+  seeExtraInfoButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      infoHiddenDivs.item(button.dataset.id).classList.toggle("info-hidden");
+    });
   });
 };
 
-export { toggleHidden };
+export { toggleHiddenInfo };
