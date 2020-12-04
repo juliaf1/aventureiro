@@ -1,11 +1,19 @@
 .boats-container {
   width: 500px;
   margin: 48px auto;
+  .add-new-boat-btn {
+    padding: 8px;
+    margin: 10px;
+    background-color: $neutral-dark-blue;
+    color: $white;
+    border-radius: 4px;
+  }
 }
 
 .boat-card {
   box-shadow: 1px 1px 6px rgba(50, 50, 50, 0.1), 2px 3px 6px rgba(50, 50, 50, 0.4);
   padding: 20px 20px;
+  margin-top: 20px;
   margin-bottom: 24px;
   border-radius: 10px;
   .boat-card-top {
@@ -13,12 +21,24 @@
     justify-content: space-between;
     padding: 8px;
     margin-bottom: 5px;
+    .boat-details {
+      .boat-name {
+        font-size: 25px;
+      }
+    }
+
     .boat-image {
       text-align: center;
       height: 150px;
       border-radius: 4px 4px 0px 0px;
     }
-
+  }
+  .boat-action-btns {
+    padding: 8px;
+    margin: 4px;
+    background-color: $neutral-dark-blue;
+    color: $white;
+    border-radius: 4px;
   }
 }
 
