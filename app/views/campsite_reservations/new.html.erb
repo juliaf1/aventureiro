@@ -1,22 +1,19 @@
-
 <div class="container">
   <h3>Make a reservation for: <%= @campsite.name %></h3>
   <p><em>owned by: <%= @campsite.user.first_name %></em> </p>
 
   <%= simple_form_for(@campsite_reservation, url: campsite_campsite_reservations_path, method: 'post') do |f| %>
     <%= f.error_notification %>
-
     <div class="form-inputs">
-      <%= f.input :description,
-                   required: true,
-                   autofocus: true %>
       <%= f.input :check_in, required: true, as: :string, input_html: {id: "check_in"} %>
       <%= f.input :check_out, required: true, as: :string, input_html: {id: "check_out"} %>
       <%= f.input :number_guests, required: true %>
+      <%= f.input :description, required: true %>
     </div>
 
     <div class="form-actions">
       <%= f.submit %>
     </div>
+
   <% end %>
 </div>

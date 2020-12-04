@@ -1,8 +1,9 @@
 class CampsiteReservationsController < ApplicationController
-  before_action :find_campsite, only: :new
+  before_action :find_campsite, only: [ :new, :create ]
 
   def index
-    @campsite_reservations = CampsiteReservation.where(user_id: current_user.id)
+    @campsite_reservations = CampsiteReservation.where(user_id: current_user.id).includes(:campsite).order(:check_in)
+    @past_campsite_reservations = @campsite_reservations.select { |reservation| reservation.check_in < Date.today }
     authorize current_user, policy_class: CampsiteReservationPolicy
   end
 
@@ -13,10 +14,12 @@ class CampsiteReservationsController < ApplicationController
 
   def create
     @campsite_reservation = CampsiteReservation.new(reservation_params)
-    set_user_campsite_and_status
-    set_total_price
+    set_user_campsite_and_status(@campsite_reservation, @campsite)
+    set_total_price(@campsite_reservation, @campsite)
     authorize @campsite_reservation
     if @campsite_reservation.save
+      # when making this feature live, remember to send user argument with to: tel number
+      TwilioWhatsappMessenger.new.campsite_request_reservation_message(@campsite_reservation)
       redirect_to user_campsite_reservations_path(current_user), notice: "Your campsite reservation request is pending confirmation
       from #{@campsite_reservation.campsite.user.first_name}"
     else
@@ -26,12 +29,13 @@ class CampsiteReservationsController < ApplicationController
 
   def destroy
     @campsite_reservation = CampsiteReservation.find(params[:id])
-
-    if @campsite_reservation.check_in - Date.today > 1
-      @campsite_reservation.destroy
+    authorize @campsite_reservation
+    if @campsite_reservation.destroy
+      # when making this feature live, remember to send user argument with to: tel number
+      TwilioWhatsappMessenger.new.campsite_cancel_reservation_message(@campsite_reservation)
       redirect_to user_campsite_reservations_path(current_user), notice: "Your reservation was cancelled"
     else
-      redirect_to user_campsite_reservations_path(current_user), notice: "You can't cancel your reservation 24h before arrival"
+      redirect_to user_campsite_reservations_path(current_user)
     end
   end
 
@@ -41,15 +45,15 @@ class CampsiteReservationsController < ApplicationController
     @campsite = Campsite.find(params[:campsite_id])
   end
 
-  def set_user_campsite_and_status
-    @campsite_reservation.user = current_user
-    @campsite_reservation.campsite = find_campsite
-    @campsite_reservation.status = 0
+  def set_user_campsite_and_status(campsite_reservation, campsite)
+    campsite_reservation.user = current_user
+    campsite_reservation.campsite = campsite
+    campsite_reservation.status = 0
   end
 
-  def set_total_price
-    daily_price = @campsite_reservation.number_guests * @campsite_reservation.campsite.daily_price
-    @campsite_reservation.total_price = daily_price * (@campsite_reservation.check_out - @campsite_reservation.check_in + 1).to_i
+  def set_total_price(campsite_reservation, campsite)
+    daily_price = campsite_reservation.number_guests * campsite_reservation.campsite.daily_price
+    campsite_reservation.total_price = daily_price * (campsite_reservation.check_out - campsite_reservation.check_in + 1).to_i
   end
 
   def reservation_params
