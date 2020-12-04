@@ -2,7 +2,7 @@ class Local::BoatJourneyReservationsController < ApplicationController
 
   def index
     @journey_reservations = BoatJourneyReservation.joins(boat_journey: :boat).where(boats: { user_id: current_user.id })
-    @upcoming_journey_reservations = @journey_reservations.select |reservation|
+    @upcoming_journey_reservations = @journey_reservations.select do |reservation|
       reservation.boat_journey.departure_time >= Date.today
     end.sort_by do |reservation|
       reservation.boat_journey.departure_time
