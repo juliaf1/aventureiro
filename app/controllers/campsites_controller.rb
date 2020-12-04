@@ -2,7 +2,7 @@ class CampsitesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    @campsites = Campsite.all
+    @campsites = Campsite.includes(:user)
     authorize @campsites
   end
 

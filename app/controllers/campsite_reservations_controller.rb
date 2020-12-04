@@ -2,7 +2,8 @@ class CampsiteReservationsController < ApplicationController
   before_action :find_campsite, only: :new
 
   def index
-    @campsite_reservations = CampsiteReservation.where(user_id: current_user.id)
+    @campsite_reservations = CampsiteReservation.where(user_id: current_user.id).includes(:campsite).order(:check_in)
+    @past_campsite_reservations = @campsite_reservations.select { |reservation| reservation.check_in < Date.today }
     authorize current_user, policy_class: CampsiteReservationPolicy
   end
 

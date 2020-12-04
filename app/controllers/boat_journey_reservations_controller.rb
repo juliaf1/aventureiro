@@ -2,7 +2,8 @@ class BoatJourneyReservationsController < ApplicationController
   before_action :find_boat_journey, only: [ :new, :create ]
 
   def index
-    @journey_reservations = BoatJourneyReservation.all.sort_by { |reservation| reservation.boat_journey.departure_time }
+    @journey_reservations = BoatJourneyReservation.where(user_id: current_user.id).includes(:boat_journey).sort_by { |reservation| reservation.boat_journey.departure_time }
+    @past_journey_reservations = @journey_reservations.select { |reservation| reservation.boat_journey.departure_time < Date.today }
     authorize @journey_reservations, policy_class: BoatJourneyReservationPolicy
   end
 
@@ -30,7 +31,8 @@ class BoatJourneyReservationsController < ApplicationController
   def destroy
     @journey_reservation = BoatJourneyReservation.find(params[:id])
     authorize @journey_reservation, policy_class: BoatJourneyReservationPolicy
-    if @journey_reservation.boat_journey.departure_time - Time.now > 172_800
+
+    if @journey_reservation.boat_journey.departure_time > Date.today + 2.days
       @journey_reservation.destroy
       redirect_to boat_journey_reservations_path, notice: "Your reservation was cancelled."
     else
