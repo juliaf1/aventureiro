@@ -168,20 +168,19 @@ end
 puts "Adding photos to boats 📷"
 file = URI.open("https://images.unsplash.com/photo-1593188999272-b65631194b7f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OXx8c21hbGwlMjBwYXNzZW5nZXIlMjBib2F0fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
 barco = Boat.all[0]
-barco.photo_attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
 
 file = URI.open("https://images.unsplash.com/photo-1599011887608-d125aeefab9e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTJ8fHNtYWxsJTIwcGFzc2VuZ2VyJTIwYm9hdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
 barco = Boat.all[1]
-barco.photo_attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
 
 file = URI.open("https://images.unsplash.com/photo-1589627972662-12b2da3f14d2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjE5fHxzbWFsbCUyMHBhc3NlbmdlciUyMGJvYXR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
 barco = Boat.all[2]
-barco.photo_attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
 
 file = URI.open("https://images.unsplash.com/photo-1543078668-06f7626d60c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTZ8fGJvYXQlMjBicmF6aWwlMjBmaXNoaW5nfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
 barco = Boat.all[3]
-barco.photo_attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
-
+barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
 
 puts "Creating some boat journeys ⛵"
 
@@ -388,6 +387,7 @@ end
 puts "Seeding complete!"
 
 puts "Making some boat journey reservations"
+
 
 bt_journey = BoatJourney.all.sample
 num_passengers = rand(1..4)
