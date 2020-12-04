@@ -15,7 +15,8 @@ class TwilioWhatsappMessenger
   # OUTBOUND CAMPSITE MESSAGES:
 
   def campsite_request_reservation_message(campsite_reservation)
-    message = "Nova Reserva por: #{campsite_reservation.user.first_name.capitalize}\n
+    message = "Você tem uma nova reserva!
+    Nova Reserva por: #{campsite_reservation.user.first_name.capitalize}\n
     Check-in: #{campsite_reservation.check_in.strftime('%d/%m/%y')}\n
     Check-out: #{campsite_reservation.check_out.strftime('%d/%m/%y')}\n
     Número de hóspedes: #{campsite_reservation.number_guests}\n
@@ -26,26 +27,34 @@ class TwilioWhatsappMessenger
   end
 
   def campsite_cancel_reservation_message(campsite_reservation)
-    message = " #{campsite_reservation.user.first_name.capitalize} has cancelled their reservation
-    In: #{campsite_reservation.check_in} / Out: #{campsite_reservation.check_out}
-    for #{campsite_reservation.number_guests}, Total: R$#{campsite_reservation.total_price}.
-      Description: #{campsite_reservation.description}"
+    message = "Sinto muito, alguém desistiu da viagem.
+    Cancelamento de Reserva por: #{campsite_reservation.user.first_name.capitalize}\n
+    Check-in: #{campsite_reservation.check_in.strftime('%d/%m/%y')}\n
+    Check-out: #{campsite_reservation.check_out.strftime('%d/%m/%y')}\n
+    Número de hóspedes: #{campsite_reservation.number_guests}\n
+    Total: R$#{campsite_reservation.total_price}\n
+    Mensagem: #{campsite_reservation.description}\n"
     TwilioWhatsappMessenger.new.send_whatsapp(message)
   end
 
   # OUTBOUND BOAT MESSAGES:
   def boat_request_reservation_message(journey_reservation)
-    message = "New Reservation by: #{journey_reservation.user.first_name.capitalize}
-    Departure: #{journey_reservation.departure_time}
-    for #{journey_reservation.number_passengers}, Total: R$#{journey_reservation.total_price}.
-    Respond Yes/No to accept or decline. "
+    message = "Você tem uma nova reserva de barco!\n
+    Nova Reserva por: #{journey_reservation.user.first_name.capitalize}\n
+    Saída: #{journey_reservation.departure_time.strftime('%H:%M, %d/%m/%y')}\n
+    Número de passageiros: #{journey_reservation.number_passengers}\n
+    Total: R$#{journey_reservation.total_price}\n
+    Para aceitar ou recusar a reserva: aventureiroilhagrande.herokuapp.com/local/boat_journey_reservations"
     TwilioWhatsappMessenger.new.send_whatsapp(message)
   end
 
   def boat_cancel_reservation_message(journey_reservation)
-    message = "#{journey_reservation.user.first_name.capitalize} has cancelled their reservation
-    Departure: #{journey_reservation.departure_time}
-    for #{journey_reservation.number_passengers}, Total: R$#{journey_reservation.total_price}."
+    message = "Sinto muito, alguém desistiu da viagem.\n
+    Cancelamento de Reserva por: #{journey_reservation.user.first_name.capitalize}\n
+    Saída: #{journey_reservation.departure_time.strftime('%H:%M, %d/%m/%y')}\n
+    Número de passageiros: #{journey_reservation.number_passengers}\n
+    Total: R$#{journey_reservation.total_price}\n
+    Para aceitar ou recusar a reserva: aventureiroilhagrande.herokuapp.com/local/boat_journey_reservations"
     TwilioWhatsappMessenger.new.send_whatsapp(message)
   end
 
