@@ -30,13 +30,12 @@ class CampsiteReservationsController < ApplicationController
   def destroy
     @campsite_reservation = CampsiteReservation.find(params[:id])
     authorize @campsite_reservation
-    if @campsite_reservation.check_in - Date.today > 1
-      @campsite_reservation.destroy
+    if @campsite_reservation.destroy
       # when making this feature live, remember to send user argument with to: tel number
       TwilioWhatsappMessenger.new.campsite_cancel_reservation_message(@campsite_reservation)
       redirect_to user_campsite_reservations_path(current_user), notice: "Your reservation was cancelled"
     else
-      redirect_to user_campsite_reservations_path(current_user), notice: "You can't cancel your reservation 24h before arrival"
+      redirect_to user_campsite_reservations_path(current_user)
     end
   end
 
