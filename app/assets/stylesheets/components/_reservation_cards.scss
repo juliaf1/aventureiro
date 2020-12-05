@@ -16,3 +16,23 @@
   }
 
 }
+
+.boat-journey-reservations-container {
+  width: 50%;
+  text-align: center;
+  margin: 100px auto;
+  .boat-journey-reservation-card {
+    padding: 25px;
+    box-shadow: 1px 1px 6px rgba(50, 50, 50, 0.1), 2px 3px 6px rgba(50, 50, 50, 0.2);
+    .boat-journey-reservation-card-main {
+      display: flex;
+      justify-content: space-around;
+      h3 {
+        font-size: 25px;
+      }
+
+    }
+  }
+
+}
+

@@ -1,5 +1,5 @@
 <div class="campsite-reservations-container">
-  <h3>Campsite Reservations</h3>
+  <h4>Upcoming Campsite Reservations</h4>
 
   <% if @campsite_reservations.present? %>
     <% @campsite_reservations.each do |campsite_reservation| %>
@@ -21,29 +21,31 @@
             <% end %>
           </div>
         </div>
+      </div>
     <% end %>
 
   <% elsif @past_campsite_reservations.present? %>
     <h3>Past Campsite Reservations</h3>
     <% @past_campsite_reservations.each do |campsite_reservation| %>
-      <div class="campsite-reservation-card-main">
-        <div class="campsite-reservation-info">
-          <h5><%= campsite_reservation.campsite.name %></h5>
-          <p><%= "Check-in: #{campsite_reservation.check_in.strftime("%d %B %Y")}" %></p>
-          <p><%= "Check-out: #{campsite_reservation.check_out.strftime("%d %B %Y")}" %></p>
-          <p><%= "#{campsite_reservation.number_guests} guests" %></p>
-          <p><%= "Total price: R$#{campsite_reservation.total_price}" %></p>
-          <p><%= campsite_reservation.description%></p>
+      <div class="campsite-reservation-card">
+        <div class="campsite-reservation-card-main">
+          <div class="campsite-reservation-info">
+            <h3><%= campsite_reservation.campsite.name %></h3>
+            <h5><%=campsite_reservation.number_guests %> guests</h5>
+            <p><strong>Check-in:</strong> <%= campsite_reservation.check_in.strftime("%d %B %Y") %></p>
+            <p><strong>Check-out:</strong> <%= campsite_reservation.check_out.strftime("%d %B %Y") %></p>
+            <p><strong>Total:</strong> <%= "R$#{campsite_reservation.total_price}" %></p>
+            <p><strong>Status:</strong> <%= campsite_reservation.status %></p>
+            <p><%= campsite_reservation.description%></p>
+            <%= link_to "Request this campsite again", new_campsite_campsite_reservation_path(campsite_reservation.campsite), class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+          </div>
+          <div class="campsite-reservation-card-image">
+            <% if campsite_reservation.campsite.user.photo.attached? %>
+              <%= cl_image_tag campsite_reservation.campsite.photo.key, class: 'avatar-large' %>
+            <% end %>
+          </div>
         </div>
-        <div class="campsite-reservation-card-image">
-          <% if campsite_reservation.campsite.user.photo.attached? %>
-            <%= cl_image_tag campsite_reservation.campsite.photo.key, class: 'avatar-large' %>
-          <% end %>
-        </div>
-      </div>
-      <div class="campsite-reservation-actions">
-        <%= link_to "Request this campsite again", new_campsite_campsite_reservation_path(campsite_reservation.campsite) %>
-      </div>
+       </div>
     <% end %>
 
   <% else %>
