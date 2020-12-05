@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     end
     resources :boat_journeys, only: [ :index, :edit, :update, :destroy ]
     resources :campsites, only: [ :edit, :update, :index ] do
-      # resources :full_periods, only: [ :new, :create ]
+      resources :full_periods, only: [ :new, :create ]
     end
     resources :boat_journey_reservations, only: [ :index, :update ]
     resources :campsite_reservations, only: [ :index, :update ]

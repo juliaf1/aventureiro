@@ -1,6 +1,13 @@
 class Local::FullPeriodsController < ApplicationController
   before_action :find_full_period, only: [ :destroy ]
 
+  def new
+  end
+
+  def create
+    create
+  end
+
   def destroy
     @full_period.destroy
     redirect_to local_campsites_path
