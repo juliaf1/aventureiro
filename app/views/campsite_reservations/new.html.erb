@@ -1,18 +1,22 @@
-<div class="container">
+<div class="campsite-reservation-card">
   <h3>Make a reservation for: <%= @campsite.name %></h3>
   <p><em>owned by: <%= @campsite.user.first_name %></em> </p>
+
+  <div class="campsite-reservation-card-form">
 
   <%= simple_form_for(@campsite_reservation, url: campsite_campsite_reservations_path, method: 'post') do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
-      <%= f.input :check_in, required: true, as: :string, input_html: {id: "check_in"} %>
-      <%= f.input :check_out, required: true, as: :string, input_html: {id: "check_out"} %>
-      <%= f.input :number_guests, required: true %>
-      <%= f.input :description, required: true %>
+      <%= f.input :check_in, label: "Check-in", required: true, as: :string, input_html: {id: "check_in"} %>
+      <%= f.input :check_out, label: "Check-out", required: true, as: :string, input_html: {id: "check_out"} %>
+      <%= f.input :number_guests, label: "Number of guests", required: true %>
+      <%= f.input :description, label: "Tell us about your trip!", required: true %>
     </div>
 
     <div class="form-actions">
-      <%= f.submit %>
+      <%= link_to '<< Back', campsites_path, class: 'secondary-btn secondary-btn-sm secondary-btn-dark-blue' %>
+        <%= f.button :submit, "Create", class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+    </div>
     </div>
 
   <% end %>
