@@ -1,7 +1,5 @@
 <div class="profile-edit-card-container">
   <h3>Edit Profile</h3>
-
-  <div>
     <%= simple_form_for(current_user, url: user_path(current_user), method: 'patch') do |f| %>
       <%= f.error_notification %>
 
@@ -37,5 +35,4 @@
     <% end %>
     <%= link_to 'Back', user_path(current_user), class: 'secondary-btn secondary-btn-sm secondary-btn-dark-blue' %>
 
-  </div>
 </div>
