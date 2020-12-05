@@ -7,6 +7,7 @@ class Local::FullPeriodsController < ApplicationController
   end
 
   def create
+    
     @full_period = FullPeriod.new(full_period_params)
   end
 

@@ -4,7 +4,9 @@
   <%= simple_form_for(@full_period, url: local_campsite_full_periods_path, method: 'post') do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
-        <%= f.input :start_date, required: true, as: :string, input_html: { id: "start_date", class: "datepicker", name: "date", autocomplete: 'off' } %>
+        <%= f.input :start_date, required: true, as: :string, input_html: { id: "start_date", autocomplete: 'off' } %>
+        <%= f.input :start_date, required: true, as: :string, input_html: { id: "end_date", autocomplete: 'off' } %>
+
       </div>
 
       <div class="form-actions">
