@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :campsites, only: [ :edit, :update, :index ]
     resources :boat_journey_reservations, only: [ :index, :update ]
     resources :campsite_reservations, only: [ :index, :update ]
+    resources :full_periods, only: [ :index, :new, :create, :destroy ]
   end
 
   # API routes for whatsapp integration
