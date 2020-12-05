@@ -6,6 +6,16 @@
     <% @campsites.each do |campsite| %>
       <div class="card">
         <h4><%= campsite.name %></h4>
+        <% if campsite.full_periods %>
+          <ul>
+            <% campsite.full_periods.each do |full_period| %>
+              <li>
+                Fully booked from: <%= full_period.start_date %> to <%= full_period.end_date %>
+                <%= link_to "Delete", local_full_period_path(full_period), method: :delete %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
         <%= link_to "Edit Campsite", edit_local_campsite_path(campsite) %>
       </div>
     <% end %>
