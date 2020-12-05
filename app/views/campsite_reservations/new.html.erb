@@ -1,9 +1,9 @@
-<div class="campsite-reservation-card">
+<div class="campsite-new-reservation-card">
   <h3>Make a reservation for: </h3>
   <h5> <strong> <%= @campsite.name %> </strong></h5>
   <p><em>owned by: <%= @campsite.user.first_name %></em> </p>
 
-  <div class="campsite-reservation-card-form">
+  <div class="campsite-new-reservation-card-form">
 
   <%= simple_form_for(@campsite_reservation, url: campsite_campsite_reservations_path, method: 'post') do |f| %>
     <%= f.error_notification %>

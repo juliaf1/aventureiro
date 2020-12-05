@@ -1,9 +1,9 @@
-<div class="boat-reservation-card">
+<div class="boat-new-reservation-card">
   <h3>Request a reservation with <%= @boat_journey.boat.user.first_name %></h3>
   <p>For: <%= @boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></p>
 
 
-  <div class="boat-reservation-card-form">
+  <div class="boat-new-reservation-card-form">
     <%= simple_form_for(@journey_reservation, url: boat_journey_boat_journey_reservations_path(@boat_journey), method: 'post') do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
