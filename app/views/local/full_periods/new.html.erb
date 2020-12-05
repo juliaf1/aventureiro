@@ -1,13 +1,10 @@
 <div class="container">
   <h3>Create a full period</h3>
     
-  <%= simple_form_for(@campsite_reservation, url: campsite_campsite_reservations_path, method: 'post') do |f| %>
+  <%= simple_form_for(@full_period, url: local_campsite_full_periods_path, method: 'post') do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
-        <%= f.input :check_in, required: true, as: :string, input_html: {id: "check_in"} %>
-        <%= f.input :check_out, required: true, as: :string, input_html: {id: "check_out"} %>
-        <%= f.input :number_guests, required: true %>
-        <%= f.input :description, required: true %>
+        <%= f.input :start_date, required: true, as: :string, input_html: { id: "start_date", class: "datepicker", name: "date", autocomplete: 'off' } %>
       </div>
 
       <div class="form-actions">
