@@ -9,6 +9,7 @@ class Local::FullPeriodsController < ApplicationController
   def create
     @full_period = FullPeriod.new(full_period_params)
     @full_period.campsite = @campsite
+    authorize_full_period
     if @full_period.save
       redirect_to local_campsites_path
     else
@@ -17,6 +18,7 @@ class Local::FullPeriodsController < ApplicationController
   end
 
   def destroy
+    authorize_full_period
     @full_period.destroy
     redirect_to local_campsites_path
   end
@@ -33,5 +35,9 @@ class Local::FullPeriodsController < ApplicationController
 
   def find_campsite
     @campsite = Campsite.find(params[:campsite_id])
+  end
+
+  def authorize_full_period
+    authorize @full_period, policy_class: LocalFullPeriodPolicy
   end
 end
