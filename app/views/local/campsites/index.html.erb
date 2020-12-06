@@ -8,7 +8,7 @@
         <h4><%= campsite.name %></h4>
         <% if campsite.full_periods %>
           <ul>
-            <% campsite.full_periods.each do |full_period| %>
+            <% campsite.full_periods.sort_by(&:start_date).each do |full_period| %>
               <li>
                 Fully booked from: <%= full_period.start_date %> to <%= full_period.end_date %>
                 <%= link_to "Delete", local_full_period_path(full_period), method: :delete %>
