@@ -4,6 +4,7 @@ class Local::FullPeriodsController < ApplicationController
 
   def new
     @full_period = FullPeriod.new
+    authorize_full_period
   end
 
   def create

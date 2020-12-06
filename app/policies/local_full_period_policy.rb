@@ -1,5 +1,9 @@
 class LocalFullPeriodPolicy < ApplicationPolicy
 
+  def new?
+    local?
+  end
+
   def destroy?
     owner?
   end
@@ -10,6 +14,10 @@ class LocalFullPeriodPolicy < ApplicationPolicy
 
   def owner?
     record.campsite.user == user
+  end
+
+  def local?
+    user.local
   end
 
   class Scope < Scope
