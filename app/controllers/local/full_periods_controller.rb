@@ -9,9 +9,7 @@ class Local::FullPeriodsController < ApplicationController
   def create
     @full_period = FullPeriod.new(full_period_params)
     @full_period.campsite = @campsite
-    
     if @full_period.save
-      
       redirect_to local_campsites_path
     else
       render :new
