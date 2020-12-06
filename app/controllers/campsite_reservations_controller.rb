@@ -17,17 +17,8 @@ class CampsiteReservationsController < ApplicationController
     set_user_campsite_and_status(@campsite_reservation, @campsite)
     set_total_price(@campsite_reservation, @campsite)
     authorize @campsite_reservation
-
-    checkin_verified = @campsite_reservation.campsite.full_periods.all? do |period|
-      period.end_date < @campsite_reservation.check_in || period.start_date > @campsite_reservation.check_in
-    end
-
-    checkout_verified = @campsite_reservation.campsite.full_periods.all? do |period|
-      period.end_date < @campsite_reservation.check_out || period.start_date > @campsite_reservation.check_out
-    end
   
-    
-    if checkin_verified && checkout_verified # && confirm_check_out(@campsite_reservation)
+    if confirm_check_in(@campsite_reservation) && confirm_check_out(@campsite_reservation)
       if @campsite_reservation.save
         # when making this feature live, remember to send user argument with to: tel number
         TwilioWhatsappMessenger.new.campsite_request_reservation_message(@campsite_reservation)
@@ -54,6 +45,18 @@ class CampsiteReservationsController < ApplicationController
   end
 
   private
+
+  def confirm_check_in(campsite_reservation)
+    campsite_reservation.campsite.full_periods.all? do |period|
+      period.end_date < campsite_reservation.check_in || period.start_date > campsite_reservation.check_in
+    end
+  end
+
+  def confirm_check_out(campsite_reservation)
+    campsite_reservation.campsite.full_periods.all? do |period|
+      period.end_date < campsite_reservation.check_out || period.start_date > campsite_reservation.check_out
+    end
+  end
 
   def find_campsite
     @campsite = Campsite.find(params[:campsite_id])
