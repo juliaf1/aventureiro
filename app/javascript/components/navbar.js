@@ -9,7 +9,7 @@ const initUpdateNavbarOnScroll = () => {
       }
     });
   }
-  const localNavbar = document.querySelector('.local-navbar');
+  const localNavbar = document.querySelector('.home-local-navbar');
   if (localNavbar) {
     window.addEventListener('scroll', () => {
       if (window.scrollY >= 100) {

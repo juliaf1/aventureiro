@@ -14,7 +14,7 @@
           <% else %>
             <li><%= link_to "Plan your trip", campsites_path, class: "av-link" %></li>
           <% end %>
-          
+
           <% if current_user && current_user.admin? %>
             <li><strong><%= link_to "Admin Console", rails_admin_path, class: "av-link" %></strong></li>
           <% end %>
@@ -52,7 +52,7 @@
   
   <% if current_user %>
     <% if current_user.local? %>
-      <%= render 'shared/local_navbar' %>
+      <%= render 'shared/home_local_navbar' %>
     <% end %>
   <% end %>
 </div>
