@@ -2,13 +2,12 @@
   padding: 0 80px;
   height: 64px;
   max-width: 54%;
-  box-shadow: 0px 1px 0px 1px rgba(40, 40, 40, 0.15);
-  background: $light-green;
   transition: 0.5s background-color ease;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: $light-green;
 
   ul {
     list-style: none;
@@ -34,3 +33,7 @@
   }
 }
 
+.local-navbar-green {
+  background: $light-green;
+  box-shadow: 0px 1px 0px 1px rgba(40, 40, 40, 0.15);
+}

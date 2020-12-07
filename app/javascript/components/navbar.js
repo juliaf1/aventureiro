@@ -9,6 +9,18 @@ const initUpdateNavbarOnScroll = () => {
       }
     });
   }
+  const localNavbar = document.querySelector('.local-navbar');
+  if (localNavbar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY >= 100) {
+        localNavbar.classList.add('local-navbar-green');
+      } else {
+        localNavbar.classList.remove('local-navbar-green');
+      }
+    });
+  }
 }
+
+
 
 export { initUpdateNavbarOnScroll };

@@ -1,4 +1,8 @@
-<%= render 'shared/index_navbar' %>
+
+<% unless current_user.local? %>
+  <%= render 'shared/index_navbar' %>
+<% end %>
+
 <div class="campsites-container">
 
 

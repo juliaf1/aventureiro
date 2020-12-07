@@ -7,14 +7,16 @@
 
 .index-navbar {
   margin-top: 0;
-  width: 100%;
+  width: 36%;
   height: 64px;
+  padding-left: 80px;
   background: $light-yellow;
   transition: 0.5s background-color ease;
   z-index: 1001;
   display: flex;
-  justify-content: space-around;
+  justify-content: left;
   align-items: center;
+  z-index: 1;
 
   ul {
 
@@ -29,7 +31,6 @@
   .navbar-options-left {
     .av-link {
       color: $white;
-
     }
   }
 }
