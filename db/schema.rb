@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_162343) do
+ActiveRecord::Schema.define(version: 2020_12_07_161001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -93,13 +103,11 @@ ActiveRecord::Schema.define(version: 2020_12_05_162343) do
     t.index ["user_id"], name: "index_campsites_on_user_id"
   end
 
-  create_table "full_periods", force: :cascade do |t|
-    t.bigint "campsite_id", null: false
-    t.date "start_date"
-    t.date "end_date"
+  create_table "posts", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["campsite_id"], name: "index_full_periods_on_campsite_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -130,5 +138,5 @@ ActiveRecord::Schema.define(version: 2020_12_05_162343) do
   add_foreign_key "campsite_reservations", "campsites"
   add_foreign_key "campsite_reservations", "users"
   add_foreign_key "campsites", "users"
-  add_foreign_key "full_periods", "campsites"
+  add_foreign_key "posts", "users"
 end
