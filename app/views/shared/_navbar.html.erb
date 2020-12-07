@@ -41,5 +41,8 @@
           <% end %>
       </div>
   </div>
-  <%= render 'shared/local_navbar' %>
+  
+  <% if current_user.local? %>
+    <%= render 'shared/local_navbar' %>  
+  <% end %>
 </div>
