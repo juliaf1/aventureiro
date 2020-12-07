@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_194556) do
+ActiveRecord::Schema.define(version: 2020_12_07_231835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,12 @@ ActiveRecord::Schema.define(version: 2020_12_07_194556) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "address"
+    t.string "phone_number"
+    t.date "birth_date"
     t.index ["user_id"], name: "index_permit_requests_on_user_id"
   end
 

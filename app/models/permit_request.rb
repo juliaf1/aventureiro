@@ -3,5 +3,5 @@ class PermitRequest < ApplicationRecord
 
   enum status: { pending: 0, confirmed: 1, rejected: 2 }
 
-  validates :arrival, :departure, presence: true
+  validates :arrival, :departure, :first_name, :last_name, :email, presence: true
 end
