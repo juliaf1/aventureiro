@@ -1,0 +1,33 @@
+
+
+<div class="container">
+
+  <div class="post-form">
+    <%= render 'shared/new_post_form' %>
+
+
+  </div>
+
+  <div class="posts-container">
+
+    <% @posts.each do |post| %>
+      <div class="post-card">
+        <div class="post-image">
+          <% if post.photo.attached? %>
+            <%= cl_image_tag post.photo.key, class: "post-photo" %>
+          <% end %>
+         </div>
+         <div class="post-text">
+           <%= post.rich_body %>
+         </div>
+
+    </div>
+
+
+    <% end %>
+
+
+
+  </div>
+
+</div>
