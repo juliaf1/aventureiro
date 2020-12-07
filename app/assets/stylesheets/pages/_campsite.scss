@@ -1,6 +1,11 @@
+.campsite-container {
+  margin: 64px auto;
+  width: 800px;
+}
+
 // Campsite
 
-.campsite-container {
+.campsite-section {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,8 +13,8 @@
 
 .campsite-full-card {
   min-height: 1000px;
-  width: 1000px;
-  margin: 0 80px 80px 80px;
+  width: 100%;
+  margin: 48px auto;
   box-shadow: 1px 1px 6px rgba(80, 80, 80, 0.1);
 }
 
@@ -55,7 +60,7 @@
 
 // Local part
 
-.campsite-local-container {
+.campsite-local-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,7 +68,7 @@
 
 .campsite-local-card {
   padding: 80px;
-  width: 1000px;
+  width: 100%;
   min-height: 400px;
   box-shadow: 1px 1px 6px rgba(80, 80, 80, 0.1);
   color: $neutral-dark-blue;

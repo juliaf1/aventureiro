@@ -1,39 +1,41 @@
-<div class="go-back">
-  <%= link_to icon('fas', 'chevron-left'), campsites_path %>
-  <%= link_to 'Go back', campsites_path, class: 'av-link' %>
-</div>
-
 <div class="campsite-container">
-  <div class="campsite-full-card">
-    <%= cl_image_tag @campsite.photo.key, class: 'campsite-photo' %>
-    <div class="campsite-full-content">
-      <div class="campsite-info">
-        <h2><%= @campsite.name %></h2>
-        <p><%= @campsite.description %></p>
-      </div>
-      <div class="campsite-tags">
-        <p class="availability"><%= @campsite.availability %></p>
-        <p class="price">R$<%= @campsite.daily_price %></p>
-      </div>
-      <div class="request">
-        <%= link_to 'Request a Reservation', new_campsite_campsite_reservation_path(@campsite), class: 'secondary-btn secondary-btn-sm secondary-btn-green' %>
+  <div class="go-back">
+    <%= link_to icon('fas', 'chevron-left'), campsites_path %>
+    <%= link_to 'Go back', campsites_path, class: 'av-link' %>
+  </div>
+
+  <div class="campsite-section">
+    <div class="campsite-full-card">
+      <%= cl_image_tag @campsite.photo.key, class: 'campsite-photo' %>
+      <div class="campsite-full-content">
+        <div class="campsite-info">
+          <h2><%= @campsite.name %></h2>
+          <p><%= @campsite.description %></p>
+        </div>
+        <div class="campsite-tags">
+          <p class="availability"><%= @campsite.availability %></p>
+          <p class="price">R$<%= @campsite.daily_price %></p>
+        </div>
+        <div class="request">
+          <%= link_to 'Request a Reservation', new_campsite_campsite_reservation_path(@campsite), class: 'secondary-btn secondary-btn-sm secondary-btn-green' %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="campsite-local-container">
-  <div class="campsite-local-card">
-    <div class="campsite-local-card-image">
-      <%= cl_image_tag @campsite.user.photo.key, class: 'avatar-large' %>
-      <div class="campsite-local-card-image-info">
-        <h3><%= @campsite.user.first_name %></h3>
-        <p><%= @campsite.user.phone_number %></p>
+  <div class="campsite-local-section">
+    <div class="campsite-local-card">
+      <div class="campsite-local-card-image">
+        <%= cl_image_tag @campsite.user.photo.key, class: 'avatar-large' %>
+        <div class="campsite-local-card-image-info">
+          <h3><%= @campsite.user.first_name %></h3>
+          <p><%= @campsite.user.phone_number %></p>
+        </div>
       </div>
-    </div>
-    <div class="campsite-local-card-info">
-      <p><%= @campsite.user.bio %></p>
-      <p><%= icon('fa', 'map-marker-alt')%>Aventureiro</p>
+      <div class="campsite-local-card-info">
+        <p><%= @campsite.user.bio %></p>
+        <p><%= icon('fa', 'map-marker-alt')%>Aventureiro</p>
+      </div>
     </div>
   </div>
 </div>
