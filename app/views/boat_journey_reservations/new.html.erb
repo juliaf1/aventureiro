@@ -1,7 +1,9 @@
-<div class="container">
-  <h3>Request a reservation on this Boat Journey</h3>
+<div class="boat-new-reservation-card">
+  <h3>Request a reservation with <%= @boat_journey.boat.user.first_name %></h3>
+  <p>For: <%= @boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></p>
 
-  <div>
+
+  <div class="boat-new-reservation-card-form">
     <%= simple_form_for(@journey_reservation, url: boat_journey_boat_journey_reservations_path(@boat_journey), method: 'post') do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
@@ -10,9 +12,9 @@
                     autofocus: true %>
       </div>
       <div class="form-actions">
-        <%= f.button :submit, "Create", class: "btn btn-primary" %>
+        <%= link_to '<< Back', boat_journeys_path, class: 'secondary-btn secondary-btn-dark-blue' %>
+        <%= f.button :submit, "Create", class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
       </div>
     <% end %>
-    <%= link_to 'Back', user_path(current_user), class: 'btn btn-primary' %>
   </div>
 </div>
