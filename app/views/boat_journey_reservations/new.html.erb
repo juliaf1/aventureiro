@@ -1,9 +1,14 @@
-<div class="boat-new-reservation-card">
-  <h3>Request a reservation with <%= @boat_journey.boat.user.first_name %></h3>
-  <p>For: <%= @boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></p>
+<div class="reservation-container">
+  <div class="go-back">
+    <%= link_to icon('fas', 'chevron-left'), campsites_path %>
+    <%= link_to 'Go back', boat_journeys_path, class: 'av-link' %>
+  </div>
 
+  <div class="reservation-card">
+    <h4>Reservation Request</h4>
+    <h5><%= "#{@boat_journey.boat.name} - Sailor #{@boat_journey.boat.user.first_name}" %></h5>
+    <p><%= @boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></p>
 
-  <div class="boat-new-reservation-card-form">
     <%= simple_form_for(@journey_reservation, url: boat_journey_boat_journey_reservations_path(@boat_journey), method: 'post') do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
@@ -11,9 +16,9 @@
                     required: true,
                     autofocus: true %>
       </div>
+
       <div class="form-actions">
-        <%= link_to '<< Back', boat_journeys_path, class: 'secondary-btn secondary-btn-dark-blue' %>
-        <%= f.button :submit, "Create", class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+        <%= f.button :submit, "Confirm Request", class: "devise-btn" %>
       </div>
     <% end %>
   </div>

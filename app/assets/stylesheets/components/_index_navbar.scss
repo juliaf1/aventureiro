@@ -9,14 +9,19 @@
 
   li {
     display: inline;
-    padding: 16px 24px;
+    padding: 16px 32px;
     margin: 0 8px;
     border: 1px solid $neutral-dark-brown;
-    background-color: $neutral-light-brown;
+    background-color: $light-gray;
+
+    &:hover {
+      background-color: $light-pink;
+    }
   }
 
   a {
     color: $neutral-dark-brown;
+    border: none;
   }
 }
 
