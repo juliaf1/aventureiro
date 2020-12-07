@@ -21,7 +21,8 @@
            <%= post.rich_body %>
          </div>
 
-    </div>
+         <%= link_to 'Delete', user_post_path(current_user, post), method: 'delete' %>
+      </div>
 
 
     <% end %>

@@ -9,13 +9,19 @@ class PostsController < ApplicationController
     @post.user = current_user
 
     if @post.save
-      redirect_to user_posts_path
+      redirect_to user_posts_path, anchor: @post
     else
       render :index
     end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      redirect_to user_posts_path
+    else
+      render :index, anchor: @post
+    end
   end
 
   private
