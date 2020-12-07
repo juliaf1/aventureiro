@@ -1,32 +1,54 @@
-<div class="container">
-  <h3>All Your Boat Journeys Reservations</h3>
+<div class="boat-journey-reservations-container">
 
   <% if @journey_reservations.present? %>
     <h4>Upcoming boat journeys</h4>
     <% @journey_reservations.each do |boat_reservation| %>
-      <div class="card">
-        <%= boat_reservation.boat_journey.boat.name %>
-        <%= boat_reservation.boat_journey.boat.user.first_name %>
-        <%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
-        <%= boat_reservation.boat_journey.travel_duration %>
-        <%= "#{boat_reservation.number_passengers} passengers" %>
-        <%= "Total price: #{boat_reservation.total_price}" %>
-        <%= "Status: #{boat_reservation.status}" %>
-        <%= link_to "Cancel", boat_journey_reservation_path(boat_reservation), method: :delete %>
+      <div class="boat-journey-reservation-card">
+        <div class="boat-journey-reservation-card-main">
+          <div class="boat-journey-reservation-info">
+            <h3>  <%= boat_reservation.boat_journey.boat.name %></h3>
+            <p><strong>Captain: </strong><%= boat_reservation.boat_journey.boat.user.first_name %> </p>
+            <p><strong>Number of passengers: </strong><%= boat_reservation.number_passengers %></p>
+            <p><strong>Departure time: </strong> <%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></p>
+            <p><strong>Travel Duration: </strong><%= boat_reservation.boat_journey.travel_duration %></p>
+            <p><strong>Total price: </strong><%= "R$#{boat_reservation.total_price}" %></p>
+            <p><strong>Status: </strong><%= boat_reservation.status %></p>
+            <%= link_to "Cancel", boat_journey_reservation_path(boat_reservation), method: :delete, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue", data: {confirm: "Are you sure you want to cancel this reservation?"} %>
+          </div>
+          <div class="boat-journey-reservation-card-image">
+            <% if boat_reservation.boat_journey.boat.photo.attached? %>
+              <%= cl_image_tag boat_reservation.boat_journey.boat.photo.key, class: 'avatar-large' %>
+            <% else %>
+              <img class="boat-image avatar-large" src="https://imgc.allpostersimages.com/img/print/posters/small-fishing-boats-in-the-turquoise-sea-mauritius-indian-ocean-africa_a-G-8747570-4990619.jpg" alt="boat photo">
+            <% end %>
+          </div>
+        </div>
       </div>
+
     <% end %>
 
   <% elsif @past_journey_reservations.present? %>
     <h4>Past boat journeys reservations</h4>
     <% @past_journey_reservations.each do |boat_reservation| %>
-      <div class="card">
-        <%= boat_reservation.boat_journey.boat.name %>
-        <%= boat_reservation.boat_journey.boat.user.first_name %>
-        <%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %>
-        <%= boat_reservation.boat_journey.travel_duration %>
-        <%= "#{boat_reservation.number_passengers} passengers" %>
-        <%= "Total price: #{boat_reservation.total_price}" %>
-        <%= link_to "Request this boat again", boat_journeys_path, anchor: boat_reservation.boat_journey.boat %>
+      <div class="boat-journey-reservation-card">
+        <div class="boat-journey-reservation-card-main">
+          <div class="boat-journey-reservation-info">
+            <h3>  <%= boat_reservation.boat_journey.boat.name %></h3>
+            <p><strong>Captain: </strong><%= boat_reservation.boat_journey.boat.user.first_name %> </p>
+            <p><strong>Number of passengers: </strong><%= boat_reservation.number_passengers %></p>
+            <p><strong>Departure time: </strong> <%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></p>
+            <p><strong>Travel Duration: </strong><%= boat_reservation.boat_journey.travel_duration %></p>
+            <p><strong>Total price: </strong><%= "R$#{boat_reservation.total_price}" %></p>
+            <%= link_to "Request this boat again", boat_journeys_path, anchor: boat_reservation.boat_journey.boat %>
+          </div>
+          <div class="boat-journey-reservation-card-image">
+            <% if boat_reservation.boat_journey.boat.photo.attached? %>
+              <%= cl_image_tag boat_reservation.boat_journey.boat.photo.key, class: 'avatar-large' %>
+            <% else %>
+              <img class="boat-image avatar-large" src="https://imgc.allpostersimages.com/img/print/posters/small-fishing-boats-in-the-turquoise-sea-mauritius-indian-ocean-africa_a-G-8747570-4990619.jpg" alt="boat photo">
+            <% end %>
+          </div>
+        </div>
       </div>
     <% end %>
 
