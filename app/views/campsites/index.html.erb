@@ -1,7 +1,13 @@
 
-<% unless current_user.local? %>
+<% if current_user %>
+  <% unless current_user.local? %>
+    <%= render 'shared/index_navbar' %>
+  <% end %>
+<% else %>
   <%= render 'shared/index_navbar' %>
 <% end %>
+
+
 
 <div class="campsites-container">
 

@@ -7,7 +7,14 @@
           <li><%= link_to "Home", root_path, class: "av-link" %></li>
           <li><%= link_to "About Aventureiro", root_path, class: "av-link" %></li>
           <li><%= link_to "Adventurer Guide", root_path, class: "av-link" %></li>
-          <li><%= link_to "Plan your trip", campsites_path, class: "av-link" %></li>
+
+          <% if current_user && current_user.local? %>
+            <li><%= link_to "Boat Schedule", boat_journeys_path, class: "av-link" %></li>
+            <li><%= link_to "Campsites", campsites_path, class: "av-link" %></li>
+          <% else %>
+            <li><%= link_to "Plan your trip", campsites_path, class: "av-link" %></li>
+          <% end %>
+          
           <% if current_user && current_user.admin? %>
             <li><strong><%= link_to "Admin Console", rails_admin_path, class: "av-link" %></strong></li>
           <% end %>

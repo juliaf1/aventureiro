@@ -6,7 +6,14 @@
           <li><%= link_to "Home", root_path, class: "av-link" %></li>
           <li><%= link_to "About Aventureiro", root_path, class: "av-link" %></li>
           <li><%= link_to "Adventurer Guide", root_path, class: "av-link" %></li>
-          <li><%= link_to "Plan your trip", campsites_path, class: "av-link" %></li>
+          
+          <% if current_user && current_user.local? %>
+            <li><%= link_to "Boat Schedule", boat_journeys_path, class: "av-link" %></li>
+            <li><%= link_to "Campsites", campsites_path, class: "av-link" %></li>
+          <% else %>
+            <li><%= link_to "Plan your trip", campsites_path, class: "av-link" %></li>
+          <% end %>
+
           <% if current_user && current_user.admin? %>
             <li><strong><%= link_to "Admin Console", rails_admin_path, class: "av-link" %></strong></li>
           <% end %>
@@ -25,8 +32,6 @@
               <div class="dropdown-menu dropdown-menu-right">
                 <% if current_user.local %>
                   <%= link_to "Meu perfil", user_path(current_user), class: "dropdown-item" %>
-                  <%= link_to "Reservas de Barco", local_boat_journey_reservations_path, class: "dropdown-item" %>
-                  <%= link_to "Reservas de Camping", local_campsite_reservations_path, class: "dropdown-item" %>
                   <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                 <% else %>
                   <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
