@@ -1,26 +1,11 @@
-.go-back {
-  margin-left: 80px;
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-
-  i {
-    font-size: 24px;
-    margin-right: 16px;
-    color: $neutral-dark-blue;
-    padding-top: 4px;
-  }
-
-  a {
-    margin: 0;
-    color: $neutral-dark-blue;
-  }
+.campsite-container {
+  margin: 64px auto;
+  width: 800px;
 }
 
 // Campsite
 
-.campsite-container {
+.campsite-section {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,9 +13,9 @@
 
 .campsite-full-card {
   min-height: 1000px;
-  width: 1000px;
-  margin: 0 80px 80px 80px;
+  width: 100%;
   box-shadow: 1px 1px 6px rgba(80, 80, 80, 0.1);
+  margin-bottom: 32px;
 }
 
 .campsite-photo {
@@ -75,7 +60,7 @@
 
 // Local part
 
-.campsite-local-container {
+.campsite-local-section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,11 +68,11 @@
 
 .campsite-local-card {
   padding: 80px;
-  width: 1000px;
+  width: 100%;
   min-height: 400px;
   box-shadow: 1px 1px 6px rgba(80, 80, 80, 0.1);
   color: $neutral-dark-blue;
-  margin-bottom: 64px;
+  margin: 40px auto;
 }
 
 .campsite-local-card-image {

@@ -1,84 +1,92 @@
 <%= render 'shared/index_navbar' %>
 
-<div class="container">
-  <div class="container text-center">
-    <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+<div class="journey-container">
 
-      <h3>Select a date for your journey!</h3>
+  <div class="journey-filter">
+    <h3>Filter by date</h3>
+    <p class="journey-p">Check the boats schedule for your check-in date.</p>
 
-      <%= simple_form_for :search, method: "get" do |f| %>
-        <%= f.input :date, as: :string, required: false, label: false, input_html: {class: "datepicker", name: "date", autocomplete: 'off'} %>
-        <%= f.button :submit, "Go", class: "secondary-btn secondary-btn-md secondary-btn-yellow btn-go-wide" %>
-      <% end %>
-    </div>
-  </div>
-
-  <% unless @date %>
-    <a href="#" class="secondary-btn secondary-btn-md secondary-btn-green" id="display-all">See all boat journeys</a>
-  <% end %>
-
-  <h3>
-    <% if @date %>
-      Boat journeys for
-      <%= @date.to_date.strftime("%d %B %Y") %>
+    <%= simple_form_for :search, method: "get", wrapper: :inline_form, html: { class: "form-inline" } do |f| %>
+      <%= f.input :date, as: :string, required: false, label: false, input_html: {class: "datepicker", name: "date", autocomplete: 'off'} %>
+      <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
     <% end %>
-  </h3>
+
+    <% if @date %>
+      <p class="date-tag">Schedule on <%= @date.to_date.strftime("%d %B %Y") %></p>
+      <%= link_to 'Back', boat_journeys_path, class: 'av-link' %>
+    <% end %>
+  </div>
 
   <div class="journeys-container">
     <% n = 0 %>
+
     <% @boat_journeys.first(10).each do |boat_journey| %>
       <div class="journey-card">
-        <img class="journey-image" src="https://imgc.allpostersimages.com/img/print/posters/small-fishing-boats-in-the-turquoise-sea-mauritius-indian-ocean-africa_a-G-8747570-4990619.jpg" alt="boat photo">
+        <% if boat_journey.boat.photo.attached? %>
+          <%= cl_image_tag boat_journey.boat.photo.key, class: 'journey-image' %>
+        <% else %>
+          <img class="journey-image" src="https://imgc.allpostersimages.com/img/print/posters/small-fishing-boats-in-the-turquoise-sea-mauritius-indian-ocean-africa_a-G-8747570-4990619.jpg" alt="boat photo">
+        <% end %>
+
         <div class="journey-main-info">
-          <h5><%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></h5>
-          <p>Boat: <%= boat_journey.boat.name %></p>
+          <p class="journey-date"><%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></p>
+          <p class="journey-name">Boat: <%= boat_journey.boat.name %></p>
         </div>
         <a href="#" class="av-link see-extra-info" data-id=<%= n %>>See more info</a>
       </div>
+
       <div class="journey-extra-info info-hidden" data-id="<%= n %>">
-        <ul>
-          <li>Captain: <%= boat_journey.boat.user.first_name %></li>
-          <li>Price per passenger: <%= boat_journey.price_person %></li>
-          <li>Duration: <%= boat_journey.travel_duration %></li>
-          <li><%= link_to "make a reservation", new_boat_journey_boat_journey_reservation_path(boat_journey), class: "secondary-btn secondary-btn-sm secondary-btn-yellow" %></li>
-        </ul>
+        <div class="journey-info-p">
+          <p class="journey-info">Captain: <%= boat_journey.boat.user.first_name %></p>
+          <p class="journey-info">Price: R$<%= boat_journey.price_person %>/passenger</p>
+          <p class="journey-info">Duration: <%= boat_journey.travel_duration %></p>
+        </div>
+        <%= link_to "make a reservation", new_boat_journey_boat_journey_reservation_path(boat_journey), class: "primary-btn primary-btn-sm primary-btn-blue" %>
       </div>
+
       <% n += 1 %>
     <% end %>
 
     <% other_journeys = @boat_journeys - @boat_journeys.first(10) %>
     <div class=" hidden">
       <% other_journeys.each do |boat_journey| %>
+
         <div class="journey-card">
           <% if boat_journey.boat.photo.attached? %>
-            <%= cl_image_tag boat_journey.boat.photo.key, crop: :fill, class: 'journey-image' %>
+            <%= cl_image_tag boat_journey.boat.photo.key, class: 'journey-image' %>
           <% else %>
             <img class="journey-image" src="https://imgc.allpostersimages.com/img/print/posters/small-fishing-boats-in-the-turquoise-sea-mauritius-indian-ocean-africa_a-G-8747570-4990619.jpg" alt="boat photo">
           <% end %>
+
           <div class="journey-main-info">
-            <h5><%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></h5>
-            <p>Boat: <%= boat_journey.boat.name %></p>
+            <p class="journey-date"><%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></p>
+            <p class="journey-name">Boat: <%= boat_journey.boat.name %></p>
           </div>
           <a href="#" class="av-link see-extra-info" data-id=<%= n %>>See more info</a>
         </div>
+
         <div class="journey-extra-info info-hidden" data-id="<%= n %>">
-          <ul>
-            <li>Captain: <%= boat_journey.boat.user.first_name %></li>
-            <li>Price per passenger: <%= boat_journey.price_person %></li>
-            <li>Duration: <%= boat_journey.travel_duration %></li>
-            <li><%= link_to "make a reservation", new_boat_journey_boat_journey_reservation_path(boat_journey) %></li>
-          </ul>
+          <div class="journey-info-p">
+            <p class="journey-info">Captain: <%= boat_journey.boat.user.first_name %></p>
+            <p class="journey-info">Price: R$<%= boat_journey.price_person %>/passenger</p>
+            <p class="journey-info">Duration: <%= boat_journey.travel_duration %></p>
+          </div>
+          <%= link_to "make a reservation", new_boat_journey_boat_journey_reservation_path(boat_journey), class: "primary-btn primary-btn-sm primary-btn-blue" %>
         </div>
         <% n += 1 %>
       <% end %>
     </div>
+
   </div>
 
-  <% if @date %>
-    <%= link_to 'Back', boat_journeys_path, class: 'secondary-btn secondary-btn-sm secondary-btn-green' %>
+  <% unless @date %>
+    <%= link_to 'Full schedule', '#', class: 'secondary-btn secondary-btn-sm secondary-btn-blue', id: 'display-all' %>
   <% end %>
 
-  <p>Couldn't find a schedule that fits you?
-    <%= link_to "Contact a boatdriver directly to make a special journey request", boats_path %>
-  </p>
+  <div class="special-request">
+    <p>Couldn't find a schedule that fits you?
+      <%= link_to "Contact a boatdriver directly to make a special journey request.", boats_path %>
+    </p>
+  </div>
+
 </div>

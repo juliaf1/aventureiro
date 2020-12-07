@@ -20,32 +20,38 @@ h1, h2, h3, h4, h5 {
 h1 {
   font-size: 104px;
   font-weight: 600;
+  color: $neutral-dark-blue;
 }
 
 h2 {
   font-size: 64px;
   font-weight: 600;
+  color: $neutral-dark-blue;
 }
 
 h3 {
   font-size: 48px;
   font-weight: 400;
+  color: $neutral-dark-blue;
 }
 
 h4 {
   font-size: 32px;
   font-weight: 300;
+  color: $neutral-dark-blue;
 }
 
 h5 {
   font-size: 24px;
   font-weight: 300;
+  color: $neutral-dark-blue;
 }
 
 p {
   font-family: 'Work Sans', 'sans-serif';
   font-size: 16px;
   font-weight: 300;
+  color: $gray;
 }
 
 a {
@@ -84,6 +90,5 @@ a {
 }
 
 .content-container {
-  margin-top: 160px;
-  margin-bottom: 80px;
+  margin: 150px 0;
 }

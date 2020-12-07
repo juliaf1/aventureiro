@@ -1,24 +1,25 @@
-<div class="campsite-new-reservation-card">
-  <h3>Make a reservation for: </h3>
-  <h5> <strong> <%= @campsite.name %> </strong></h5>
-  <p><em>owned by: <%= @campsite.user.first_name %></em> </p>
+<div class="reservation-container">
+  <div class="go-back">
+    <%= link_to icon('fas', 'chevron-left'), campsites_path %>
+    <%= link_to 'Go back', campsite_path(@campsite), class: 'av-link' %>
+  </div>
 
-  <div class="campsite-new-reservation-card-form">
+  <div class="reservation-card">
+    <h4>Reservation Request</h4>
+    <h5><%= @campsite.name %></h5>
 
-  <%= simple_form_for(@campsite_reservation, url: campsite_campsite_reservations_path, method: 'post') do |f| %>
-    <%= f.error_notification %>
-    <div class="form-inputs">
-      <%= f.input :check_in, label: "Check-in", required: true, as: :string, input_html: {id: "check_in"} %>
-      <%= f.input :check_out, label: "Check-out", required: true, as: :string, input_html: {id: "check_out"} %>
-      <%= f.input :number_guests, label: "Number of guests", required: true %>
-      <%= f.input :description, label: "Tell us about your trip!", required: true %>
-    </div>
+    <%= simple_form_for(@campsite_reservation, url: campsite_campsite_reservations_path, method: 'post') do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :check_in, label: "Check-in", required: true, as: :string, input_html: {id: "check_in"} %>
+        <%= f.input :check_out, label: "Check-out", required: true, as: :string, input_html: {id: "check_out"} %>
+        <%= f.input :number_guests, label: "Number of guests", required: true %>
+        <%= f.input :description, label: "Tell #{@campsite.user.first_name} about your trip", required: true, input_html: { rows: '5'} %>
+      </div>
 
-    <div class="form-actions">
-      <%= link_to '<< Back', campsites_path, class: 'secondary-btn secondary-btn-sm secondary-btn-dark-blue' %>
-        <%= f.button :submit, "Create", class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
-    </div>
-    </div>
-
-  <% end %>
+      <div class="form-actions">
+        <%= f.button :submit, "Confirm Request", class: "devise-btn" %>
+      </div>
+    <% end %>
+  </div>
 </div>
