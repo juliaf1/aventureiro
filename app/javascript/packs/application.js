@@ -31,3 +31,6 @@ document.addEventListener('turbolinks:load', () => {
   initFlatpickr();
   toggleAllHidden();
 });
+
+require("trix")
+require("@rails/actiontext")
