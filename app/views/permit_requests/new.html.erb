@@ -5,12 +5,12 @@
   <%= simple_form_for(@permit_request, url: permit_requests_path, method: 'post') do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
-      <%= f.input :arrival, label: "arrival", required: true, as: :string, input_html: {id: "arrival"} %>
-      <%= f.input :departure, label: "departure", required: true, as: :string, input_html: {id: "departure"} %>
+      <%= f.input :arrival, label: "Arrival", required: true, as: :string, input_html: {id: "arrival", autocomplete: 'off' } %>
+      <%= f.input :departure, label: "Departure", required: true, as: :string, input_html: {id: "departure", autocomplete: 'off' } %>
     </div>
 
     <div class="form-actions">
-      <%= link_to '<< Back', root_path, class: 'secondary-btn secondary-btn-sm secondary-btn-dark-blue' %>
+      <%= link_to 'Back', root_path, class: 'secondary-btn secondary-btn-sm secondary-btn-dark-blue' %>
       <%= f.button :submit, "Create", class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
     </div>
 
