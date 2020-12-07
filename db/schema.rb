@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_162343) do
+ActiveRecord::Schema.define(version: 2020_12_07_194556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,16 @@ ActiveRecord::Schema.define(version: 2020_12_05_162343) do
     t.index ["campsite_id"], name: "index_full_periods_on_campsite_id"
   end
 
+  create_table "permit_requests", force: :cascade do |t|
+    t.integer "status"
+    t.date "arrival"
+    t.date "departure"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_permit_requests_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -131,4 +141,5 @@ ActiveRecord::Schema.define(version: 2020_12_05_162343) do
   add_foreign_key "campsite_reservations", "users"
   add_foreign_key "campsites", "users"
   add_foreign_key "full_periods", "campsites"
+  add_foreign_key "permit_requests", "users"
 end
