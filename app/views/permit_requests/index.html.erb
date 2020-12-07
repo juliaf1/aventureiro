@@ -5,7 +5,9 @@
   <ul>
     <li><strong>Arrival:</strong> <%= request.arrival.strftime("%d %B %Y") %></li>
     <li><strong>Departure:</strong> <%= request.departure.strftime("%d %B %Y") %></li>
-    <li><strong>Status:</strong> <%= request.departure.strftime("%d %B %Y") %></li>
+    <li><strong>Status:</strong> <%= request.status %></li>
   </ul>
   <% n += 1 %>
 <% end %>
+
+<%= link_to 'Make a new request', new_permit_request_path, class: 'secondary-btn secondary-btn-sm secondary-btn-green' %>
