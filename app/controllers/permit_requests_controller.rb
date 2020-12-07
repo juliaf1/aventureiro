@@ -22,7 +22,7 @@ class PermitRequestsController < ApplicationController
   private
 
   def permit_params
-    params.require(:permit_request).permit(:arrival, :departure)
+    params.require(:permit_request).permit(:arrival, :departure, :first_name, :last_name, :email, :address, :phone_number, :birth_date)
   end
 
 end
