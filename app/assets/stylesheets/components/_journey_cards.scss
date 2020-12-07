@@ -1,18 +1,37 @@
+.journey-container {
+  margin: 80px auto;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-inline {
+  justify-content: center;
+
+  .form-control {
+    margin-right: 8px;
+  }
+}
+
+.journey-filter {
+  text-align: center;
+  align-self: center;
+  width: 50%;
+}
+
 .journeys-container {
-  width: 700px;
-  margin: 48px auto;
+  width: 100%;
 }
 
 .journey-card {
-  background-color: $neutral-light-blue;
+  background-color: $light-gray;
   overflow: hidden;
   height: 150px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 6px rgba(50,50,50,0.1);
   display: flex;
   align-items: center;
   margin-top: 12px;
   position: relative;
-  border-radius: 4px 4px 0px 0px;
   .av-link {
     font-size: 16px;
     color: $neutral-dark-blue;
@@ -21,7 +40,6 @@
 
 .journey-image {
   height: 150px;
-  border-radius: 4px 4px 0px 0px;
 }
 
 .journey-main-info {

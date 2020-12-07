@@ -1,21 +1,15 @@
 <%= render 'shared/index_navbar' %>
 
-<div class="container">
-  <div class="container text-center">
-    <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+<div class="journey-container">
 
-      <h3>Select a date for your journey!</h3>
+  <div class="journey-filter">
+    <h3>Filter by date</h3>
 
-      <%= simple_form_for :search, method: "get" do |f| %>
-        <%= f.input :date, as: :string, required: false, label: false, input_html: {class: "datepicker", name: "date", autocomplete: 'off'} %>
-        <%= f.button :submit, "Go", class: "secondary-btn secondary-btn-md secondary-btn-yellow btn-go-wide" %>
-      <% end %>
-    </div>
+    <%= simple_form_for :search, method: "get", wrapper: :inline_form, html: { class: "form-inline" } do |f| %>
+      <%= f.input :date, as: :string, required: false, label: false, input_html: {class: "datepicker", name: "date", autocomplete: 'off'} %>
+      <%= f.button :submit, "Search", class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+    <% end %>
   </div>
-
-  <% unless @date %>
-    <a href="#" class="secondary-btn secondary-btn-md secondary-btn-green" id="display-all">See all boat journeys</a>
-  <% end %>
 
   <h3>
     <% if @date %>
@@ -78,7 +72,12 @@
     <%= link_to 'Back', boat_journeys_path, class: 'secondary-btn secondary-btn-sm secondary-btn-green' %>
   <% end %>
 
+  <% unless @date %>
+    <a href="#" class="secondary-btn secondary-btn-md secondary-btn-green" id="display-all">See all boat journeys</a>
+  <% end %>
+
   <p>Couldn't find a schedule that fits you?
     <%= link_to "Contact a boatdriver directly to make a special journey request", boats_path %>
   </p>
+
 </div>
