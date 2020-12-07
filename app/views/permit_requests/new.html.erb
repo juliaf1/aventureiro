@@ -1,0 +1,18 @@
+<div class="permit-request-card">
+  <h1>Permit Request</h1>
+  <div class="campsite-new-reservation-card-form">
+
+  <%= simple_form_for(@permit_request, url: permit_requests_path, method: 'post') do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <%= f.input :arrival, label: "Check-in", required: true, as: :string, input_html: {id: "arrival"} %>
+      <%= f.input :departure, label: "Check-out", required: true, as: :string, input_html: {id: "arrival"} %>
+    </div>
+
+    <div class="form-actions">
+      <%= link_to '<< Back', root_path, class: 'secondary-btn secondary-btn-sm secondary-btn-dark-blue' %>
+      <%= f.button :submit, "Create", class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+    </div>
+
+  <% end %>
+</div>
