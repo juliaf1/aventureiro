@@ -1,27 +1,39 @@
-<div class="container">
-  <div class="card">
-    <h1>Profile Page</h1>
-    <%= link_to 'Edit profile', edit_user_path %>
-    <%= link_to 'Edit setting', edit_user_registration_path %>
-
-    <% if current_user.local %>
-      <%= link_to "See my journeys", local_boat_journeys_path %>
-      <%= link_to "See my boats", local_boats_path %>
-      <%= link_to "See my campsites", local_campsites_path %>
-      <%= link_to "See my boat journeys reservations", local_boat_journey_reservations_path %>
-      <%= link_to "See my campsites reservations", local_campsite_reservations_path %>
-    <% end %>
-
-    <h3>
-      <% if @user.last_name %>
-        <%= "#{@user.first_name} #{@user.last_name}" %>
+<div class="profile-card-container">
+  <div class="profile-card">
+    <div class="profile-card-user">
+      <h3>
+        <% if @user.last_name %>
+          <%= "#{@user.first_name} #{@user.last_name}" %>
+        <% else %>
+          <%= @user.first_name %>
+        <% end %>
+      </h3>
+    </div>
+    <div class="profile-card-image">
+      <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar-large"%>
       <% else %>
-        <%= @user.first_name %>
+        <%= image_tag "https://ui-avatars.com/api/?name=#{current_user.first_name}+#{current_user.last_name}", class: "avatar-large" %>
       <% end %>
-    </h3>
-    <p><% if @user.bio %><%= @user.bio %><% end %></p>
-    <p><% if @user.email %><%= @user.email %><% end %></p>
-    <p><% if @user.phone_number %><%= @user.phone_number %><% end %></p>
-    <p><% if @user.address %><%= @user.address %><% end %></p>
-  </div>
+    </div>
+
+    <div class="profile-card-description">
+      <p><% if @user.bio %><%= @user.bio %><% end %></p>
+      <p><% if @user.email %><%= @user.email %><% end %></p>
+      <p><% if @user.phone_number %><%= @user.phone_number %><% end %></p>
+      <p><% if @user.address %><%= @user.address %><% end %></p>
+    </div>
+
+    <div class="profile-card-actions">
+      <%= link_to 'Edit profile', edit_user_path, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+      <%= link_to 'Edit settings', edit_user_registration_path, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+
+      <% if current_user.local %>
+        <%= link_to "See my journeys", local_boat_journeys_path, class: " secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+        <%= link_to "See my boats", local_boats_path, class: " secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+        <%= link_to "See my campsites", local_campsites_path, class: " secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+        <%= link_to "See my boat journeys reservations", local_boat_journey_reservations_path, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+        <%= link_to "See my campsites reservations", local_campsite_reservations_path, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+      <% end %>
+    </div>
 </div>
