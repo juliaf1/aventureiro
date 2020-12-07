@@ -1,0 +1,14 @@
+<%= simple_form_for(@post, url: user_posts_path, method: 'post') do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :rich_body,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Share your adventure!" }%>
+    <%= f.input :photo, as: :file %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Create", class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+  </div>
+<% end %>
