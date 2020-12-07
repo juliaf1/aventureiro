@@ -50,6 +50,8 @@
 
 .journey-image {
   height: 150px;
+  width: 150px;
+  object-fit: cover;
 }
 
 .journey-main-info {
@@ -61,32 +63,58 @@
   }
 }
 
+.journey-date {
+  font-size: 24px;
+  color: $black;
+  margin: 0;
+}
+
+.journey-name {
+  color: $dark-gray;
+}
+
+// .journey-extra-info {
+//   background-color: $light-gray;
+//   overflow: hidden;
+//   min-height: 150px;
+//   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+//   display: flex;
+//   align-items: center;
+//   margin-top: 0px;
+//   text-align: left;
+//   z-index: 900;
+
+//   ul {
+//     margin-left: 186px;
+//     margin-top: 16px;
+//     margin-bottom: 16px;
+//   }
+
+//   li {
+//     list-style-type: none;
+//     padding-top: 8px;
+//   }
+// }
+
 .journey-extra-info {
-  background-color: $light-gray;
   overflow: hidden;
-  min-height: 150px;
+  background-color: $light-gray;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  min-height: 150px;
   display: flex;
-  align-items: center;
-  margin-top: 0px;
-  text-align: left;
-  z-index: 900;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 40px;
 
-  ul {
-    margin-left: 186px;
-    margin-top: 16px;
-    margin-bottom: 16px;
-  }
-
-  li {
-    list-style-type: none;
-    padding-top: 8px;
+  p {
+    margin: 0 0 0 40px;
   }
 }
 
 .see-extra-info {
   position: absolute;
   right: 32px;
+  bottom: 32px;
 }
 
 #display-all {
