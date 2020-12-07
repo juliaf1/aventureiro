@@ -17,13 +17,18 @@ class CampsiteReservationsController < ApplicationController
     set_user_campsite_and_status(@campsite_reservation, @campsite)
     set_total_price(@campsite_reservation, @campsite)
     authorize @campsite_reservation
-    if @campsite_reservation.save
-      # when making this feature live, remember to send user argument with to: tel number
-      TwilioWhatsappMessenger.new.campsite_request_reservation_message(@campsite_reservation)
-      redirect_to user_campsite_reservations_path(current_user), notice: "Your campsite reservation request is pending confirmation
-      from #{@campsite_reservation.campsite.user.first_name}"
+  
+    if confirm_check_in(@campsite_reservation) && confirm_check_out(@campsite_reservation)
+      if @campsite_reservation.save
+        # when making this feature live, remember to send user argument with to: tel number
+        TwilioWhatsappMessenger.new.campsite_request_reservation_message(@campsite_reservation)
+        redirect_to user_campsite_reservations_path(current_user), notice: "Your campsite reservation request is pending confirmation
+        from #{@campsite_reservation.campsite.user.first_name}"
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to new_campsite_campsite_reservation_path(@campsite), notice: "The dates you selected are fully booked"
     end
   end
 
@@ -40,6 +45,18 @@ class CampsiteReservationsController < ApplicationController
   end
 
   private
+
+  def confirm_check_in(campsite_reservation)
+    campsite_reservation.campsite.full_periods.all? do |period|
+      period.end_date < campsite_reservation.check_in || period.start_date > campsite_reservation.check_in
+    end
+  end
+
+  def confirm_check_out(campsite_reservation)
+    campsite_reservation.campsite.full_periods.all? do |period|
+      period.end_date < campsite_reservation.check_out || period.start_date > campsite_reservation.check_out
+    end
+  end
 
   def find_campsite
     @campsite = Campsite.find(params[:campsite_id])

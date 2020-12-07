@@ -6,6 +6,17 @@
     <% @campsites.each do |campsite| %>
       <div class="card">
         <h4><%= campsite.name %></h4>
+        <% if campsite.full_periods %>
+          <ul>
+            <% campsite.full_periods.sort_by(&:start_date).each do |full_period| %>
+              <li>
+                Fully booked from: <%= full_period.start_date.strftime("%d %B %Y") %> to <%= full_period.end_date.strftime("%d %B %Y") %>
+                <%= link_to "Delete", local_full_period_path(full_period), method: :delete, class: "btn-secondary btn-secondary-sm" %>
+                <%= link_to "Add a full period", new_local_campsite_full_period_path(campsite), class: "btn-secondary btn-secondary-sm" %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
         <%= link_to "Edit Campsite", edit_local_campsite_path(campsite) %>
       </div>
     <% end %>
