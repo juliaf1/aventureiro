@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    authorize current_user, :owner?, policy_class: UserPolicy
     if @post.destroy
       redirect_to user_posts_path
     else

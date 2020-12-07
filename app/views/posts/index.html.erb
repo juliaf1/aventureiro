@@ -10,21 +10,24 @@
 
   <div class="posts-container">
 
-    <% @posts.each do |post| %>
-      <div class="post-card">
-        <div class="post-image">
-          <% if post.photo.attached? %>
-            <%= cl_image_tag post.photo.key, class: "post-photo" %>
-          <% end %>
-         </div>
-         <div class="post-text">
-           <%= post.rich_body %>
-         </div>
+    <% if @posts.present? %>
+      <% @posts.each do |post| %>
+        <div class="post-card">
+          <div class="post-image">
+            <% if post.photo.attached? %>
+              <%= cl_image_tag post.photo.key, class: "post-photo" %>
+            <% end %>
+           </div>
+           <div class="post-text">
+             <%= post.rich_body %>
+           </div>
 
-         <%= link_to 'Delete', user_post_path(current_user, post), method: 'delete' %>
-      </div>
+           <% if UserPolicy.new(current_user, post).post_owner? %>
+            <%= link_to 'Delete', user_post_path(current_user, post), method: 'delete' %>
+           <% end %>
 
-
+        </div>
+      <% end %>
     <% end %>
 
 
