@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :boats, only: [ :index ]
 
-  resources :permit_requests, only: [ :new, :create ]
+  resources :permit_requests, only: [ :index, :new, :create ]
 
   # routes for local users
   namespace :local do

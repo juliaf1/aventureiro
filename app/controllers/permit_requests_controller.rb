@@ -1,7 +1,7 @@
 class PermitRequestsController < ApplicationController
   
-
   def index
+    @permit_requests = PermitRequest.where(user_id: current_user.id)
   end
 
   def new
@@ -12,7 +12,7 @@ class PermitRequestsController < ApplicationController
     @permit_request = PermitRequest.new(permit_params)
     @permit_request.user = current_user
     if @permit_request.save
-      redirect_to campsites_path
+      redirect_to campsites_path, notice: "Your permit request has been completed, please await confirmation"
     else
       render :new
     end
