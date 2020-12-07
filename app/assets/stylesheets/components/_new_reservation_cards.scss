@@ -5,9 +5,7 @@
     width: 80%;
     margin-bottom: 20px;
     text-align: center;
-
   }
-
 }
 
 .campsite-new-reservation-card {
@@ -19,5 +17,17 @@
     margin-bottom: 20px;
     text-align: center;
     margin: 0 auto;
+  }
+}
+
+.permit-request-card {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  .permit-request-form {
+    width: 50%;
+    margin-bottom: 20px;
+    text-align: center;
+    margin: 24px auto;
   }
 }
