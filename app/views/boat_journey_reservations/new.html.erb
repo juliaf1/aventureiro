@@ -10,7 +10,9 @@
     <p><%= @boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></p>
 
     <%= simple_form_for(@journey_reservation, url: boat_journey_boat_journey_reservations_path(@boat_journey), method: 'post') do |f| %>
+
       <%= f.error_notification %>
+
       <div class="form-inputs">
         <%= f.input :number_passengers,
                     required: true,

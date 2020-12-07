@@ -4,19 +4,18 @@
 
   <div class="journey-filter">
     <h3>Filter by date</h3>
+    <p class="journey-p">Check the boat schedule for your check-in date.</p>
 
     <%= simple_form_for :search, method: "get", wrapper: :inline_form, html: { class: "form-inline" } do |f| %>
       <%= f.input :date, as: :string, required: false, label: false, input_html: {class: "datepicker", name: "date", autocomplete: 'off'} %>
       <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
     <% end %>
-  </div>
 
-  <h3>
     <% if @date %>
-      Boat journeys for
-      <%= @date.to_date.strftime("%d %B %Y") %>
+      <p class="date-tag">Schedule on <%= @date.to_date.strftime("%d %B %Y") %></p>
+      <%= link_to 'Back', boat_journeys_path, class: 'av-link' %>
     <% end %>
-  </h3>
+  </div>
 
   <div class="journeys-container">
     <% n = 0 %>
@@ -68,16 +67,14 @@
     </div>
   </div>
 
-  <% if @date %>
-    <%= link_to 'Back', boat_journeys_path, class: 'secondary-btn secondary-btn-sm secondary-btn-green' %>
-  <% end %>
-
   <% unless @date %>
-    <a href="#" class="secondary-btn secondary-btn-md secondary-btn-green" id="display-all">See all boat journeys</a>
+    <%= link_to 'Full schedule', '#', class: 'secondary-btn secondary-btn-sm secondary-btn-blue', id: 'display-all' %>
   <% end %>
 
-  <p>Couldn't find a schedule that fits you?
-    <%= link_to "Contact a boatdriver directly to make a special journey request", boats_path %>
-  </p>
+  <div class="special-request">
+    <p>Couldn't find a schedule that fits you?
+      <%= link_to "Contact a boatdriver directly to make a special journey request.", boats_path %>
+    </p>
+  </div>
 
 </div>

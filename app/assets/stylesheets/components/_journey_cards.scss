@@ -1,26 +1,35 @@
 .journey-container {
-  margin: 40px auto;
+  margin: 40px auto 0;
   width: 800px;
   display: flex;
   flex-direction: column;
-}
-
-.form-inline {
-  justify-content: center;
-
-  .form-control {
-    margin-right: 8px;
-  }
 }
 
 .journey-filter {
   text-align: center;
   align-self: center;
   width: 50%;
+
+  .journey-p {
+    margin-bottom: 24px;
+  }
+
+  .av-link {
+    color: $dark-pink;
+  }
+
+  .form-inline {
+  justify-content: center;
+
+    .form-control {
+      margin: 0 8px;
+    }
+  }
 }
 
 .journeys-container {
   width: 100%;
+  margin-top: 40px;
 }
 
 .journey-card {
@@ -32,6 +41,7 @@
   align-items: center;
   margin-top: 12px;
   position: relative;
+
   .av-link {
     font-size: 16px;
     color: $neutral-dark-blue;
@@ -45,6 +55,7 @@
 .journey-main-info {
   margin-top: 30px;
   margin-left: 35px;
+
   p {
     font-weight: bold;
   }
@@ -60,11 +71,13 @@
   margin-top: 0px;
   text-align: left;
   z-index: 900;
+
   ul {
     margin-left: 186px;
     margin-top: 16px;
     margin-bottom: 16px;
   }
+
   li {
     list-style-type: none;
     padding-top: 8px;
@@ -76,11 +89,12 @@
   right: 32px;
 }
 
-.btn-go-wide {
-  width: 100%;
-}
-
 #display-all {
+  margin-top: 40px;
   text-align: center;
 }
 
+.special-request {
+  margin-top: 40px;
+  text-align: center;
+}
