@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   resources :boats, only: [ :index ]
 
+  resources :permit_requests, only: [ :new, :create ]
+
   # routes for local users
   namespace :local do
     resources :boats, only: [ :new, :create, :edit, :update, :index, :destroy ] do
