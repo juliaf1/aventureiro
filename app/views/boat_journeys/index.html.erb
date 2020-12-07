@@ -7,7 +7,7 @@
 
     <%= simple_form_for :search, method: "get", wrapper: :inline_form, html: { class: "form-inline" } do |f| %>
       <%= f.input :date, as: :string, required: false, label: false, input_html: {class: "datepicker", name: "date", autocomplete: 'off'} %>
-      <%= f.button :submit, "Search", class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+      <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
     <% end %>
   </div>
 
