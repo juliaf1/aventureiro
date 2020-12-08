@@ -77,6 +77,35 @@
   }
 }
 
+.local-boat-journey-reservations-container {
+  width: 30%;
+  text-align: left;
+  margin: 24px auto;
+  .boat-journey-reservation-card {
+    padding: 25px;
+    box-shadow: 1px 1px 6px rgba(50, 50, 50, 0.1), 2px 3px 6px rgba(50, 50, 50, 0.2);
+    position: relative;
+    ul {
+      list-style-type: none;
+      padding-left: 16px;
+    }
+    h5 {
+      padding-left: 16px;
+    }
+    p {
+      padding-left: 16px;
+      padding-bottom: 16px;
+    }
+    .boat-journey-reservation-card-main {
+      display: flex;
+      justify-content: space-around;
+      h3 {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
 .res-card-margin {
   margin-bottom: 32px;
 }
