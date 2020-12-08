@@ -22,7 +22,7 @@
   .boat-journey-reservation-card {
     position: relative;
     box-shadow: 1px 1px 6px rgba(50, 50, 50, 0.1), 2px 3px 6px rgba(50, 50, 50, 0.2);
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     h4 {
       padding-left: 32px;
       padding-top: 28px;
@@ -58,3 +58,14 @@
   }
 }
 
+.boat-journey-reservation-card-image {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  border: solid 2px white;
+  box-shadow: 1px 1px 6px rgba(50, 50, 50, 0.05);
+}
+
+.res-boat-image {
+  height: 160px;
+}
