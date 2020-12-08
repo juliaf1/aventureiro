@@ -1,4 +1,10 @@
-<%= render 'shared/index_navbar' %>
+<% if current_user %>
+  <% unless current_user.local? %>
+    <%= render 'shared/index_navbar' %>
+  <% end %>
+<% else %>
+  <%= render 'shared/index_navbar' %>
+<% end %>
 
 <div class="campsites-container">
   <% @campsites.each do |campsite| %>
