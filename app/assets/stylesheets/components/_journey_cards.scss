@@ -1,18 +1,47 @@
+.journey-container {
+  margin: 40px auto 0;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.journey-filter {
+  text-align: center;
+  align-self: center;
+  width: 50%;
+
+  .journey-p {
+    margin-bottom: 24px;
+  }
+
+  .av-link {
+    color: $dark-pink;
+  }
+
+  .form-inline {
+  justify-content: center;
+
+    .form-control {
+      margin: 0 8px;
+    }
+  }
+}
+
 .journeys-container {
-  width: 700px;
-  margin: 48px auto;
+  width: 100%;
+  margin-top: 40px;
 }
 
 .journey-card {
-  background-color: $neutral-light-blue;
+  background-color: $light-gray;
   overflow: hidden;
   height: 150px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 6px rgba(50,50,50,0.1);
   display: flex;
   align-items: center;
   margin-top: 12px;
   position: relative;
-  border-radius: 4px 4px 0px 0px;
+
   .av-link {
     font-size: 16px;
     color: $neutral-dark-blue;
@@ -21,48 +50,79 @@
 
 .journey-image {
   height: 150px;
-  border-radius: 4px 4px 0px 0px;
+  width: 150px;
+  object-fit: cover;
 }
 
 .journey-main-info {
   margin-top: 30px;
   margin-left: 35px;
+
   p {
     font-weight: bold;
   }
 }
 
+.journey-date {
+  font-size: 24px;
+  color: $neutral-dark-blue;
+  margin: 0;
+}
+
+.journey-name {
+  color: $dark-gray;
+}
+
+// .journey-extra-info {
+//   background-color: $light-gray;
+//   overflow: hidden;
+//   min-height: 150px;
+//   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+//   display: flex;
+//   align-items: center;
+//   margin-top: 0px;
+//   text-align: left;
+//   z-index: 900;
+
+//   ul {
+//     margin-left: 186px;
+//     margin-top: 16px;
+//     margin-bottom: 16px;
+//   }
+
+//   li {
+//     list-style-type: none;
+//     padding-top: 8px;
+//   }
+// }
+
 .journey-extra-info {
-  background-color: $light-gray;
   overflow: hidden;
-  min-height: 150px;
+  background-color: $light-gray;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  min-height: 150px;
   display: flex;
-  align-items: center;
-  margin-top: 0px;
-  text-align: left;
-  z-index: 900;
-  ul {
-    margin-left: 186px;
-    margin-top: 16px;
-    margin-bottom: 16px;
-  }
-  li {
-    list-style-type: none;
-    padding-top: 8px;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 40px;
+
+  p {
+    margin: 0 0 0 40px;
   }
 }
 
 .see-extra-info {
   position: absolute;
   right: 32px;
-}
-
-.btn-go-wide {
-  width: 100%;
+  bottom: 32px;
 }
 
 #display-all {
+  margin-top: 40px;
   text-align: center;
 }
 
+.special-request {
+  margin-top: 40px;
+  text-align: center;
+}

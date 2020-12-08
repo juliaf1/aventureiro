@@ -108,7 +108,6 @@
   font-weight: 400;
   text-transform: uppercase;
   transition: .2s ease;
-  border: none;
 
   &:hover {
     opacity: .9;
@@ -181,4 +180,24 @@
   &:hover {
     color: $white;
   }
+}
+
+// Overwrite btn weird styles
+
+.search-btn {
+  background-color: $dark-pink;
+  color: $white;
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: $light-pink;
+    color: $dark-pink;
+  }
+}
+
+.no-border {
+  border: none;
 }
