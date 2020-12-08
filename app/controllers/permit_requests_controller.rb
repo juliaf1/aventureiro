@@ -6,12 +6,14 @@ class PermitRequestsController < ApplicationController
 
   def new
     @permit_request = PermitRequest.new
+    authorize @permit_request
   end
 
   def create
     @permit_request = PermitRequest.new(permit_params)
     @permit_request.user = current_user
     @permit_request.status = 0
+    authorize @permit_request
     if @permit_request.save
       redirect_to permit_requests_path, notice: "Your permit request has been completed, please await confirmation"
     else

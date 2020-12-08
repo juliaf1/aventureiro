@@ -6,6 +6,10 @@
     <li><strong>Name:</strong> <%= request.first_name %> <%= request.last_name %></li>
     <li><strong>Arrival:</strong> <%= request.arrival.strftime("%d %B %Y") %></li>
     <li><strong>Departure:</strong> <%= request.departure.strftime("%d %B %Y") %></li>
+    <li><strong>Email:</strong> <%= request.email %></li>
+    <li><strong>Address:</strong> <%= request.address %></li>
+    <li><strong>Phone Number:</strong> <%= request.phone_number %></li>
+    <li><strong>Birth Date:</strong> <%= request.birth_date %></li>
     <li><strong>Status:</strong> <%= request.status %></li>
   </ul>
   <% n += 1 %>
