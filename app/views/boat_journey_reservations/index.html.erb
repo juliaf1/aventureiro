@@ -5,19 +5,19 @@
     <% @journey_reservations.each do |boat_reservation| %>
       <div class="boat-journey-reservation-card">
         <div class="card-colour-box"></div>
-        <div class="boat-journey-reservation-card-main">
-          <h4><%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M")%></h4>
-          <div class="boat-journey-reservation-info">
-            <ul>
-              <li><strong>Boat: </strong><%= boat_reservation.boat_journey.boat.name %></li>
-              <li><strong>Captain: </strong><%= boat_reservation.boat_journey.boat.user.first_name %></li>
-              <li><strong>Number of passengers: </strong><%= boat_reservation.number_passengers %></li>
-              <li><strong>Travel Duration: </strong><%= boat_reservation.boat_journey.travel_duration %></li>
-              <li><strong>Total price: </strong><%= "R$#{boat_reservation.total_price}" %></li>
-              <li><strong>Status: </strong><%= boat_reservation.status %></li>
-            </ul>
-          </div>
+      
+        <h4><%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M")%></h4>
+        <div class="boat-journey-reservation-info">
+          <ul>
+            <li><strong>Boat: </strong><%= boat_reservation.boat_journey.boat.name %></li>
+            <li><strong>Captain: </strong><%= boat_reservation.boat_journey.boat.user.first_name %></li>
+            <li><strong>Number of passengers: </strong><%= boat_reservation.number_passengers %></li>
+            <li><strong>Travel Duration: </strong><%= boat_reservation.boat_journey.travel_duration %></li>
+            <li><strong>Total price: </strong><%= "R$#{boat_reservation.total_price}" %></li>
+            <li><strong>Status: </strong><%= boat_reservation.status %></li>
+          </ul>
         </div>
+
         <div class="btn-center">
           <%= link_to "Cancel", boat_journey_reservation_path(boat_reservation), method: :delete, class: "secondary-btn secondary-btn-sm secondary-btn-pink", data: {confirm: "Are you sure you want to cancel this reservation?"} %>
         </div>

@@ -1,25 +1,24 @@
 <div class="campsite-reservations-container">
-  <h4>Upcoming Campsite Reservations</h4>
+  <h3>Your Campsite Reservations</h3>
 
   <% if @campsite_reservations.present? %>
+    <h4>Upcoming Campsite Reservations</h4>
     <% @campsite_reservations.each do |campsite_reservation| %>
       <div class="campsite-reservation-card">
+        <div class="card-colour-box"></div>
+        <h4><%= campsite_reservation.campsite.name %></h4>
+        <h5><%=campsite_reservation.number_guests %> guests</h5>
         <div class="campsite-reservation-card-main">
-          <div class="campsite-reservation-info">
-            <h3><%= campsite_reservation.campsite.name %></h3>
-            <h5><%=campsite_reservation.number_guests %> guests</h5>
-            <p><strong>Check-in:</strong> <%= campsite_reservation.check_in.strftime("%d %B %Y") %></p>
-            <p><strong>Check-out:</strong> <%= campsite_reservation.check_out.strftime("%d %B %Y") %></p>
-            <p><strong>Total:</strong> <%= "R$#{campsite_reservation.total_price}" %></p>
-            <p><strong>Status:</strong> <%= campsite_reservation.status %></p>
-            <p><%= campsite_reservation.description%></p>
-            <%= link_to "Cancel", campsite_reservation_path(campsite_reservation), method: :delete, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue", data: {confirm: "Are you sure you want to cancel this reservation?"} %>
-          </div>
-          <div class="campsite-reservation-card-image">
-            <% if campsite_reservation.campsite.user.photo.attached? %>
-              <%= cl_image_tag campsite_reservation.campsite.photo.key, class: 'avatar-large' %>
-            <% end %>
-          </div>
+          <ul>
+            <li><strong>Check-in:</strong> <%= campsite_reservation.check_in.strftime("%d %B %Y") %></li>
+            <li><strong>Check-out:</strong> <%= campsite_reservation.check_out.strftime("%d %B %Y") %></li>
+            <li><strong>Message: </strong><%= campsite_reservation.description%></li>
+            <li><strong>Total:</strong> <%= "R$#{campsite_reservation.total_price}" %></li>
+            <li><strong>Status:</strong> <%= campsite_reservation.status %></li>
+          </ul>
+        </div>
+        <div class="btn-center">
+          <%= link_to "Cancel", campsite_reservation_path(campsite_reservation), method: :delete, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue", data: {confirm: "Are you sure you want to cancel this reservation?"} %>
         </div>
       </div>
     <% end %>
