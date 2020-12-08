@@ -1,15 +1,15 @@
 <div class="container">
-  <h3>My Boat Journeys</h3>
+  <h3>Sua programação de barco</h3>
   <% if @boat_journeys.empty? %>
     <p>Você não tem viagens de barco programadas.</p>
   <% else %>
     <% @boat_journeys.each do |boat_journey| %>
       <div>
         <ul>
-          <li>Boat name: <%= boat_journey.boat.name %></li>
-          <li>Departure time: <strong><%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></strong></li>
-          <li>Duration: <%= boat_journey.travel_duration %></li>
-          <li>Price per person: <%= boat_journey.price_person %></li>
+          <li><strong>Nome do barco: </strong><%= boat_journey.boat.name %></li>
+          <li><strong>Hora de partida: </strong><%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></li>
+          <li><strong>Duração: </strong><%= boat_journey.travel_duration %></li>
+          <li><strong>Preço por passageiro: </strong><%= boat_journey.price_person %></li>
           <%= link_to "Edit journey", edit_local_boat_journey_path(boat_journey) %>
           <%= link_to "Delete", local_boat_journey_path(boat_journey), method: :delete %>
         </ul>

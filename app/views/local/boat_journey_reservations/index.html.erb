@@ -41,11 +41,11 @@
         <h5><%= "#{boat_reservation.user.first_name} #{boat_reservation.user.last_name}" %></h5>
         <p><%= boat_reservation.boat_journey.boat.name %></p>
         <ul>
-          <li><strong>Hora de partida:</strong> <%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></li>
-          <li><strong>Duração:</strong> <%= boat_reservation.boat_journey.travel_duration %></li>
-          <li><strong>Número de passageiros:</strong> <%= boat_reservation.number_passengers %></li>
-          <li><strong>Preço total:</strong> <%= boat_reservation.total_price %></li>
-          <li><strong>Status:</strong> <%= boat_reservation.status %></li>
+          <li><strong>Hora de partida: </strong><%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></li>
+          <li><strong>Duração: </strong><%= boat_reservation.boat_journey.travel_duration %></li>
+          <li><strong>Número de passageiros: </strong><%= boat_reservation.number_passengers %></li>
+          <li><strong>Preço total: </strong><%= boat_reservation.total_price %></li>
+          <li><strong>Status: </strong><%= boat_reservation.status %></li>
         </ul>
         <div class="res-card-btns">
           <% if boat_reservation.pending? %>
