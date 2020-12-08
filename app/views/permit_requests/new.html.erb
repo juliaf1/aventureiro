@@ -1,0 +1,24 @@
+<div class="permit-request-card">
+  <h2>Permit Request</h2>
+  <div class="permit-request-form">
+
+  <%= simple_form_for(@permit_request, url: permit_requests_path, method: 'post') do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <%= f.input :arrival, label: "Arrival", required: true, as: :string, input_html: {id: "arrival", autocomplete: 'off' } %>
+      <%= f.input :departure, label: "Departure", required: true, as: :string, input_html: {id: "departure", autocomplete: 'off' } %>
+      <%= f.input :first_name, label: "First Name", required: true, as: :string, input_html: { value: "#{current_user.first_name}" } %>
+      <%= f.input :last_name, label: "Last Name", required: true, as: :string, input_html: { value: "#{current_user.last_name}" } %>    
+      <%= f.input :email, label: "Email", required: true, as: :string, input_html: { value: "#{current_user.email}" } %>
+      <%= f.input :address, label: "Address", required: true, as: :string, input_html: { value: "#{current_user.address}" } %>
+      <%= f.input :phone_number, label: "Phone Number", required: true, as: :string, input_html: { value: "#{current_user.phone_number}" } %>
+      <%= f.input :birth_date, label: "Birth Date", required: true, as: :string, input_html: { class: "birthdaypicker", value: "#{current_user.birth_date}" } %>
+    </div>
+
+    <div class="form-actions">
+      <%= link_to 'Back', permit_requests_path, class: 'secondary-btn secondary-btn-sm secondary-btn-dark-blue' %>
+      <%= f.button :submit, "Create", class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+    </div>
+
+  <% end %>
+</div>

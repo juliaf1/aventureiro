@@ -38,6 +38,13 @@ const initFlatpickr = () => {
     minDate: "today",
     plugins: [new rangePlugin({ input: "#end_date"})]
   });
+
+  flatpickr("#arrival", {
+    altInput: true,
+    allowInput: true,
+    minDate: "today",
+    plugins: [new rangePlugin({ input: "#departure"})]
+  });
 };
 
 export { initFlatpickr };

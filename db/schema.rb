@@ -112,6 +112,22 @@ ActiveRecord::Schema.define(version: 2020_12_07_161001) do
     t.index ["campsite_id"], name: "index_full_periods_on_campsite_id"
   end
 
+  create_table "permit_requests", force: :cascade do |t|
+    t.integer "status"
+    t.date "arrival"
+    t.date "departure"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "address"
+    t.string "phone_number"
+    t.date "birth_date"
+    t.index ["user_id"], name: "index_permit_requests_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -148,5 +164,6 @@ ActiveRecord::Schema.define(version: 2020_12_07_161001) do
   add_foreign_key "campsite_reservations", "users"
   add_foreign_key "campsites", "users"
   add_foreign_key "full_periods", "campsites"
+  add_foreign_key "permit_requests", "users"
   add_foreign_key "posts", "users"
 end

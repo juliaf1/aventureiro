@@ -1,0 +1,18 @@
+<h2>My Permit Requests</h2>
+<% n = 1 %>
+<% @permit_requests.each do |request| %>
+  <h4>Permit Request <%= n %></h4>
+  <ul>
+    <li><strong>Name:</strong> <%= request.first_name %> <%= request.last_name %></li>
+    <li><strong>Arrival:</strong> <%= request.arrival.strftime("%d %B %Y") %></li>
+    <li><strong>Departure:</strong> <%= request.departure.strftime("%d %B %Y") %></li>
+    <li><strong>Email:</strong> <%= request.email %></li>
+    <li><strong>Address:</strong> <%= request.address %></li>
+    <li><strong>Phone Number:</strong> <%= request.phone_number %></li>
+    <li><strong>Birth Date:</strong> <%= request.birth_date %></li>
+    <li><strong>Status:</strong> <%= request.status %></li>
+  </ul>
+  <% n += 1 %>
+<% end %>
+
+<%= link_to 'Make a new request', new_permit_request_path, class: 'secondary-btn secondary-btn-sm secondary-btn-green' %>
