@@ -1,8 +1,12 @@
+<% if current_user %>
+  <% unless current_user.local? %>
+    <%= render 'shared/index_navbar' %>
+  <% end %>
+<% else %>
+  <%= render 'shared/index_navbar' %>
+<% end %>
 
-<%= render 'shared/index_navbar' %>
 <div class="campsites-container">
-
-
   <% @campsites.each do |campsite| %>
     <div class="campsite-card">
 

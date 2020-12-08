@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [ :show, :edit, :update ] do
     resources :campsite_reservations, only: :index
+    resources :posts, only: [:index, :create, :destroy]
   end
 
   resources :campsites, only: [ :index, :show ] do
@@ -33,8 +34,8 @@ Rails.application.routes.draw do
     resources :campsites, only: [ :edit, :update, :index ] do
       resources :full_periods, only: [ :new, :create ]
     end
-    resources :boat_journey_reservations, only: [ :index, :update ]
-    resources :campsite_reservations, only: [ :index, :update ]
+    resources :boat_journey_reservations, only: [ :index, :update, :show ]
+    resources :campsite_reservations, only: [ :index, :update, :show ]
     resources :full_periods, only: [ :destroy ]
   end
 

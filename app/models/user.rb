@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :campsite_reservations
   has_many :campsites, through: :campsite_reservations
   has_many :campsites
-
   has_many :permit_requests, dependent: :destroy
+  has_many :posts
 
   has_one_attached :photo
 

@@ -7,7 +7,7 @@
   <% if @upcoming_journey_reservations.present? %>
     <h4>Upcoming reservations </h4>
     <% @upcoming_journey_reservations.each do |boat_reservation| %>
-      <div class="card">
+      <div class="boat_res_card">
         <h5><%= "#{boat_reservation.user.first_name} #{boat_reservation.user.last_name}" %></h5>
         <p><%= boat_reservation.boat_journey.boat.name %></p>
         <ul>
@@ -23,6 +23,8 @@
           <%= link_to "Rejeitar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch %>
         <% elsif boat_reservation.confirmed? %>
           <%= link_to "Cancelar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch %>
+        <% elsif boat_reservation.rejected? %>
+          <%= link_to "Confirmar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch %>
         <% end %>
       </div>
     <% end %>

@@ -1,42 +1,58 @@
-<div class="home-navbar">
 
-    <div class="navbar-options-left">
-      <ul>
-        <li><%= link_to "Home", root_path, class: "av-link" %></li>
-        <li><%= link_to "About Aventureiro", root_path, class: "av-link" %></li>
-        <li><%= link_to "Adventurer Guide", root_path, class: "av-link" %></li>
-        <li><%= link_to "Plan your trip", campsites_path, class: "av-link" %></li>
-        <% if current_user && current_user.admin? %>
-          <li><strong><%= link_to "Admin Console", rails_admin_path, class: "av-link" %></strong></li>
-        <% end %>
-      </ul>
-    </div>
+<div class="home-navbar-container">
+  <div class="home-navbar">
 
-    <div class="navbar-options-right">
-        <% if user_signed_in? %>
-          <div class="btn-group">
-            <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar dropdown-toggle", 'data-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= image_tag "https://ui-avatars.com/api/?name=#{current_user.first_name}+#{current_user.last_name}", class: "avatar dropdown-toggle", 'data-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
+      <div class="navbar-options-left">
+        <ul>
+          <li><%= link_to "Home", root_path, class: "av-link" %></li>
+          <li><%= link_to "About Aventureiro", root_path, class: "av-link" %></li>
+          <li><%= link_to "Adventurer Guide", root_path, class: "av-link" %></li>
 
-            <div class="dropdown-menu dropdown-menu-right">
-              <% if current_user.local %>
-                <%= link_to "Meu perfil", user_path(current_user), class: "dropdown-item" %>
-                <%= link_to "Reservas de Barco", local_boat_journey_reservations_path, class: "dropdown-item" %>
-                <%= link_to "Reservas de Camping", local_campsite_reservations_path, class: "dropdown-item" %>
-                <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <% if current_user && current_user.local? %>
+            <li><%= link_to "Boat Schedule", boat_journeys_path, class: "av-link" %></li>
+            <li><%= link_to "Campsites", campsites_path, class: "av-link" %></li>
+          <% else %>
+            <li><%= link_to "Plan your trip", campsites_path, class: "av-link" %></li>
+          <% end %>
+
+          <% if current_user && current_user.admin? %>
+            <li><strong><%= link_to "Admin Console", rails_admin_path, class: "av-link" %></strong></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="navbar-options-right">
+          <% if user_signed_in? %>
+            <div class="btn-group">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar dropdown-toggle", 'data-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
               <% else %>
-                <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
-                <%= link_to "Boats Reservations", boat_journey_reservations_path, class: "dropdown-item" %>
-                <%= link_to "Campsites Reservations", user_campsite_reservations_path(current_user), class: "dropdown-item" %>
-                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <%= image_tag "https://ui-avatars.com/api/?name=#{current_user.first_name}+#{current_user.last_name}", class: "avatar dropdown-toggle", 'data-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
               <% end %>
+
+              <div class="dropdown-menu dropdown-menu-right">
+                <% if current_user.local %>
+                  <%= link_to "Meu perfil", user_path(current_user), class: "dropdown-item" %>
+                  <%= link_to "Reservas de Barco", local_boat_journey_reservations_path, class: "dropdown-item" %>
+                  <%= link_to "Reservas de Camping", local_campsite_reservations_path, class: "dropdown-item" %>
+                  <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <% else %>
+                  <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
+                  <%= link_to "Boats Reservations", boat_journey_reservations_path, class: "dropdown-item" %>
+                  <%= link_to "Campsites Reservations", user_campsite_reservations_path(current_user), class: "dropdown-item" %>
+                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <% end %>
+              </div>
             </div>
-          </div>
-        <% else %>
-          <%= link_to "Login", new_user_session_path, class: "av-link" %>
-        <% end %>
-    </div>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, class: "av-link" %>
+          <% end %>
+      </div>
+  </div>
+  
+  <% if current_user %>
+    <% if current_user.local? %>
+      <%= render 'shared/home_local_navbar' %>
+    <% end %>
+  <% end %>
 </div>

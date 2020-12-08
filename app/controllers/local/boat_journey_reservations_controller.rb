@@ -24,6 +24,10 @@ class Local::BoatJourneyReservationsController < ApplicationController
     redirect_to local_boat_journey_reservations_path
   end
 
+  def show
+    @journey_reservation = BoatJourneyReservation.find(params[:id])
+  end
+
   private
 
   def journey_reservation_params
