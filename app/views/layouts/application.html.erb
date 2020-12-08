@@ -16,13 +16,13 @@
     <% if content_for?(:home_navbar) %>
       <%= yield(:home_navbar) %>
       <%= yield %>
-      <%= render 'shared/home_footer' %>
+      <%= render 'shared/footer' %>
     <% else %>
       <%= render 'shared/navbar' %>
       <div class="content-container">
         <%= yield %>
       </div>
-      <%= render 'shared/home_footer' %>
+      <%= render 'shared/footer' %>
     <% end %>
   </body>
 </html>

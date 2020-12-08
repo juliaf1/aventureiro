@@ -3,7 +3,7 @@ class UserPolicy < ApplicationPolicy
   def new?
     create?
   end
-  
+
   def create?
     owner?
   end
@@ -18,6 +18,10 @@ class UserPolicy < ApplicationPolicy
 
   def owner?
     record == user
+  end
+
+  def post_owner?
+    record.user == user
   end
 
   class Scope < Scope

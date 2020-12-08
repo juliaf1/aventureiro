@@ -1,0 +1,17 @@
+.go-back {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  i {
+    font-size: 24px;
+    margin-right: 16px;
+    color: $neutral-dark-blue;
+    padding-top: 4px;
+  }
+
+  a {
+    margin: 0;
+    color: $neutral-dark-blue;
+  }
+}
