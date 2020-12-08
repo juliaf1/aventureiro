@@ -1,7 +1,8 @@
-<%= simple_form_for(@post, url: user_posts_path, method: 'post') do |f| %>
+<%= simple_form_for [ @feed, @post ], remote: true do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
     <%= f.input :rich_body,
+                label: false,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "Share your adventure!" }%>

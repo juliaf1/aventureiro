@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :find_feed, only: [:create, :destroy]
   def index
     @posts = Post.all.order(created_at: :desc)
     @post = Post.new
@@ -6,12 +7,17 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.feed_id = @feed.id
     @post.user = current_user
 
     if @post.save
-      redirect_to user_posts_path, anchor: @post
+      FeedChannel.broadcast_to(
+        @feed,
+        render_to_string(partial: "post", locals: { post: @post })
+      )
+      redirect_to feed_path(@feed, anchor: "post-#{@post.id}")
     else
-      render :index
+      render "feeds/show"
     end
   end
 
@@ -19,13 +25,17 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     authorize current_user, :owner?, policy_class: UserPolicy
     if @post.destroy
-      redirect_to user_posts_path
+      redirect_to feed_path(@feed)
     else
-      render :index, anchor: @post
+      render "feeds/show"
     end
   end
 
   private
+
+  def find_feed
+    @feed = Feed.first
+  end
 
   def post_params
     params.require(:post).permit(:rich_body, :photo)

@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [ :show, :edit, :update ] do
     resources :campsite_reservations, only: :index
-    resources :posts, only: [:index, :create, :destroy]
   end
 
   resources :campsites, only: [ :index, :show ] do
@@ -24,6 +23,14 @@ Rails.application.routes.draw do
   resources :boats, only: [ :index ]
 
   resources :permit_requests, only: [ :index, :new, :create ]
+
+  #Actioncable routes
+
+  resources :feeds, only: :show do
+    resources :posts, only: [:create, :destroy]
+  end
+
+
 
   # routes for local users
   namespace :local do
