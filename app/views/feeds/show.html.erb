@@ -1,17 +1,13 @@
 <div class="container">
-
- <div class="post-form">
+  <div class="post-form">
     <%= render 'shared/new_post_form' %>
   </div>
 
   <div class="posts-container" id="posts" data-feed-id="1">
-    <% if @posts.present? %>
-      <% @posts.each do |post| %>
-        <% @post = post %>
-        <%= render 'posts/post', local: { post: @post} %>
-       <% end %>
+    <% @posts&.each do |post| %>
+      <% @post = post %>
+      <%= render 'posts/post', local: { post: @post} %>
     <% end %>
   </div>
 </div>
 
-<%= @teste&.name %>

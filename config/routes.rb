@@ -24,13 +24,10 @@ Rails.application.routes.draw do
 
   resources :permit_requests, only: [ :index, :new, :create ]
 
-  #Actioncable routes
-
+  #Actioncable routes for the feed and the posts
   resources :feeds, only: :show do
     resources :posts, only: [:create, :destroy]
   end
-
-
 
   # routes for local users
   namespace :local do
