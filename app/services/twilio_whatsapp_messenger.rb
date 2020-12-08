@@ -22,7 +22,7 @@ Check-out: #{campsite_reservation.check_out.strftime('%d/%m/%y')}\n
 Número de hóspedes: #{campsite_reservation.number_guests}\n
 Total: R$#{campsite_reservation.total_price}\n
 Mensagem: #{campsite_reservation.description}\n
-Para aceitar ou recusar a reserva: aventureiroilhagrande.herokuapp.com/local/campsite_reservations"
+Para aceitar ou recusar a reserva: aventureiroilhagrande.herokuapp.com/local/campsite_reservations/#{campsite_reservation.id}"
     TwilioWhatsappMessenger.new.send_whatsapp(message)
   end
 
@@ -44,7 +44,7 @@ Nova Reserva por: #{journey_reservation.user.first_name.capitalize}\n
 Saída: #{journey_reservation.boat_journey.departure_time.strftime('%H:%M, %d/%m/%y')}\n
 Número de passageiros: #{journey_reservation.number_passengers}\n
 Total: R$#{journey_reservation.total_price}\n
-Para aceitar ou recusar a reserva: aventureiroilhagrande.herokuapp.com/local/boat_journey_reservations"
+Para aceitar ou recusar a reserva: aventureiroilhagrande.herokuapp.com/local/boat_journey_reservations/#{journey_reservation.id}"
     TwilioWhatsappMessenger.new.send_whatsapp(message)
   end
 
@@ -53,8 +53,7 @@ Para aceitar ou recusar a reserva: aventureiroilhagrande.herokuapp.com/local/boa
 Cancelamento de Reserva por: #{journey_reservation.user.first_name.capitalize}\n
 Saída: #{journey_reservation.boat_journey.departure_time.strftime('%H:%M, %d/%m/%y')}\n
 Número de passageiros: #{journey_reservation.number_passengers}\n
-Total: R$#{journey_reservation.total_price}\n
-Para aceitar ou recusar a reserva: aventureiroilhagrande.herokuapp.com/local/boat_journey_reservations"
+Total: R$#{journey_reservation.total_price}\n"
     TwilioWhatsappMessenger.new.send_whatsapp(message)
   end
 
