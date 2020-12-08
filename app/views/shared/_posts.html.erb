@@ -1,0 +1,24 @@
+<% if @posts.present? %>
+  <% @posts.each do |post| %>
+    <div class="post-card">
+      <div class="post-avatar-image">
+        <% if post.user.photo.attached? %>
+          <%= cl_image_tag post.user.photo.key, class: "avatar" %>
+        <% end %>
+      </div>
+      <div class="post-image">
+        <% if post.photo.attached? %>
+          <%= cl_image_tag post.photo.key, class: "post-photo" %>
+        <% end %>
+      </div>
+      <div class="post-text-content">
+        <p><%= post.rich_body %></p>
+        <small><%= Time.now.strftime("%a, %b %e at %l:%M%p") %></small>
+      </div>
+
+      <% if UserPolicy.new(current_user, post).post_owner? %>
+        <%= link_to 'Delete', user_post_path(current_user, post), method: 'delete', class: "secondary-btn secondary-btn-sm secondary-btn-pink", data: {confirm: "Are you sure you want to delete this post?"} %>
+      <% end %>
+    </div>
+   <% end %>
+<% end %>
