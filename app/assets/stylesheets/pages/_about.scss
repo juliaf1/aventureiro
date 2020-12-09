@@ -7,12 +7,24 @@
 .about-banner {
   width: 100%;
   height: 100vh;
+  position: relative;
 }
 
 .av-video {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+.about-banner-overlay {
+  position: absolute;
+  top: 440px;
+  left: 160px;
+  z-index: 1;
+  color: $white;
+  text-shadow: 1px 1px 12px rgba(50, 50, 50, 0.8);
 }
 
 .about-section-1 {
@@ -100,8 +112,9 @@
 
   h5 {
     color: $light-yellow;
-    font-weight: 300;
-    margin-top: 40px;
+    font-weight: 400;
+    margin-top: 48px;
+    margin-bottom: 24px;
   }
 
   p {
