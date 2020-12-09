@@ -2,6 +2,7 @@
   <% if @boats.empty? %>
     <p>Você ainda não tem barcos.
       <%= link_to "Adicione um barco", new_local_boat_path, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %></p>
+
   <% else %>
     <%= link_to "Adicione um barco", new_local_boat_path, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
 
@@ -20,6 +21,7 @@
         <div class="boat-card-btns">
           <%= link_to "Adicione uma viagem", new_local_boat_boat_journey_path(boat), class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
           <%= link_to "Remover", local_boat_path(boat), method: :delete, class: "primary-btn primary-btn-sm primary-btn-blue" %>
+          <%= link_to "Editar", edit_local_boat_path(boat), class: "primary-btn primary-btn-sm primary-btn-blue" %>
         </div>
       </div>
     <% end %>
