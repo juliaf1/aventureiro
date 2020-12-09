@@ -8,11 +8,9 @@
         <h4><%= campsite.name %></h4>
         <% if campsite.full_periods %>
             <% campsite.full_periods.sort_by(&:start_date).each do |full_period| %>
-              <strong>Fully booked from: </strong><%= full_period.start_date.strftime("%d %B %Y") %> to <%= full_period.end_date.strftime("%d %B %Y") %>
               <ul>
                 <li>
-                  <%= link_to "Edit Campsite", edit_local_campsite_path(campsite), class: "primary-btn primary-btn-sm secondary-btn-blue" %>
-                  <%= link_to "Add a full period", new_local_campsite_full_period_path(campsite), class: "secondary-btn secondary-btn-sm secondary-btn-yellow" %>
+                  <strong>Fully booked from: </strong><%= full_period.start_date.strftime("%d %B %Y") %> to <%= full_period.end_date.strftime("%d %B %Y") %>
                   <%= link_to "Delete", local_full_period_path(full_period), method: :delete, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
                 </li>
               </ul>
@@ -20,6 +18,12 @@
           </ul>
         <% end %>
       </div>
+      <ul>
+        <li>
+          <%= link_to "Edit Campsite", edit_local_campsite_path(campsite), class: "primary-btn primary-btn-sm secondary-btn-blue" %>
+          <%= link_to "Add a full period", new_local_campsite_full_period_path(campsite), class: "secondary-btn secondary-btn-sm secondary-btn-yellow" %>
+        </li>
+      </ul>
     <% end %>
   <% end %>
   <%= link_to 'Back', local_campsites_path, class: 'primary-btn primary-btn-sm primary-btn-blue' %>
