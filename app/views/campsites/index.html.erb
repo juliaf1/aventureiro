@@ -20,7 +20,7 @@
           <div class="campsite-card-header">
             <h4><%= campsite.name %></h4>
             <% if campsite.user.photo.attached? %>
-              <%= cl_image_tag campsite.user.photo.key, class: 'avatar' %>
+              <%= cl_image_tag campsite.user.photo.key, class: 'avatar-medium' %>
             <% end %>
           </div>
           <p><%= campsite.description %></p>
