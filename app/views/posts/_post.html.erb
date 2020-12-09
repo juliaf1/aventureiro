@@ -1,9 +1,17 @@
 <div class="post-card" id="post-<%= @post.id %>">
-  <div class="post-avatar-image">
+  <div class="post-avatar-top">
     <% if @post.user.photo.attached? %>
       <%= cl_image_tag @post.user.photo.key, class: "avatar" %>
+      <p><%= @post.user.first_name%> <%= @post.user.last_name%></p>
+
+    <% else %>
+      <%= image_tag "https://ui-avatars.com/api/?name=#{current_user.first_name}+#{current_user.last_name}", class: "avatar" %>
+      <p><%= @post.user.first_name%> <%= @post.user.last_name%></p>
     <% end %>
+
   </div>
+    <hr>
+    <small><%= Time.now.strftime("%a, %b %e at %l:%M%p") %></small>
   <div class="post-image">
     <% if @post.photo.attached? %>
       <%= cl_image_tag @post.photo.key, class: "post-photo" %>
@@ -11,10 +19,11 @@
   </div>
   <div class="post-text-content">
     <p><%= @post.rich_body %></p>
-    <small><%= Time.now.strftime("%a, %b %e at %l:%M%p") %></small>
   </div>
 
-  <% if UserPolicy.new(current_user, @post).post_owner? %>
-    <%= link_to 'Delete', feed_post_path(@feed, @post), method: 'delete', class: "secondary-btn secondary-btn-sm secondary-btn-pink", data: {confirm: "Are you sure you want to delete this post?"} %>
-  <% end %>
+  <div class="post-delete">
+    <% if UserPolicy.new(current_user, @post).post_owner? %>
+      <%= link_to icon('fas', 'trash-alt'), feed_post_path(@feed, @post), method: 'delete', data: {confirm: "Are you sure you want to delete this post?"}, class: "post-delete-icon" %>
+    <% end %>
+  </div>
 </div>
