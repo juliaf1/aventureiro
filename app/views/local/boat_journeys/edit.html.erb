@@ -1,7 +1,12 @@
-<div class="edit-form-container">
-  <h3>Edit your Boat Journey</h3>
+<div class="reservation-container">
+  <div class="go-back">
+    <%= link_to icon('fas', 'chevron-left'), local_boat_journeys_path %>
+    <%= link_to 'Go back', local_boat_journeys_path, class: 'av-link' %>
+  </div>
 
-  <div>
+  <div class="reservation-card">
+  <h4>Edite a viagem</h4>
+
     <%= simple_form_for(@boat_journey, url: local_boat_journey_path(@boat_journey), method: 'patch') do |f| %>
       <%= f.error_notification %>
 
@@ -17,15 +22,11 @@
                     required: true,
                     autofocus: true %>
       </div>
-      
-      <div class="space-btns">
-        <div class="form-actions">
-          <%= f.button :submit, "Save", class: "secondary-btn secondary-btn-sm secondary-btn-blue" %>
-        </div>
-        <%= link_to 'Back', user_path(current_user), class: 'primary-btn primary-btn-sm primary-btn-blue' %>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Save", class: "devise-btn" %>
       </div>
     <% end %>
-    
 
   </div>
 </div>
