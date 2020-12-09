@@ -1,9 +1,13 @@
 <div class="feed-container">
   <h3>Aventureiro Live Feed</h3>
-  <p>Check out whats going on right now in Aventureiro, and share your adventure!</p>
-  <div class="new-post-form">
-    <%= render 'shared/new_post_form' %>
-  </div>
+  <% if user_signed_in? %>
+    <p>Check out whats going on right now in Aventureiro, and share your adventure!</p>
+    <div class="new-post-form">
+      <%= render 'shared/new_post_form' %>
+    </div>
+  <% else %>
+    <p>Check out whats going on right now in Aventureiro, and <%= link_to "register ", new_user_registration_path %>to share your adventure!</p>
+  <% end %>
 
   <div class="posts-container" id="posts" data-feed-id="1">
     <% @posts&.each do |post| %>

@@ -3,9 +3,8 @@
     <% if @post.user.photo.attached? %>
       <%= cl_image_tag @post.user.photo.key, class: "avatar" %>
       <p><%= @post.user.first_name%> <%= @post.user.last_name%></p>
-
     <% else %>
-      <%= image_tag "https://ui-avatars.com/api/?name=#{current_user.first_name}+#{current_user.last_name}", class: "avatar" %>
+      <%= image_tag "https://ui-avatars.com/api/?name=#{@post.user.first_name}+#{@post.user.last_name}", class: "avatar" %>
       <p><%= @post.user.first_name%> <%= @post.user.last_name%></p>
     <% end %>
 
