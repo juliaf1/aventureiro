@@ -16,12 +16,15 @@
         <%= f.input :departure_time,
                     required: true,
                     as: :string,
+                    label: "Horário de saída",
                     input_html: {class: 'journeypicker'} %>
         <%= f.input :travel_duration,
                     required: true,
+                    label: "Tempo de viagem",
                     autofocus: true %>
         <%= f.input :price_person,
                     required: true,
+                    label: "Preço por pessoa",
                     autofocus: true %>
       </div>
 

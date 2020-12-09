@@ -7,7 +7,7 @@
 
   <div class="reservation-card">
     <h4>Edite o seu camping</h4>
-    <h5>@campsite.name</h5>
+    <h5><%= @campsite.name %></h5>
 
     <%= simple_form_for(@campsite, url: local_campsite_path(@campsite), method: 'patch') do |f| %>
       <%= f.error_notification %>
@@ -15,13 +15,16 @@
       <div class="form-inputs">
         <%= f.input :name,
                     required: true,
-                    autofocus: true %>
+                    autofocus: true,
+                    label: "Nome do Camping" %>
         <%= f.input :description,
                     required: true,
-                    autofocus: true %>
+                    autofocus: true,
+                    label: "Descrição" %>
         <%= f.input :daily_price,
                     required: true,
-                    autofocus: true %>
+                    autofocus: true,
+                    label: "Preço diária" %>
         <%= f.input :photo, as: :file %>
       </div>
 
