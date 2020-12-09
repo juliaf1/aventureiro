@@ -56,7 +56,7 @@
 }
 
 .boat-journey-reservations-container {
-  width: 55%;
+  width: 50%;
   text-align: left;
   margin: 100px auto;
   h4 {
@@ -66,9 +66,20 @@
     padding: 25px;
     box-shadow: 1px 1px 6px rgba(50, 50, 50, 0.1), 2px 3px 6px rgba(50, 50, 50, 0.2);
     position: relative;
+    margin-bottom: 24px;
+    .card-colour-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background-color: $light-blue;
+      width: 100%;
+      height: 80px;
+    }
     ul {
       list-style-type: none;
       padding-left: 16px;
+      padding-top: 16px;
     }
     h5 {
       padding-left: 16px;
@@ -78,11 +89,17 @@
       padding-bottom: 16px;
     }
     .boat-journey-reservation-card-main {
-      display: flex;
-      justify-content: space-around;
       h3 {
         font-size: 25px;
       }
+    }
+    .btn-center {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      position: absolute;
+      bottom: 24px;
+      left: 0px;
     }
   }
 }
