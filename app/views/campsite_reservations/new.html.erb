@@ -13,7 +13,7 @@
       <div class="form-inputs">
         <%= f.input :check_in, label: "Check-in", required: true, as: :string, input_html: {id: "check_in"} %>
         <%= f.input :check_out, label: "Check-out", required: true, as: :string, input_html: {id: "check_out"} %>
-        <%= f.input :number_guests, label: "Number of guests", required: true %>
+        <%= f.input :number_guests, label: "Number of guests", required: true, input_html: {value: 1} %>
         <%= f.input :description, label: "Tell #{@campsite.user.first_name} about your trip", required: true, input_html: { rows: '5'} %>
       </div>
 
