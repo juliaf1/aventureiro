@@ -15,15 +15,13 @@
         <%= f.input :daily_price,
                     required: true,
                     autofocus: true %>
-        <%= f.input :availability,
-                    required: true,
-                    autofocus: true %>
         <%= f.input :photo, as: :file %>
       </div>
       <div class="space-btns">
         <div class="form-actions">
           <%= f.button :submit, "Save", class: "secondary-btn secondary-btn-sm secondary-btn-blue" %>
         </div>
+        <%= link_to "Add a full period", new_local_campsite_full_period_path(@campsite), class: "secondary-btn secondary-btn-sm secondary-btn-yellow" %>
         <%= link_to 'Back', user_path(current_user), class: 'primary-btn primary-btn-sm primary-btn-blue' %>
       </div>
     <% end %>
