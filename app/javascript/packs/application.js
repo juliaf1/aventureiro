@@ -23,6 +23,7 @@ import { toggleAllHidden } from '../plugins/journeys_display_all.js';
 import { toggleHiddenInfo } from '../plugins/journey_index_toggle.js';
 import { initUpdateNavbarOnScroll } from '../components/navbar.js';
 import { initFeedCable } from '../channels/feed_channel.js';
+import { loadDynamicBannerText } from '../components/banner';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -32,6 +33,7 @@ document.addEventListener('turbolinks:load', () => {
   initFlatpickr();
   toggleAllHidden();
   initFeedCable();
+  loadDynamicBannerText();
 });
 
 require("trix")
