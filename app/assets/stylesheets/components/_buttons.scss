@@ -201,3 +201,10 @@
 .no-border {
   border: none;
 }
+
+.space-btns {
+  display: flex;
+  width: 50%;
+  justify-content: left;
+  padding-left: 16px;
+}

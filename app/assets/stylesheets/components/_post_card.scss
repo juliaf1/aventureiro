@@ -1,0 +1,48 @@
+.post-card {
+  width: 50%;
+  padding: 24px 24px;
+  box-shadow: 1px 1px 6px rgba(50, 50, 50, 0.1), 2px 3px 6px rgba(50, 50, 50, 0.2);
+  margin: 15px auto;
+  border-radius: 8px;
+  text-align: left;
+
+  .post-avatar-top {
+    padding-left: 8px;
+    padding-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    p {
+      font-size: 15px;
+      font-weight: bold;
+      margin: 0;
+      margin-left: 10px;
+    }
+  }
+  small {
+    font-size: 10px;
+    font-weight: lighter;
+  }
+  .post-photo {
+    width: 100%;
+    max-height: 280px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    border-radius: 8px;
+  }
+  .post-text-content {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: lighter;
+  }
+  .post-delete {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .post-delete-icon {
+      font-size: 20px;
+    }
+
+  }
+
+}

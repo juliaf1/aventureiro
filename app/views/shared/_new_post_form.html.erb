@@ -5,8 +5,10 @@
                 label: false,
                 required: true,
                 autofocus: true,
+                maxlength: 240,
+                height: 1000,
                 placeholder: "Share your adventure!"%>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :photo, as: :file, label: false %>
   </div>
 
   <div class="form-actions">

@@ -48,7 +48,7 @@ class Local::BoatsController < ApplicationController
   end
 
   def boat_params
-    params.require(:boat).permit(:name, :max_occupation)
+    params.require(:boat).permit(:name, :max_occupation, :photo)
   end
 
   def find_boat

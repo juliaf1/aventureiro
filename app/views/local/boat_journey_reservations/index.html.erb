@@ -8,7 +8,7 @@
     <h4>Próximas reservas </h4>
     <% @upcoming_journey_reservations.each do |boat_reservation| %>
       <div class="boat-journey-reservation-card res-card-margin">
-        <div class="res-card-yellow"></div>
+        <div class="card-colour-box"></div>
         <h5><%= "#{boat_reservation.user.first_name} #{boat_reservation.user.last_name}" %></h5>
         <p><%= boat_reservation.boat_journey.boat.name %></p>
         <ul>
