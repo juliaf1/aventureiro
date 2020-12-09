@@ -235,6 +235,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.2.5)
     regexp_parser (1.8.2)
     remotipart (1.4.4)
     responders (3.0.1)
@@ -334,6 +335,7 @@ DEPENDENCIES
   pundit
   rails (~> 6.0.3, >= 6.0.3.4)
   rails_admin (~> 2.0)
+  redis
   sass-rails (>= 6)
   selenium-webdriver
   simple_form

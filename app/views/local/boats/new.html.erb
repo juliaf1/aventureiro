@@ -1,7 +1,13 @@
-<div class="container">
-  <h3>Add a new boat</h3>
+<div class="reservation-container">
 
-  <div>
+  <div class="go-back">
+    <%= link_to icon('fas', 'chevron-left'), local_boats_path %>
+    <%= link_to 'Go back', local_boats_path, class: 'av-link' %>
+  </div>
+
+  <div class="reservation-card">
+    <h4>Adicione um novo barco</h4>
+
     <%= simple_form_for(@boat, url: local_boats_path, method: 'post') do |f| %>
       <%= f.error_notification %>
 
@@ -9,17 +15,18 @@
         <%= f.input :name,
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "name" }%>
+                    label: "Nome do Barco" %>
         <%= f.input :max_occupation,
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "last name" }%>
+                    label: "Ocupação máxima" %>
+        <%= f.input :photo, as: :file %>
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Create", class: "btn btn-primary" %>
+        <%= f.button :submit, "Create", class: "devise-btn" %>
       </div>
     <% end %>
-    <%= link_to 'Back', user_path(current_user), class: 'btn btn-primary' %>
+
   </div>
 </div>

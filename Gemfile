@@ -50,6 +50,9 @@ gem 'cloudinary', '~> 1.16.0'
 # Pundit
 gem 'pundit'
 
+# Redis for Action Cable
+gem 'redis'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
