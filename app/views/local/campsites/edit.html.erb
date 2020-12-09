@@ -1,7 +1,14 @@
-<div class="edit-form-container">
-  <h3>Edit your campsite</h3>
+<div class="reservation-container">
 
-  <div>
+  <div class="go-back">
+    <%= link_to icon('fas', 'chevron-left'), campsites_path %>
+    <%= link_to 'Go back', local_campsites_path, class: 'av-link' %>
+  </div>
+
+  <div class="reservation-card">
+    <h4>Edite o seu camping</h4>
+    <h5>@campsite.name</h5>
+
     <%= simple_form_for(@campsite, url: local_campsite_path(@campsite), method: 'patch') do |f| %>
       <%= f.error_notification %>
 
@@ -17,14 +24,11 @@
                     autofocus: true %>
         <%= f.input :photo, as: :file %>
       </div>
-      <div class="space-btns">
-        <div class="form-actions">
-          <%= f.button :submit, "Save", class: "secondary-btn secondary-btn-sm secondary-btn-blue" %>
-        </div>
-        <%= link_to "Add a full period", new_local_campsite_full_period_path(@campsite), class: "secondary-btn secondary-btn-sm secondary-btn-yellow" %>
-        <%= link_to 'Back', user_path(current_user), class: 'primary-btn primary-btn-sm primary-btn-blue' %>
-      </div>
-    <% end %>
 
+      <div class="form-actions">
+        <%= f.button :submit, "Salvar", class: "devise-btn" %>
+      </div>
+
+    <% end %>
   </div>
 </div>
