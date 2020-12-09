@@ -1,4 +1,4 @@
-<div class="container">
+<div class="edit-form-container">
   <h3>Edit your campsite</h3>
 
   <div>
@@ -20,11 +20,13 @@
                     autofocus: true %>
         <%= f.input :photo, as: :file %>
       </div>
-
-      <div class="form-actions">
-        <%= f.button :submit, "Save", class: "btn btn-primary" %>
+      <div class="space-btns">
+        <div class="form-actions">
+          <%= f.button :submit, "Save", class: "secondary-btn secondary-btn-sm secondary-btn-blue" %>
+        </div>
+        <%= link_to 'Back', user_path(current_user), class: 'primary-btn primary-btn-sm primary-btn-blue' %>
       </div>
     <% end %>
-    <%= link_to 'Back', user_path(current_user), class: 'btn btn-primary' %>
+
   </div>
 </div>
