@@ -107,7 +107,7 @@ profile_photos = {
   ferreira: "https://images.unsplash.com/photo-1578232443464-16a2880948fe?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=352&q=80",
   larissa: "https://images.unsplash.com/photo-1599571280904-64453968268b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
   ita: "https://images.unsplash.com/photo-1496672254107-b07a26403885?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-  luis: "https://images.unsplash.com/flagged/photo-1598629403012-bc0e90e12f21?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=376&q=80", 
+  luis: "https://images.unsplash.com/flagged/photo-1598629403012-bc0e90e12f21?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=376&q=80",
   roseno: "https://images.unsplash.com/photo-1606542353593-d1f26eb13088?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=401&q=80"
 }
 
@@ -185,7 +185,7 @@ barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image
 puts "Creating some boat journeys ⛵"
 
 n = 0
-60.times do  
+60.times do
   BoatJourney.create(
     boat_id: Boat.all[0].id,
     departure_time: Time.new(2020,11,20,8,30) + n.day ,
@@ -196,7 +196,7 @@ n = 0
 end
 
 n = 0
-60.times do  
+60.times do
   BoatJourney.create(
     boat_id: Boat.all[1].id,
     departure_time: Time.new(2020,11,20,5,30) + n.day ,
@@ -207,7 +207,7 @@ n = 0
 end
 
 n = 0
-60.times do  
+60.times do
   BoatJourney.create(
     boat_id: Boat.all[2].id,
     departure_time: Time.new(2020,11,20,12,00) + n.day ,
@@ -217,7 +217,7 @@ n = 0
   n += 1
 end
 
-60.times do  
+60.times do
   BoatJourney.create(
     boat_id: Boat.all[3].id,
     departure_time: Time.new(2020,11,20,15,00) + n.day ,
@@ -384,8 +384,6 @@ puts "Creating some fake travellers"
   )
 end
 
-puts "Seeding complete!"
-
 puts "Making some boat journey reservations"
 
 travellers = User.last(12)
@@ -408,3 +406,10 @@ if BoatJourneyReservation.present?
 else
   puts "DID NOT WORK"
 end
+
+puts "Creating feed"
+
+new_feed = Feed.create
+
+
+puts "Seeding complete!"

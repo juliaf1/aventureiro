@@ -7,6 +7,27 @@
 <% end %>
 
 <div class="campsites-container">
+
+  <div class="campsites-filter">
+    <h3>Filter by date</h3>
+    <p>Check which campsites are available </p>
+
+    <%= simple_form_for :search, method: "get", wrapper: :inline_form, html: { class: "form-inline" } do |f| %>
+      
+      <div class="date-inputs">
+        <%= f.input :start_date, required: true, as: :string, input_html: { id: "start_date", name: "start_date", autocomplete: 'off' } %>
+        <%= f.input :end_date, required: true, as: :string, input_html: { id: "end_date", name: "end_date", autocomplete: 'off' } %>
+      </div>
+
+      <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+      
+    <% end %>
+  </div>
+
+  <% if @start_date %>
+    <h4>There are <%= @campsites.count %> campsites available on those dates</h4>
+  <% end %>
+
   <% @campsites.each do |campsite| %>
     <div class="campsite-card">
 

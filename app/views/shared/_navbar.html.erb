@@ -4,9 +4,9 @@
       <div class="navbar-options-left">
         <ul>
           <li><%= link_to "Home", root_path, class: "av-link" %></li>
-          <li><%= link_to "About Aventureiro", root_path, class: "av-link" %></li>
-          <li><%= link_to "Adventurer Guide", root_path, class: "av-link" %></li>
-          
+          <li><%= link_to "About Aventureiro", about_path, class: "av-link" %></li>
+          <li><%= link_to "Feed", feed_path(1), class: "av-link" %> </li>
+
           <% if current_user && current_user.local? %>
             <li><%= link_to "Boat Schedule", boat_journeys_path, class: "av-link" %></li>
             <li><%= link_to "Campsites", campsites_path, class: "av-link" %></li>
@@ -46,7 +46,7 @@
           <% end %>
       </div>
   </div>
-  
+
   <% if current_user %>
     <% if current_user.local? %>
       <%= render 'shared/local_navbar' %>
