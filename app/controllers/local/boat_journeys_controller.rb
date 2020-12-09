@@ -8,6 +8,7 @@ class Local::BoatJourneysController < ApplicationController
   end
 
   def new
+    @boat = Boat.find(params[:boat_id])
     @boat_journey = BoatJourney.new
     authorize_boat_journey
   end
