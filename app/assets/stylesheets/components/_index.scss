@@ -1,26 +1,33 @@
 // Import your components CSS files here.
 @import "alert";
 @import "avatar";
-@import "home_navbar";
-@import "normal_navbar";
 @import "buttons";
-@import "campsite_cards";
-@import "journey_cards";
 @import "tags";
 @import "home_footer";
-@import "locals_cards";
-@import "boat_cards";
-@import "index_navbar";
-@import "profile_card";
-@import "local_navbar";
-@import "home_local_navbar";
 @import "back";
+
 @import "new_reservation_cards";
 @import "reservation_cards";
 @import "campsite_filter";
 @import "feed";
 @import "post_card";
+
 @import "form";
+
+// Navbars
+@import "navbars/home_navbar";
+@import "navbars/normal_navbar";
+@import "navbars/index_navbar";
+@import "navbars/local_navbar";
+@import "navbars/home_local_navbar";
+//Cards
+@import "cards/campsite_cards";
+@import "cards/journey_cards";
+@import "cards/locals_cards";
+@import "cards/boat_cards";
+@import "cards/profile_card";
+@import "cards/new_reservation_cards";
+@import "cards/reservation_cards";
 
 // Created to customize flatpickr theme
 @import "material_pink";
