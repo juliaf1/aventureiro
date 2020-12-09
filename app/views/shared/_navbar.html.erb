@@ -5,6 +5,7 @@
         <ul>
           <li><%= link_to "Home", root_path, class: "av-link" %></li>
           <li><%= link_to "About Aventureiro", about_path, class: "av-link" %></li>
+          <li><%= link_to "Feed", feed_path(1), class: "av-link" %> </li>
 
           <% if current_user && current_user.local? %>
             <li><%= link_to "Boat Schedule", boat_journeys_path, class: "av-link" %></li>
