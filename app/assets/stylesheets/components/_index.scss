@@ -6,12 +6,8 @@
 @import "home_footer";
 @import "back";
 
-@import "new_reservation_cards";
-@import "reservation_cards";
 @import "campsite_filter";
 @import "feed";
-@import "post_card";
-
 @import "form";
 
 // Navbars
@@ -28,6 +24,7 @@
 @import "cards/profile_card";
 @import "cards/new_reservation_cards";
 @import "cards/reservation_cards";
+@import "cards/post_cards";
 
 // Created to customize flatpickr theme
 @import "material_pink";
