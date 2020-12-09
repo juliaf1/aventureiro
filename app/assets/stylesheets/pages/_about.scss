@@ -75,27 +75,37 @@
   }
 }
 
+.about-section-3 {
+  background-size: cover;
+  background-position: top center;
+  width: 100%;
+  min-height: 800px;
+  z-index: 100;
+  position: relative;
+  top: -88px;
+}
+
 .section-3-info {
   padding: 0 160px;
   position: relative;
-  top: 80px;
+  top: 200px;
 
   .section-3-text {
-    margin-top: 64px;
+    margin-top: 16px;
   }
 
   h2 {
-    color: $light-pink;
+    color: $dark-blue;
   }
 
   h5 {
-    color: $neutral-light-brown;
+    color: $light-yellow;
     font-weight: 300;
     margin-top: 40px;
   }
 
   p {
-    color: $neutral-dark-brown;
+    color: $white;
     font-weight: 300;
     margin: 0;
   }
