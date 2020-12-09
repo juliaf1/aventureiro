@@ -6,15 +6,6 @@
   <%= render 'shared/index_navbar' %>
 <% end %>
 
-<h3>FILTER TESTING LIST:</h3>
-<% if @filtered %>
-  <% @filtered.each do |campsite| %>
-    <ul>
-      <li><%= campsite.name %></li>
-    </ul>
-  <% end %>
-<% end %>
-
 <div class="campsites-container">
 
   <div class="campsites-filter">
@@ -32,6 +23,10 @@
       
     <% end %>
   </div>
+
+  <% if @start_date %>
+    <h4>There are <%= @campsites.count %> campsites available on those dates</h4>
+  <% end %>
 
   <% @campsites.each do |campsite| %>
     <div class="campsite-card">
