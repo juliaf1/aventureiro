@@ -14,10 +14,9 @@ class BoatJourneyReservationsController < ApplicationController
 
   def create
     @journey_reservation = BoatJourneyReservation.new(journey_reservation_params)
-
+    @journey_reservation.number_passengers ||= 1
     @journey_reservation.boat_journey = @boat_journey
     @journey_reservation.user = current_user
-    @journey_reservation.total_price = @journey_reservation.number_passengers * @journey_reservation.boat_journey.price_person
     @journey_reservation.status = 0
 
     authorize @journey_reservation, policy_class: BoatJourneyReservationPolicy
