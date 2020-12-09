@@ -15,27 +15,29 @@
       margin-bottom: 8px;
     }
     h5 {
-      padding-bottom: 24px;
+      padding-bottom: 16px;
       padding-left: 32px;
     }
     .btn-center {
       position: absolute;
-      bottom: 8px;
-      left: 0px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      bottom: 24px;
+      left: 0;
     }
     ul {
       list-style-type: none;
-      padding-left: 16px;
+      padding-left: 0;
     }
     p {
       padding-bottom: 16px;
     }
     .campsite-reservation-card-main {
-      display: flex;
-      justify-content: center;
       width: 100%;
       padding-top: 16px;
       padding-bottom: 16px;
+      padding-left: 32px;
     }
     .card-colour-box {
       position: absolute;
