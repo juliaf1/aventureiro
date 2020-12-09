@@ -22,6 +22,7 @@ import { initFlatpickr } from '../plugins/flatpickr.js';
 import { toggleAllHidden } from '../plugins/journeys_display_all.js';
 import { toggleHiddenInfo } from '../plugins/journey_index_toggle.js';
 import { initUpdateNavbarOnScroll } from '../components/navbar.js';
+import { initFeedCable } from '../channels/feed_channel.js';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -30,6 +31,7 @@ document.addEventListener('turbolinks:load', () => {
   initUpdateNavbarOnScroll();
   initFlatpickr();
   toggleAllHidden();
+  initFeedCable();
 });
 
 require("trix")
