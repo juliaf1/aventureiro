@@ -1,10 +1,18 @@
 .campsite-reservations-container {
   width: 50%;
-  text-align: center;
+  text-align: left;
   margin: 100px auto;
   .campsite-reservation-card {
     padding: 25px;
     box-shadow: 1px 1px 6px rgba(50, 50, 50, 0.1), 2px 3px 6px rgba(50, 50, 50, 0.2);
+    position: relative;
+    ul {
+      list-style-type: none;
+      padding-left: 16px;
+    }
+    p {
+      padding-bottom: 16px;
+    }
     .campsite-reservation-card-main {
       display: flex;
       justify-content: space-around;
@@ -17,11 +25,23 @@
 
 .boat-journey-reservations-container {
   width: 50%;
-  text-align: center;
-  margin: 100px auto;
+  text-align: left;
+  margin: 24px auto;
   .boat-journey-reservation-card {
     padding: 25px;
     box-shadow: 1px 1px 6px rgba(50, 50, 50, 0.1), 2px 3px 6px rgba(50, 50, 50, 0.2);
+    position: relative;
+    ul {
+      list-style-type: none;
+      padding-left: 16px;
+    }
+    h5 {
+      padding-left: 16px;
+    }
+    p {
+      padding-left: 16px;
+      padding-bottom: 16px;
+    }
     .boat-journey-reservation-card-main {
       display: flex;
       justify-content: space-around;
@@ -32,3 +52,91 @@
   }
 }
 
+.local-campsite-reservations-container {
+  max-width: 30%;
+  text-align: left;
+  margin: 100px auto;
+  .campsite-reservation-card {
+    padding: 25px;
+    box-shadow: 1px 1px 6px rgba(50, 50, 50, 0.1), 2px 3px 6px rgba(50, 50, 50, 0.2);
+    position: relative;
+    ul {
+      list-style-type: none;
+      padding-left: 16px;
+    }
+    p {
+      padding-bottom: 16px;
+    }
+    .campsite-reservation-card-main {
+      display: flex;
+      justify-content: space-around;
+      h3 {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+.local-boat-journey-reservations-container {
+  width: 30%;
+  text-align: left;
+  margin: 24px auto;
+  .boat-journey-reservation-card {
+    padding: 25px;
+    box-shadow: 1px 1px 6px rgba(50, 50, 50, 0.1), 2px 3px 6px rgba(50, 50, 50, 0.2);
+    position: relative;
+    ul {
+      list-style-type: none;
+      padding-left: 16px;
+    }
+    h5 {
+      padding-left: 16px;
+    }
+    p {
+      padding-left: 16px;
+      padding-bottom: 16px;
+    }
+    .boat-journey-reservation-card-main {
+      display: flex;
+      justify-content: space-around;
+      h3 {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+.res-card-margin {
+  margin-bottom: 32px;
+}
+
+.res-card-yellow {
+  background-color: $light-yellow;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 96px;
+  width: 100%;
+  z-index: -1;
+}
+
+.res-card-pink {
+  background-color: $light-yellow;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 96px;
+  width: 100%;
+  z-index: -1;
+}
+
+.res-card-btns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; 
+}
+
+.res-card-info {
+  width: 100%;
+  padding-right: 16px;
+}
