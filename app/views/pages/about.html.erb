@@ -2,9 +2,126 @@
   <%= render 'shared/home_navbar' %>
 <% end %>
 
-<div class="about-banner">
-  <video autoplay muted loop id="av-video">
-    <source src="aventureiro.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
-  </video>
+<div class="about-body">
+  <div class="about-banner">
+    <%= video_tag "aventureiro.mp4", autoplay: true, loop: true, muted: true, class: 'av-video' %>
+  </div>
+
+  <div class="about-section-1">
+    <div class="section-1-info">
+      <h2>Aventureiro</h2>
+      <p>is one of the 106 beaches of Ilha Grande</p>
+    </div>
+    <%= image_tag "ilha.png" %>
+    <div class="section-1-info">
+      <p>Aventureiro is part of the South Beach Biological Reserve,
+      a protected area on the open sea side of the island.</p>
+    </div>
+  </div>
+
+  <div class="about-section-2">
+    <div class="section-2-info">
+      <h2>Biggest caiçaras on the island</h2>
+      <div class="section-2-text">
+        <h5>In Tupi, caiçara means man of the Coast</h5>
+        <p>Aventureiro is a fishermen village with around 100 locals, a community that has been there for over 200 years preserving their traditions and memories of love, rescues and great journeys. Their economy is based on artisanal fishing, sustainable agriculture and touristic activities.</p>
+        <h5>Community Based Tourism</h5>
+        <p>Different than other parts of the island, where big tourism corporations run the business, the touristic activities in Aventureiro are all managed by the caiçaras, local residents of the beach, who have special authorization to host up until 560 travelers per day on the Reserve.</p>
+        <h5>Culture and Activities</h5>
+        <p>On the first full moon weekend of January, locals host the typical Santa Cruz procession and in July, they have Festa Julina. Besides the Santa Cruz church, Aventureiro also has one elementary school and several restaurant and bars, which are people's house turned into social and service areas.
+        Energy is powered by gasoline/diesel generators, which are usually turned on at 6pm and off at 10pm. Surfing, fishing, crafting, cooking, making music and playing football are some of the most common activities on the beach.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="shape-ocean" style="background-image: url('<%= image_path "onda.svg"%>')">
+    <div class="section-3-info">
+      <h2>The Adventurer Guide</h2>
+      <div class="section-3-text">
+        <h4>Golden tips to be an amazing adventurer</h4>
+        <h5>1. Plan your trip<br>
+        2. You are responsible for your safety<br>
+        3. Be careful with the places you go<br>
+        4. Bring your garbage back<br>
+        5. Let everything in its place<br>
+        6. Take extreme care with fire<br>
+        7. Honor the Animals and Plants<br>
+        8. Be courteous to the local population and with other visitors<br>
+        9. Buy locally produced items<br>
+        10. Recycle and always try to reduce impacts</h5>
+        <p>WWF'S Sustainable Passport for Traveling with Balance</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-section-4">
+    <div class="section-4-info">
+      <h3>But don't just take my word</h3>
+      <p>other people's pictures are woth a thousand of them.</p>
+    </div>
+
+    <div class="about-photos-container">
+      <div class="about-photos-row">
+        <div class="about-photo">
+          <%= image_tag "insta-01.jpg" %>
+        </div>
+        <div class="about-photo">
+          <%= image_tag "insta-02.jpg" %>
+        </div>
+        <div class="about-photo">
+          <%= image_tag "insta-03.jpg" %>
+        </div>
+      </div>
+
+      <div class="about-photos-row">
+        <div class="about-photo">
+          <%= image_tag "insta-04.jpg" %>
+        </div>
+        <div class="about-photo">
+          <%= image_tag "insta-05.jpg" %>
+        </div>
+        <div class="about-photo">
+          <%= image_tag "insta-06.jpg" %>
+        </div>
+      </div>
+
+      <div class="about-photos-row">
+        <div class="about-photo">
+          <%= image_tag "insta-07.jpg" %>
+        </div>
+        <div class="about-photo">
+          <%= image_tag "insta-08.jpg" %>
+        </div>
+        <div class="about-photo">
+          <%= image_tag "insta-09.jpg" %>
+        </div>
+      </div>
+
+      <div class="about-photos-row">
+        <div class="about-photo">
+          <%= image_tag "insta-10.jpg" %>
+        </div>
+        <div class="about-photo">
+          <%= image_tag "insta-11.jpg" %>
+        </div>
+        <div class="about-photo">
+          <%= image_tag "insta-12.jpg" %>
+        </div>
+      </div>
+
+      <div class="about-photos-row">
+        <div class="about-photo">
+          <%= image_tag "insta-13.jpg" %>
+        </div>
+        <div class="about-photo">
+          <%= image_tag "insta-14.jpg" %>
+        </div>
+        <div class="about-photo">
+          <%= image_tag "insta-15.jpg" %>
+        </div>
+      </div>
+
+      <p>Seriously, take a look at <%= link_to 'our feed.', feed_path(1) %></p>
+    </div>
+  </div>
 </div>
