@@ -2,13 +2,13 @@
   <div class="footer-left">
 
     <div class="footer-info">
-      <p><%= link_to 'About this project', root_path, class: 'av-link' %></p>
-      <p><%= link_to 'The developers', root_path, class: 'av-link' %></p>
+      <p><%= link_to 'About this project', 'https://github.com/juliaf1/aventureiro/blob/master/README.md', target: '_blank', class: 'av-link' %></p>
+      <p><%= link_to 'The developers', "https://github.com/juliaf1/aventureiro/graphs/contributors", target: '_blank',class: 'av-link' %></p>
     </div>
 
     <div class="footer-info">
-      <p><%= link_to 'Contact AMAV', root_path, class: 'av-link' %></p>
-      <p><%= link_to 'Ilha Grande Website', root_path, class: 'av-link' %></p>
+      <p><%= mail_to "aventureirailhagrande@gmail.com", "Contact AMAV", subject: "Olá Preciso de Informações", class: 'av-link' %></p>
+      <p><%= link_to 'Ilha Grande Website', 'https://www.ilhagrande.com.br',  target: '_blank', class: 'av-link' %></p>
     </div>
 
   </div>
