@@ -12,12 +12,12 @@
     </ul>
     <div class="res-card-btns">
       <% if @journey_reservation.pending? %>
-        <%= link_to "Confirmar", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch,  class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
-        <%= link_to "Rejeitar", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch,  class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+        <%= link_to "Confirmar", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
+        <%= link_to "Rejeitar", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
       <% elsif @journey_reservation.confirmed? %>
-        <%= link_to "Cancelar", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch,  class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+        <%= link_to "Cancelar", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
       <% elsif @journey_reservation.rejected? %>
-        <%= link_to "Confirmar", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch,  class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
+        <%= link_to "Confirmar", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
       <% end %>
     </div>
   </div>
