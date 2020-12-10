@@ -1,31 +1,31 @@
 <div class="local-boat-journey-reservations-container">
-  <h3>Suas reservas de barco</h3>
+  <h3>Your Boat Reservations</h3>
   <% if @journey_reservations.empty? %>
-    <p>Nenhuma reserva.</p>
+    <p>Sorry, no reservations yet.</p>
   <% end %>
 
   <% if @upcoming_journey_reservations.present? %>
-    <h4>Próximas reservas </h4>
+    <h4>Upcoming Reservations </h4>
     <% @upcoming_journey_reservations.each do |boat_reservation| %>
       <div class="boat-journey-reservation-card res-card-margin">
         <div class="card-colour-box"></div>
         <h5><%= "#{boat_reservation.user.first_name} #{boat_reservation.user.last_name}" %></h5>
         <p><%= boat_reservation.boat_journey.boat.name %></p>
         <ul>
-          <li><strong>Hora de partida:</strong> <%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></li>
-          <li><strong>Duração:</strong> <%= boat_reservation.boat_journey.travel_duration %></li>
-          <li><strong>Número de passageiros:</strong> <%= boat_reservation.number_passengers %></li>
-          <li><strong>Preço total:</strong> <%= boat_reservation.total_price %></li>
+          <li><strong>Departure time:</strong> <%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></li>
+          <li><strong>Duration:</strong> <%= boat_reservation.boat_journey.travel_duration %></li>
+          <li><strong>Number of passengers:</strong> <%= boat_reservation.number_passengers %></li>
+          <li><strong>Total price:</strong> <%= boat_reservation.total_price %></li>
           <li><strong>Status:</strong> <%= boat_reservation.status %></li>
         </ul>
         <div class="res-card-btns">
           <% if boat_reservation.pending? %>
-            <%= link_to "Confirmar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
-            <%= link_to "Rejeitar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+            <%= link_to "Confirm", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
+            <%= link_to "Reject", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
           <% elsif boat_reservation.confirmed? %>
-            <%= link_to "Cancelar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+            <%= link_to "Cancel", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
           <% elsif boat_reservation.rejected? %>
-            <%= link_to "Confirmar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
+            <%= link_to "Confirm", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
           <% end %>
         </div>
       </div>
@@ -41,20 +41,20 @@
         <h5><%= "#{boat_reservation.user.first_name} #{boat_reservation.user.last_name}" %></h5>
         <p><%= boat_reservation.boat_journey.boat.name %></p>
         <ul>
-          <li><strong>Hora de partida: </strong><%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></li>
-          <li><strong>Duração: </strong><%= boat_reservation.boat_journey.travel_duration %></li>
-          <li><strong>Número de passageiros: </strong><%= boat_reservation.number_passengers %></li>
-          <li><strong>Preço total: </strong><%= boat_reservation.total_price %></li>
+          <li><strong>Dearture time: </strong><%= boat_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></li>
+          <li><strong>Duration: </strong><%= boat_reservation.boat_journey.travel_duration %></li>
+          <li><strong>Number of passengers: </strong><%= boat_reservation.number_passengers %></li>
+          <li><strong>Total price: </strong><%= boat_reservation.total_price %></li>
           <li><strong>Status: </strong><%= boat_reservation.status %></li>
         </ul>
         <div class="res-card-btns">
           <% if boat_reservation.pending? %>
-            <%= link_to "Confirmar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
-            <%= link_to "Rejeitar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+            <%= link_to "Confirm", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
+            <%= link_to "Reject", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
           <% elsif boat_reservation.confirmed? %>
-            <%= link_to "Cancelar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+            <%= link_to "Cancel", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
           <% elsif boat_reservation.rejected? %>
-            <%= link_to "Confirmar", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
+            <%= link_to "Confirm", local_boat_journey_reservation_path(boat_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
           <% end %>
         </div>
       </div>
