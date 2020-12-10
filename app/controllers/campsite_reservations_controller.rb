@@ -22,8 +22,7 @@ class CampsiteReservationsController < ApplicationController
       if @campsite_reservation.save
         # when making this feature live, remember to send user argument with to: tel number
         TwilioWhatsappMessenger.new.campsite_request_reservation_message(@campsite_reservation)
-        redirect_to user_campsite_reservations_path(current_user), notice: "Your campsite reservation request is pending confirmation
-        from #{@campsite_reservation.campsite.user.first_name}"
+        redirect_to user_campsite_reservations_path(current_user), notice: "Your request has been sent. Please await confirmation from #{@campsite_reservation.campsite.user.first_name}"
       else
         render :new
       end

@@ -23,7 +23,7 @@ class BoatJourneyReservationsController < ApplicationController
     if @journey_reservation.save
       # when making this feature live, remember to send user argument with to: tel number
       TwilioWhatsappMessenger.new.boat_request_reservation_message(@journey_reservation)
-      redirect_to boat_journey_reservations_path, notice: "Your request was sent, wait for #{@journey_reservation.boat_journey.boat.user.first_name} confirmation."
+      redirect_to boat_journey_reservations_path, notice: "Your request has been sent. Please await confirmation from #{@journey_reservation.boat_journey.boat.user.first_name}"
     else
       redirect_to boat_journeys_path, alert: "Couldn't finish your request."
     end
