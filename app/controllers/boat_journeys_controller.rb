@@ -2,7 +2,7 @@ class BoatJourneysController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @boat_journeys = BoatJourney.where('departure_time > ?', DateTime.now)
+    @boat_journeys = BoatJourney.includes(boat: :user).where('departure_time > ?', DateTime.now)
     @boat_journeys = @boat_journeys.sort_by &:departure_time
     @date = params[:date]
     if @date

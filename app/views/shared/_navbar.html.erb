@@ -22,6 +22,11 @@
 
       <div class="navbar-options-right">
           <% if user_signed_in? %>
+
+            <% if current_user.local %>
+              <i class="fas fa-fish local-navbar-toggle"></i>
+            <% end %>
+
             <div class="btn-group">
               <% if current_user.photo.attached? %>
                 <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", 'data-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
@@ -32,6 +37,8 @@
               <div class="dropdown-menu dropdown-menu-right">
                 <% if current_user.local %>
                   <%= link_to "Meu perfil", user_path(current_user), class: "dropdown-item" %>
+                  <%= link_to "Reservas de Barco", local_boat_journey_reservations_path, class: "dropdown-item" %>
+                  <%= link_to "Reservas de Camping", local_campsite_reservations_path, class: "dropdown-item" %>
                   <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                 <% else %>
                   <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
