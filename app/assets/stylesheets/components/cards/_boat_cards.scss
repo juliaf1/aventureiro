@@ -10,8 +10,8 @@
   width: 100%;
   margin-top: 25px;
   margin-bottom: 15px;
-  border-radius: 10px;
   position: relative;
+
   .card-colour-box {
     position: absolute;
       top: 0;
@@ -21,18 +21,18 @@
       width: 100%;
       height: 80px;
     }
+
   .boat-card-top {
     display: flex;
     justify-content: space-between;
     padding: 8px;
-    margin-bottom: 5px;
     .boat-details {
       .boat-name {
-        font-size: 25px;
+        font-size: 24px;
         font-weight: 500;
       }
-      p {
-        margin-top: 30px;
+      .boat-info {
+        margin-top: 56px;
       }
     }
 

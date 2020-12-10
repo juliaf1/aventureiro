@@ -1,22 +1,21 @@
 <%= render 'shared/index_navbar' %>
 
 <div class="boats-container">
+
   <% @boats.each do |boat| %>
     <div class="boat-card">
       <div class="card-colour-box"></div>
       <div class="boat-card-top">
         <div class="boat-details">
           <h5 class="boat-name"><%= boat.name %></h5>
-          <p><strong>Max Occupation:</strong> <%= boat.max_occupation %></p>
-          <p><strong>Sailor: </strong><%= boat.user.first_name %></p>
-        </div>
-        <div class="boat-card-image">
-          <img class="boat-image" src="https://imgc.allpostersimages.com/img/print/posters/small-fishing-boats-in-the-turquoise-sea-mauritius-indian-ocean-africa_a-G-8747570-4990619.jpg" alt="boat photo">
+          <div class="boat-info">
+            <p><strong>Max Occupation:</strong> <%= boat.max_occupation %></p>
+            <p><strong>Sailor: </strong><%= boat.user.first_name %></p>
+            <p><strong>About the Sailor: </strong><%= boat.user.bio %></p>
+            <p><strong>Contact: </strong><%= boat.user.phone_number %></p>
+          </div>
         </div>
       </div>
-
-      <p><strong>About the Sailor: </strong><%= boat.user.bio %></p>
-      <p><strong>Contact: </strong><%= boat.user.phone_number %></p>
     </div>
   <% end %>
 </div>
