@@ -9,6 +9,11 @@
 
   li {
     display: inline;
+  }
+
+  a {
+    color: $neutral-dark-brown;
+    border: none;
     padding: 16px 32px;
     margin: 0 8px;
     border: 1px solid $neutral-dark-brown;
@@ -17,10 +22,5 @@
     &:hover {
       background-color: $neutral-light-brown;
     }
-  }
-
-  a {
-    color: $neutral-dark-brown;
-    border: none;
   }
 }
