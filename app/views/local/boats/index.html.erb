@@ -1,8 +1,9 @@
 <div class="boats-container">
+  <h3>Seus barcos</h3>
   <% if @boats.empty? %>
-    <p>You do not have any boats.
-      <%= link_to "Add a new boat", new_local_boat_path, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %></p>
-
+    <p>You do not have any boats.</p>
+    <%= link_to "Add a new boat", new_local_boat_path, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+    <div style="height: 400px;"></div>
   <% else %>
     <%= link_to "Adicione um barco", new_local_boat_path, class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
 

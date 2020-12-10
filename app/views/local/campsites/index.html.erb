@@ -2,6 +2,7 @@
   <h3>Your Campsites</h3>
   <% if @campsites.empty? %>
     <p>Sorry, it seems you don't have a campsite.</p>
+    <div style="height: 400px;"></div>
   <% else %>
     <% @campsites.each do |campsite| %>
       <div class="local-campsites-card">
@@ -18,13 +19,9 @@
           </ul>
         <% end %>
       </div>
-      <ul>
-        <li>
-          <%= link_to "Edit Campsite", edit_local_campsite_path(campsite), class: "primary-btn primary-btn-sm secondary-btn-blue" %>
-          <%= link_to "Add a full period", new_local_campsite_full_period_path(campsite), class: "secondary-btn secondary-btn-sm secondary-btn-yellow" %>
-        </li>
-      </ul>
+      <%= link_to "Edit Campsite", edit_local_campsite_path(campsite), class: "primary-btn primary-btn-sm secondary-btn-blue" %>
+      <%= link_to "Add a full period", new_local_campsite_full_period_path(campsite), class: "secondary-btn secondary-btn-sm secondary-btn-yellow" %>
     <% end %>
   <% end %>
-  <%= link_to 'Back', local_campsites_path, class: 'primary-btn primary-btn-sm primary-btn-blue' %>
 </div>
+<div style="height: 400px;"></div>
