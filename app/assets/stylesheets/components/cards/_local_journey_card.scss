@@ -1,0 +1,21 @@
+.local-journey-card {
+  background-color: $light-gray;
+  overflow: hidden;
+  height: 150px;
+  box-shadow: 1px 1px 6px rgba(50,50,50,0.1), 1px 1px 6px rgba(50,50,50,0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 12px;
+  position: relative;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .journey-btns {
+
+  }
+}

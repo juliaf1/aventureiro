@@ -28,6 +28,9 @@
   }
 
   .navbar-options-right {
+    display: flex;
+    align-items: center;
+
     .av-link {
       color: $white;
     }

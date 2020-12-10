@@ -24,10 +24,12 @@ import { toggleHiddenInfo } from '../plugins/journey_index_toggle.js';
 import { initUpdateNavbarOnScroll } from '../components/navbar.js';
 import { initFeedCable } from '../channels/feed_channel.js';
 import { loadDynamicBannerText } from '../components/banner';
+import { initNavbarToggle } from '../components/navbar_toggle';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initNavbarToggle();
   toggleHiddenInfo();
   initUpdateNavbarOnScroll();
   initFlatpickr();
