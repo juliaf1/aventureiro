@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 12px;
+  margin-top: 16px;
   position: relative;
 
   ul {
@@ -14,8 +14,10 @@
     margin: 0;
     padding: 0;
   }
+}
 
-  .journey-btns {
-
+.journey-container {
+  .journey-btn {
+    margin-top: 32px;
   }
 }
