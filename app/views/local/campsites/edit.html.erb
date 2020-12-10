@@ -6,7 +6,7 @@
   </div>
 
   <div class="reservation-card">
-    <h4>Edite o seu camping</h4>
+    <h4>Edit your campsite</h4>
     <h5><%= @campsite.name %></h5>
 
     <%= simple_form_for(@campsite, url: local_campsite_path(@campsite), method: 'patch') do |f| %>
@@ -16,20 +16,20 @@
         <%= f.input :name,
                     required: true,
                     autofocus: true,
-                    label: "Nome do Camping" %>
+                    label: "Name of the campsite" %>
         <%= f.input :description,
                     required: true,
                     autofocus: true,
-                    label: "Descrição" %>
+                    label: "Description" %>
         <%= f.input :daily_price,
                     required: true,
                     autofocus: true,
-                    label: "Preço diária" %>
+                    label: "Daily rate" %>
         <%= f.input :photo, as: :file %>
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Salvar", class: "devise-btn" %>
+        <%= f.button :submit, "Save", class: "devise-btn" %>
       </div>
 
     <% end %>
