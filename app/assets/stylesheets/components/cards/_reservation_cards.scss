@@ -81,27 +81,21 @@
     ul {
       list-style-type: none;
       padding-left: 16px;
-      padding-top: 16px;
+      margin: 48px 0 0 0;
     }
     h5 {
       padding-left: 16px;
     }
     p {
       padding-left: 16px;
-      padding-bottom: 16px;
-    }
-    .boat-journey-reservation-card-main {
-      h3 {
-        font-size: 25px;
-      }
     }
     .btn-center {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       width: 100%;
       position: absolute;
       bottom: 24px;
-      left: 0px;
+      right: 24px;
     }
   }
 }
