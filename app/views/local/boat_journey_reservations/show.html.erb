@@ -1,22 +1,26 @@
-<div class="container">
-       <div class="card">
-        <h5><%= "#{@journey_reservation.user.first_name} #{@journey_reservation.user.last_name}" %></h5>
-        <p><%= @journey_reservation.boat_journey.boat.name %></p>
-        <ul>
-          <li><%= @journey_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></li>
-          <li><%= @journey_reservation.boat_journey.travel_duration %></li>
-          <li><%= "#{@journey_reservation.number_passengers} passengers" %></li>
-          <li><%= "Total price: #{@journey_reservation.total_price}" %></li>
-          <li><%= "Status: #{@journey_reservation.status}" %></li>
-        </ul>
+<div class="local-boat-journey-reservations-container">
+  <div class="boat-journey-reservation-card res-card-margin">
+    <div class="card-colour-box"></div>
+    <h5><%= "#{@journey_reservation.user.first_name} #{@journey_reservation.user.last_name}" %></h5>
+    <p><%= @journey_reservation.boat_journey.boat.name %></p>
+    <ul>
+      <li><%= @journey_reservation.boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></li>
+      <li><%= @journey_reservation.boat_journey.travel_duration %></li>
+      <li><%= "#{@journey_reservation.number_passengers} passengers" %></li>
+      <li><%= "Total price: #{@journey_reservation.total_price}" %></li>
+      <li><%= "Status: #{@journey_reservation.status}" %></li>
+    </ul>
+    <div class="res-card-btns">
+      <% if @journey_reservation.pending? %>
+        <%= link_to "Confirm", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
+        <%= link_to "Reject", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+      <% elsif @journey_reservation.confirmed? %>
+        <%= link_to "Cancel", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+      <% elsif @journey_reservation.rejected? %>
+        <%= link_to "Confirm", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-        <% if @journey_reservation.pending? %>
-          <%= link_to "Confirm", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch %>
-          <%= link_to "Reject", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch %>
-        <% elsif @journey_reservation.confirmed? %>
-          <%= link_to "Cancel", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'rejected' }), method: :patch %>
-        <% elsif @journey_reservation.rejected? %>
-          <%= link_to "Confirm", local_boat_journey_reservation_path(@journey_reservation, boat_journey_reservation: { status: 'confirmed' }), method: :patch %>
-        <% end %>
-      </div>
 

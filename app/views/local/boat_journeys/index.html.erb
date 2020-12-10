@@ -1,20 +1,22 @@
-<div class="container">
+<div class="journey-container">
   <h3>Sua programação de barco</h3>
   <% if @boat_journeys.empty? %>
     <p>You don't have any planned boat journeys.</p>
   <% else %>
     <% @boat_journeys.each do |boat_journey| %>
-      <div>
+      <div class="local-journey-card">
         <ul>
           <li><strong>Boat name: </strong><%= boat_journey.boat.name %></li>
           <li><strong>Departure time: </strong><%= boat_journey.departure_time.strftime("%d %B %Y, %H:%M") %></li>
           <li><strong>Duration: </strong><%= boat_journey.travel_duration %></li>
           <li><strong>Price per passenger: </strong><%= boat_journey.price_person %></li>
-          <%= link_to "Edit", edit_local_boat_journey_path(boat_journey) %>
-          <%= link_to "Delete", local_boat_journey_path(boat_journey), method: :delete %>
         </ul>
+        <div class="journey-btns"> 
+          <%= link_to "Edit", edit_local_boat_journey_path(boat_journey), class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
+          <%= link_to "Delete", local_boat_journey_path(boat_journey), method: :delete, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+        </div>
       </div>
     <% end %>
   <% end %>
-  <%= link_to "Add a journey", local_boats_path(current_user) %>
+  <%= link_to "Add a journey", local_boats_path(current_user), class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue text-center" %>
 </div>

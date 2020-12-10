@@ -1,4 +1,3 @@
-
 <div class="home-navbar-container">
   <div class="home-navbar">
 
@@ -23,6 +22,11 @@
 
       <div class="navbar-options-right">
           <% if user_signed_in? %>
+
+            <% if current_user.local %>
+              <i class="fas fa-fish home-local-navbar-toggle"></i>
+            <% end %>
+
             <div class="btn-group">
               <% if current_user.photo.attached? %>
                 <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar dropdown-toggle", 'data-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false %>
@@ -40,6 +44,7 @@
                   <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
                   <%= link_to "Boats Reservations", boat_journey_reservations_path, class: "dropdown-item" %>
                   <%= link_to "Campsites Reservations", user_campsite_reservations_path(current_user), class: "dropdown-item" %>
+                  <%= link_to "Permit Requests", permit_requests_path, class: "dropdown-item" %>
                   <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                 <% end %>
               </div>
