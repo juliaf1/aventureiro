@@ -1,14 +1,13 @@
 <div class="local-campsite-reservations-container">
-  <h3>Your camping reservations</h3>
-
   <% if @campsite_reservations.empty? %>
+    <h3>Campsite reservations</h3>
     <p>You don't have any reservations yet.</p>
     <div style="height: 400px;"></div>
   <% end %>
 
 
   <% if @upcoming_campsite_reservations.present? %>
-    <h4>Próximas reservas</h4>
+    <h3>Upcoming campsite reservations</h3>
     <% @upcoming_campsite_reservations.each do |campsite_reservation| %>
       <div class="campsite-reservation-card res-card-margin">
         <div class="res-card-pink"></div>
@@ -40,7 +39,7 @@
   <% end %>
 
   <% if @past_campsite_reservations.present? %>
-    <h4>Previous reservations</h4>
+    <h3>Past campsite reservations</h3>
     <% @past_campsite_reservations.each do |campsite_reservation| %>
       <div class="campsite-reservation-card res-card-margin">
         <div class="res-card-pink"></div>
