@@ -1,7 +1,7 @@
 <div class="local-campsites-container">
-  <h3>Seus campings</h3>
+  <h3>Your Campsites</h3>
   <% if @campsites.empty? %>
-    <p>Você não tem acampamentos.</p>
+    <p>Sorry, it seems you don't have a campsite.</p>
   <% else %>
     <% @campsites.each do |campsite| %>
       <div class="local-campsites-card">

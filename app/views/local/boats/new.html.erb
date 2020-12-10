@@ -6,7 +6,7 @@
   </div>
 
   <div class="reservation-card">
-    <h4>Adicione um novo barco</h4>
+    <h4>Add a new boat</h4>
 
     <%= simple_form_for(@boat, url: local_boats_path, method: 'post') do |f| %>
       <%= f.error_notification %>
@@ -15,11 +15,11 @@
         <%= f.input :name,
                     required: true,
                     autofocus: true,
-                    label: "Nome do Barco" %>
+                    label: "Boat name" %>
         <%= f.input :max_occupation,
                     required: true,
                     autofocus: true,
-                    label: "Ocupação máxima" %>
+                    label: "Maximum occupation" %>
         <%= f.input :photo, as: :file %>
       </div>
 

@@ -1,8 +1,8 @@
 <div class="local-campsite-reservations-container">
-  <h3>Suas reservas de camping</h3>
+  <h3>Your camping reservations</h3>
 
   <% if @campsite_reservations.empty? %>
-    <p>Nenhuma reserva.</p>
+    <p>You don't have any reservations yet.</p>
   <% end %>
 
 
@@ -15,23 +15,23 @@
           <ul>
             <li><h5><%= campsite_reservation.user.first_name %> <%= campsite_reservation.user.last_name %></h5></li>
             <p><%= campsite_reservation.campsite.name %></p>
-            <li><strong>Mensagem: </strong><%= campsite_reservation.description%></li>
+            <li><strong>Message: </strong><%= campsite_reservation.description%></li>
             <li><strong>Check in: </strong><%= campsite_reservation.check_in.strftime("%d %B %Y") %></li>
             <li><strong>Check out: </strong><%= campsite_reservation.check_out.strftime("%d %B %Y") %></li>
-            <li><strong>Número de convidados: </strong><%= campsite_reservation.number_guests %> guests</li>
-            <li><strong>Preço total: </strong><%= campsite_reservation.total_price %></li>
+            <li><strong>Number of guests: </strong><%= campsite_reservation.number_guests %> guests</li>
+            <li><strong>Total price: </strong><%= campsite_reservation.total_price %></li>
             <li><strong>Status: </strong><%= campsite_reservation.status %></li>
           </ul>
         </div>
 
         <div class="res-card-btns">
           <% if campsite_reservation.pending? %>
-            <%= link_to "Confirmar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
-            <%= link_to "Rejeitar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+            <%= link_to "Confirm", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
+            <%= link_to "Reject", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
           <% elsif campsite_reservation.confirmed? %>
-            <%= link_to "Cancelar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+            <%= link_to "Cancel", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
           <% elsif campsite_reservation.rejected? %>
-            <%= link_to "Confirmar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
+            <%= link_to "Confirm", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
           <% end %>
         </div>
       </div>
@@ -39,7 +39,7 @@
   <% end %>
 
   <% if @past_campsite_reservations.present? %>
-    <h4>Reservas anteriores</h4>
+    <h4>Previous reservations</h4>
     <% @past_campsite_reservations.each do |campsite_reservation| %>
       <div class="campsite-reservation-card res-card-margin">
         <div class="res-card-pink"></div>
@@ -47,23 +47,23 @@
           <ul>
             <li><h5><%= campsite_reservation.user.first_name %> <%= campsite_reservation.user.last_name %></h5></li>
             <p><%= campsite_reservation.campsite.name %></p>
-            <li><strong>Mensagem: </strong><%= campsite_reservation.description%></li>
+            <li><strong>Message: </strong><%= campsite_reservation.description%></li>
             <li><strong>Check in: </strong><%= campsite_reservation.check_in.strftime("%d %B %Y") %></li>
             <li><strong>Check out: </strong><%= campsite_reservation.check_out.strftime("%d %B %Y") %></li>
-            <li><strong>Número de convidados: </strong><%= campsite_reservation.number_guests %> guests</li>
-            <li><strong>Preço total: </strong><%= campsite_reservation.total_price %></li>
+            <li><strong>Number of guests: </strong><%= campsite_reservation.number_guests %> guests</li>
+            <li><strong>Total price: </strong><%= campsite_reservation.total_price %></li>
             <li><strong>Status: </strong><%= campsite_reservation.status %></li>
           </ul>
         </div>
 
         <div class="res-card-btns">
           <% if campsite_reservation.pending? %>
-            <%= link_to "Confirmar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
-            <%= link_to "Rejeitar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+            <%= link_to "Confirm", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
+            <%= link_to "Reject", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
           <% elsif campsite_reservation.confirmed? %>
-            <%= link_to "Cancelar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+            <%= link_to "Cancel", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
           <% elsif campsite_reservation.rejected? %>
-            <%= link_to "Confirmar", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
+            <%= link_to "Confirm", local_campsite_reservation_path(campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch, class: "secondary-btn secondary-btn-sm secondary-btn-green" %>
           <% end %>
         </div>
       </div>

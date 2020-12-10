@@ -5,7 +5,7 @@
   </div>
 
   <div class="reservation-card">
-  <h4>Edite a viagem</h4>
+  <h4>Edit a boat journey</h4>
 
     <%= simple_form_for(@boat_journey, url: local_boat_journey_path(@boat_journey), method: 'patch') do |f| %>
       <%= f.error_notification %>
@@ -14,15 +14,15 @@
         <%= f.input :departure_time,
                     required: true,
                     as: :string,
-                    label: "Horário de saída",
+                    label: "Dearture time",
                     input_html: {class: 'journeypicker'} %>
         <%= f.input :travel_duration,
                     required: true,
-                    label: "Tempo de viagem",
+                    label: "Duration",
                     autofocus: true %>
         <%= f.input :price_person,
                     required: true,
-                    label: "Preço por pessoa",
+                    label: "Price per person",
                     autofocus: true %>
       </div>
 
