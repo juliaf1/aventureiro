@@ -1,12 +1,12 @@
 <div class="local-boat-journey-reservations-container">
   <% if @journey_reservations.empty? %>
-    <h3>Your Boat Reservations</h3>
+    <h4>Your Boat Reservations</h4>
     <p>Sorry, no reservations yet.</p>
     <div style="height: 400px;"></div>
   <% end %>
 
   <% if @upcoming_journey_reservations.present? %>
-    <h3>Upcoming Boat Reservations</h3>
+    <h4>Upcoming Boat Reservations</h4>
     <% @upcoming_journey_reservations.each do |boat_reservation| %>
       <div class="boat-journey-reservation-card res-card-margin">
         <div class="card-colour-box"></div>
@@ -35,7 +35,7 @@
 
 
   <% if @past_journey_reservations.present? %>
-    <h3>Past Boat Reservations</h3>
+    <h4>Past Boat Reservations</h4>
     <% @past_journey_reservations.each do |boat_reservation| %>
       <div class="boat-journey-reservation-card res-card-margin">
         <div class="res-card-yellow"></div>

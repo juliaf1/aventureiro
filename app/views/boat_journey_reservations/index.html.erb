@@ -1,6 +1,6 @@
 <div class="boat-journey-reservations-container">
   <% if @journey_reservations.present? %>
-    <h3>Upcoming Boat Reservations</h3>
+    <h4>Upcoming Boat Reservations</h4>
 
     <% @journey_reservations.each do |boat_reservation| %>
       <div class="boat-journey-reservation-card">
@@ -25,7 +25,7 @@
     <% end %>
 
   <% elsif @past_journey_reservations.present? %>
-    <h3>Past Boat Reservations</h3>
+    <h4>Past Boat Reservations</h4>
 
     <% @past_journey_reservations.each do |boat_reservation| %>
       <div class="boat-journey-reservation-card">
@@ -48,7 +48,7 @@
     <% end %>
 
   <% else %>
-    <h3>Boat Reservations</h3>
+    <h4>Boat Reservations</h4>
     <p>Looks like you haven't made any requests yet!
       Let's change that: <%= link_to 'Take a look at boats schedule', boat_journeys_path %></p>
     <div style="height: 500px;"></div>

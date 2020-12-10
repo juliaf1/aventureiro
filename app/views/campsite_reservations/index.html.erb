@@ -1,5 +1,4 @@
 <div class="campsite-reservations-container">
-  <h3>Your Campsite Reservations</h3>
 
   <% if @campsite_reservations.present? %>
     <h4>Upcoming Campsite Reservations</h4>
@@ -24,7 +23,7 @@
     <% end %>
 
   <% elsif @past_campsite_reservations.present? %>
-    <h3>Past Campsite Reservations</h3>
+    <h4>Past Campsite Reservations</h4>
     <% @past_campsite_reservations.each do |campsite_reservation| %>
       <div class="campsite-reservation-card">
         <div class="card-colour-box"></div>
@@ -46,6 +45,7 @@
     <% end %>
 
   <% else %>
+    <h4>Campsite Reservations</h4>
     <p>You don't have any campsite reservations yet.
     <%= link_to 'Start browsing some amazing campsites', campsites_path %></p>
     <div style="height: 400px;"></div>
