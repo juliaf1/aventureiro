@@ -11,8 +11,10 @@
           <li><strong>Duração: </strong><%= boat_journey.travel_duration %></li>
           <li><strong>Preço por passageiro: </strong><%= boat_journey.price_person %></li>
         </ul>
+        <div class="journey-btns">
           <%= link_to "Edit journey", edit_local_boat_journey_path(boat_journey), class: "secondary-btn secondary-btn-sm secondary-btn-dark-blue" %>
           <%= link_to "Delete", local_boat_journey_path(boat_journey), method: :delete, class: "secondary-btn secondary-btn-sm secondary-btn-pink" %>
+        </div>
       </div>
     <% end %>
   <% end %>
