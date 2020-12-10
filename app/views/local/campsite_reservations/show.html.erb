@@ -10,12 +10,12 @@
             <p><%= @campsite_reservation.description%></p>
           </div>
           <% if @campsite_reservation.pending? %>
-            <%= link_to "Confirmar", local_campsite_reservation_path(@campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch %>
-            <%= link_to "Rejeitar", local_campsite_reservation_path(@campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch %>
+            <%= link_to "Confirm", local_campsite_reservation_path(@campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch %>
+            <%= link_to "Reject", local_campsite_reservation_path(@campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch %>
           <% elsif @campsite_reservation.confirmed? %>
-            <%= link_to "Cancelar", local_campsite_reservation_path(@campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch %>
+            <%= link_to "Cancel", local_campsite_reservation_path(@campsite_reservation, campsite_reservation: { status: 'rejected' }), method: :patch %>
           <% elsif @campsite_reservation.rejected? %>
-            <%= link_to "Confirmar", local_campsite_reservation_path(@campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch %>
+            <%= link_to "Confirm", local_campsite_reservation_path(@campsite_reservation, campsite_reservation: { status: 'confirmed' }), method: :patch %>
           <% end %>
         </div>
       </div>
