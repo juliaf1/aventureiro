@@ -45,9 +45,7 @@ ferreira = {
   password: '123456',
   phone_number: '24 998899-9988',
   address: 'Aventureiro',
-  bio: 'Ferreira likes interesting conversations under the moonlight, he is known
-  for gathering friends at his bar, one of the main meeting points at the beach.
-  He is also an experienced sailor.'
+  bio: 'Ferreira likes interesting conversations under the moonlight, he is known for gathering friends at his bar, one of the main meeting points at the beach. He is also an experienced sailor.'
 }
 
 larissa = {
@@ -57,9 +55,7 @@ larissa = {
   password: '123456',
   phone_number: '24 998899-9988',
   address: 'Aventureiro',
-  bio: 'An adventurer spirit, Larissa left the city with her husband to live
-  a caiçara life. They have a deep concern on protecting nature and love to motivate
-  tourists to recycle materials and reuse containers.'
+  bio: 'An adventurer spirit, Larissa left the city with her husband to live a caiçara life. They have a deep concern on protecting nature and love to motivate tourists to recycle materials and reuse containers.'
 }
 
 ita = {
@@ -69,9 +65,7 @@ ita = {
   password: '123456',
   phone_number: '24 998899-9988',
   address: 'Aventureiro',
-  bio: 'Nice and communcative, Ita is that cool person everyone wants to stop
-  and chat with. He is an attentive host that loves having people over for
-  live music night and long conversations under the starry sky.'
+  bio: 'Nice and communcative, Ita is that cool person everyone wants to stop and chat with. He is an attentive host that loves having people over for live music night and long conversations under the starry sky.'
 }
 
 luis = {
@@ -81,9 +75,7 @@ luis = {
   password: '123456',
   phone_number: '24 998899-9988',
   address: 'Aventureiro',
-  bio: 'Luis is all about parties, hosting young people and surfers.
-  He and his children love talking about the waves and will happily teach
-  you all about the best spots to surf on the island.'
+  bio: 'Luis is all about parties, hosting young people and surfers. He and his children love talking about the waves and will happily teach you all about the best spots to surf on the island.'
 }
 
 roseno = {
@@ -93,22 +85,20 @@ roseno = {
   password: '123456',
   phone_number: '24 998899-9988',
   address: 'Aventureiro',
-  bio: 'Senhor Roseno knows all about Ilha Grande and has some incredible stories
-  to share. He loves dancing and hosting forró pé de serra nights and is always
-  inventing new ways to please guests. He is also a talented sailor.'
+  bio: 'Senhor Roseno knows all about Ilha Grande and has some incredible stories to share. He loves dancing and hosting forró pé de serra nights and is always inventing new ways to please guests. He is also a talented sailor.'
 }
 
 caicaras = [nezinho, neneca, verte, ferreira, larissa, ita, luis, roseno]
 
 profile_photos = {
-  nezinho: "https://images.unsplash.com/photo-1605639649750-584b3d9a5522?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80",
-  neneca: "https://images.unsplash.com/photo-1593804863197-0a95c8ebef64?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80",
-  verte: "https://images.unsplash.com/photo-1601057959038-7bf0516c54c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
-  ferreira: "https://images.unsplash.com/photo-1578232443464-16a2880948fe?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=352&q=80",
-  larissa: "https://images.unsplash.com/photo-1599571280904-64453968268b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
-  ita: "https://images.unsplash.com/photo-1496672254107-b07a26403885?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-  luis: "https://images.unsplash.com/flagged/photo-1598629403012-bc0e90e12f21?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=376&q=80",
-  roseno: "https://images.unsplash.com/photo-1606542353593-d1f26eb13088?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=401&q=80"
+  nezinho: "https://res.cloudinary.com/juliaf1/image/upload/v1607696494/nezinho_wcvkas.png",
+  neneca: "https://res.cloudinary.com/juliaf1/image/upload/v1607696493/neneca_zrpxqv.png",
+  verte: "https://res.cloudinary.com/juliaf1/image/upload/v1607696496/verte_ef5wnf.png",
+  ferreira: "https://res.cloudinary.com/juliaf1/image/upload/v1607696492/ferreira_co2b3d.png",
+  larissa: "https://res.cloudinary.com/juliaf1/image/upload/v1607696491/larissa_smwnrh.png",
+  ita: "https://res.cloudinary.com/juliaf1/image/upload/v1607696491/ita_jtazqv.png",
+  luis: "https://res.cloudinary.com/juliaf1/image/upload/v1607696492/luis_kdbdtd.png",
+  roseno: "https://res.cloudinary.com/juliaf1/image/upload/v1607696493/roseno_p1ktgj.png"
 }
 
 caicaras.each do |caicara|
@@ -141,7 +131,7 @@ verte_boat = {
 }
 
 ferreira_boat = {
-  name: 'Vamobora',
+  name: 'Chega Mais',
   max_occupation: '15',
   user_id: sailor_ferreira.id
 }
@@ -166,29 +156,40 @@ boats.each do |boat|
 end
 
 puts "Adding photos to boats 📷"
-file = URI.open("https://images.unsplash.com/photo-1593188999272-b65631194b7f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OXx8c21hbGwlMjBwYXNzZW5nZXIlMjBib2F0fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
-barco = Boat.all[0]
-barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+file = URI.open("https://res.cloudinary.com/juliaf1/image/upload/v1607697397/3-amanda_zb7ycx.png")
+barco1 = Boat.find(1)
+barco1.photo.attach(io: file, filename: "#{barco1.name}.jpg", content_type: 'image/jpg')
 
-file = URI.open("https://images.unsplash.com/photo-1599011887608-d125aeefab9e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTJ8fHNtYWxsJTIwcGFzc2VuZ2VyJTIwYm9hdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
-barco = Boat.all[1]
-barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+file = URI.open("https://res.cloudinary.com/juliaf1/image/upload/v1607697395/1-chegamais_zs9pxz.png")
+barco2 = Boat.find(2)
+barco2.photo.attach(io: file, filename: "#{barco2.name}.jpg", content_type: 'image/jpg')
 
-file = URI.open("https://images.unsplash.com/photo-1589627972662-12b2da3f14d2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjE5fHxzbWFsbCUyMHBhc3NlbmdlciUyMGJvYXR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
-barco = Boat.all[2]
-barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+file = URI.open("https://res.cloudinary.com/juliaf1/image/upload/v1607697398/4-milenio_cmmtht.png")
+barco3 = Boat.find(3)
+barco3.photo.attach(io: file, filename: "#{barco3.name}.jpg", content_type: 'image/jpg')
 
-file = URI.open("https://images.unsplash.com/photo-1543078668-06f7626d60c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTZ8fGJvYXQlMjBicmF6aWwlMjBmaXNoaW5nfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")
-barco = Boat.all[3]
-barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+file = URI.open("https://res.cloudinary.com/juliaf1/image/upload/v1607697403/2-reimateus_mjnd1g.png")
+barco4 = Boat.find(4)
+barco4.photo.attach(io: file, filename: "#{barco4.name}.jpg", content_type: 'image/jpg')
 
 puts "Creating some boat journeys ⛵"
 
 n = 0
-60.times do
+20.times do
   BoatJourney.create(
-    boat_id: Boat.all[0].id,
-    departure_time: Time.new(2020,11,20,8,30) + n.day ,
+    boat_id: Boat.find(1).id,
+    departure_time: Time.new(2020,12,12,8,30) + n.day,
+    travel_duration: '40 min',
+    price_person: '90'
+  )
+  n += 1
+end
+
+n = 0
+20.times do
+  BoatJourney.create(
+    boat_id: Boat.find(2).id,
+    departure_time: Time.new(2020,12,12,5,30) + n.day,
     travel_duration: '2 hours',
     price_person: '70'
   )
@@ -196,33 +197,22 @@ n = 0
 end
 
 n = 0
-60.times do
+20.times do
   BoatJourney.create(
-    boat_id: Boat.all[1].id,
-    departure_time: Time.new(2020,11,20,5,30) + n.day ,
-    travel_duration: '2 hours',
-    price_person: '70'
-  )
-  n += 1
-end
-
-n = 0
-60.times do
-  BoatJourney.create(
-    boat_id: Boat.all[2].id,
-    departure_time: Time.new(2020,11,20,12,00) + n.day ,
+    boat_id: Boat.find(3).id,
+    departure_time: Time.new(2020,12,12,12,00) + n.day,
     travel_duration: '1h 40min',
     price_person: '70'
   )
   n += 1
 end
 
-60.times do
+20.times do
   BoatJourney.create(
-    boat_id: Boat.all[3].id,
-    departure_time: Time.new(2020,11,20,15,00) + n.day ,
-    travel_duration: '40min',
-    price_person: '90'
+    boat_id: Boat.find(4).id,
+    departure_time: Time.new(2020,11,12,15,00) + n.day,
+    travel_duration: '2 hours',
+    price_person: '70'
   )
   n += 1
 end
@@ -345,9 +335,10 @@ puts "Creating travellers"
 
 rowan = {
   local: false,
+  admin: true,
   first_name: 'Rowan',
   email: 'rowan@lewagon.com',
-  password: '123456',
+  password: 'lewagon499',
   phone_number: '44 788474798',
   address: 'London',
   bio: "Life long explorer!"
@@ -355,15 +346,27 @@ rowan = {
 
 julia = {
   local: false,
+  admin: true,
   first_name: 'Julia',
   email: 'julia@lewagon.com',
-  password: '123456',
+  password: 'lewagon499',
   phone_number: '55 999999999',
-  address: 'Niteroi',
-  bio: "I'm small girl with big dreams!"
+  address: 'São Paulo',
+  bio: "Aventura and Sossego 🌊"
 }
 
-travellers = [rowan, julia]
+tomas = {
+  local: false,
+  admin: true,
+  first_name: 'Tomas',
+  email: 'tomas@lewagon.com',
+  password: 'lewagon499',
+  phone_number: '55 999999999',
+  address: 'Rio de Janeiro',
+  bio: "Dog lover, adventure enthusiast!"
+}
+
+travellers = [rowan, julia, tomas]
 
 travellers.each do |traveller|
   User.create(traveller)
@@ -375,8 +378,8 @@ puts "Creating some fake travellers"
 10.times do
   User.create(
   local: false,
-  first_name: Faker::Movies::HowToTrainYourDragon.unique.character,
-  email: Faker::Internet.email,
+  first_name: ['Pedro', 'Amanda', 'Luisa', 'Sabrina', 'Guilherme', 'Lucas'].sample,
+  email: "#{:first_name}#{[1, 2, 3, 4, 5].sample}@gmail.com",
   password: '123456',
   phone_number: Faker::PhoneNumber.cell_phone_in_e164,
   address: Faker::Address.city,
@@ -410,6 +413,5 @@ end
 puts "Creating feed"
 
 new_feed = Feed.create
-
 
 puts "Seeding complete!"
