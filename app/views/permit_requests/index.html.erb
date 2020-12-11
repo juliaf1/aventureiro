@@ -1,8 +1,8 @@
 <div class="permits-container">
-  <h2>My Permit Requests</h2>
+  <h2 style="margin-bottom: 40px;">My Permit Requests</h2>
   <% n = 1 %>
   <% @permit_requests.each do |request| %>
-    <div class="permit-card">
+    <div class="permit-card" style="margin-bottom: 40px;">
       <div class="card-colour-box"></div>
       <h4>Permit Request <%= n %></h4>
       <ul>
@@ -20,4 +20,10 @@
   <% end %>
 
   <%= link_to 'Make a new request', new_permit_request_path, class: 'secondary-btn secondary-btn-sm secondary-btn-green' %>
+
+  <% if @permit_requests.present? %>
+    <div style="height: 100px;"></div>
+  <% else %>
+    <div style="height: 400px;"></div>
+  <% end %>
 </div>
