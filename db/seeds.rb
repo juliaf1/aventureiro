@@ -157,27 +157,27 @@ end
 
 puts "Adding photos to boats 📷"
 file = URI.open("https://res.cloudinary.com/juliaf1/image/upload/v1607697397/3-amanda_zb7ycx.png")
-barco = Boat.all[0]
-barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+barco1 = Boat.find(1)
+barco1.photo.attach(io: file, filename: "#{barco1.name}.jpg", content_type: 'image/jpg')
 
 file = URI.open("https://res.cloudinary.com/juliaf1/image/upload/v1607697395/1-chegamais_zs9pxz.png")
-barco = Boat.all[1]
-barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+barco2 = Boat.find(2)
+barco2.photo.attach(io: file, filename: "#{barco2.name}.jpg", content_type: 'image/jpg')
 
 file = URI.open("https://res.cloudinary.com/juliaf1/image/upload/v1607697398/4-milenio_cmmtht.png")
-barco = Boat.all[2]
-barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+barco3 = Boat.find(3)
+barco3.photo.attach(io: file, filename: "#{barco3.name}.jpg", content_type: 'image/jpg')
 
 file = URI.open("https://res.cloudinary.com/juliaf1/image/upload/v1607697403/2-reimateus_mjnd1g.png")
-barco = Boat.all[3]
-barco.photo.attach(io: file, filename: "#{barco.name}.jpg", content_type: 'image/jpg')
+barco4 = Boat.find(4)
+barco4.photo.attach(io: file, filename: "#{barco4.name}.jpg", content_type: 'image/jpg')
 
 puts "Creating some boat journeys ⛵"
 
 n = 0
-10.times do
+20.times do
   BoatJourney.create(
-    boat_id: Boat.all[0].id,
+    boat_id: Boat.find(1).id,
     departure_time: Time.new(2020,12,12,8,30) + n.day,
     travel_duration: '40 min',
     price_person: '90'
@@ -186,9 +186,9 @@ n = 0
 end
 
 n = 0
-10.times do
+20.times do
   BoatJourney.create(
-    boat_id: Boat.all[1].id,
+    boat_id: Boat.find(2).id,
     departure_time: Time.new(2020,12,12,5,30) + n.day,
     travel_duration: '2 hours',
     price_person: '70'
@@ -197,9 +197,9 @@ n = 0
 end
 
 n = 0
-10.times do
+20.times do
   BoatJourney.create(
-    boat_id: Boat.all[2].id,
+    boat_id: Boat.find(3).id,
     departure_time: Time.new(2020,12,12,12,00) + n.day,
     travel_duration: '1h 40min',
     price_person: '70'
@@ -207,9 +207,9 @@ n = 0
   n += 1
 end
 
-10.times do
+20.times do
   BoatJourney.create(
-    boat_id: Boat.all[3].id,
+    boat_id: Boat.find(4).id,
     departure_time: Time.new(2020,11,12,15,00) + n.day,
     travel_duration: '2 hours',
     price_person: '70'
