@@ -4,8 +4,8 @@ const loadDynamicBannerText = () => {
   const banner = document.querySelector('#banner-typed');
   if (banner) {
     new Typed('#banner-typed', {
-      strings: ["A big island on the Green Coast", "a beach of caiçaras", "with 1000 stars campsites."],
-      typeSpeed: 20,
+      strings: ["An island on the Green Coast", "a beach of caiçaras.", "Live an adventure.", "Connect with nature.", "Experience the caiçara way.", "Give it back to the community."],
+      typeSpeed: 50,
       loop: true
     });
   }
