@@ -36,10 +36,10 @@
 
               <div class="dropdown-menu dropdown-menu-right">
                 <% if current_user.local %>
-                  <%= link_to "Meu perfil", user_path(current_user), class: "dropdown-item" %>
-                  <%= link_to "Reservas de Barco", local_boat_journey_reservations_path, class: "dropdown-item" %>
-                  <%= link_to "Reservas de Camping", local_campsite_reservations_path, class: "dropdown-item" %>
-                  <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                  <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
+                  <%= link_to "Boat Reservations", local_boat_journey_reservations_path, class: "dropdown-item" %>
+                  <%= link_to "Campsite Reservations", local_campsite_reservations_path, class: "dropdown-item" %>
+                  <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                 <% else %>
                   <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
                   <%= link_to "Boats Reservations", boat_journey_reservations_path, class: "dropdown-item" %>
