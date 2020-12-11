@@ -335,7 +335,7 @@ puts "Creating travellers"
 
 rowan = {
   local: false,
-  admin: true,
+  admin: false,
   first_name: 'Rowan',
   email: 'rowan@lewagon.com',
   password: 'lewagon499',
