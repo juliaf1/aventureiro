@@ -13,14 +13,14 @@
     <p>Check which campsites are available </p>
 
     <%= simple_form_for :search, method: "get", wrapper: :inline_form, html: { class: "form-inline" } do |f| %>
-      
+
       <div class="date-inputs">
         <%= f.input :start_date, required: true, as: :string, input_html: { id: "start_date", name: "start_date", autocomplete: 'off', class: "form-input-style form-input-color"} %>
         <%= f.input :end_date, required: true, as: :string, input_html: { id: "end_date", name: "end_date", autocomplete: 'off', class: "form-input-style form-input-color"} %>
       </div>
 
       <button type="submit" class="search-btn form-input-style"><i class="fas fa-search "></i></button>
-      
+
     <% end %>
   </div>
 

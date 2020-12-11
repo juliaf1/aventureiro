@@ -1,5 +1,13 @@
+<% if current_user %>
+  <% unless current_user.local? %>
+    <%= render 'shared/index_navbar' %>
+  <% end %>
+<% else %>
+  <%= render 'shared/index_navbar' %>
+<% end %>
+
 <div class="permits-container">
-  <h2 style="margin-bottom: 40px;">My Permit Requests</h2>
+  <h3 style="margin-bottom: 40px;">My Permit Requests</h3>
   <% n = 1 %>
   <% @permit_requests.each do |request| %>
     <div class="permit-card" style="margin-bottom: 40px;">
